@@ -1,16 +1,35 @@
 ---
-variables:
-# https://docs.gitlab.com/ce/ci/variables/README.html
-  DOCKER_HOST: tcp://localhost:2375
-  DOCKER_VERSION: 18.06
+include:
+- '/k8s/tremplin-api/.deploy-tremplin-api-k8s.yml'
+- '/k8s/tremplin-frontend/.deploy-tremplin-frontend-k8s.yml'
 
-image: docker:$DOCKER_VERSION
+variables:
+  DOCKER_HOST: tcp://localhost:2375
+  IMAGE_INFRA_BASE_NAME: "infra/images-docker"
+  DOCKER_VERSION: "18.06"
+  K8S_SERVER: $K8S_SERVER_DEV
+  K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_DEV
+  K8S_NAMESPACE: $K8S_NAMESPACE_DEV
+  K8S_USERNAME: $K8S_USERNAME_DEV
+  K8S_CONTEXT: $K8S_CONTEXT_DEV
+  K8S_TOKEN: $K8S_TOKEN_DEV
+  IMAGE_TAG: $CI_COMMIT_SHA
+  BRANCH_NAME: -$CI_COMMIT_REF_NAME
+  ENVIRONMENT: $CI_ENVIRONMENT_NAME
+  TREMPLIN_REGISTRY: $CI_REGISTRY_IMAGE
+  API_PORT: 1337
+  FRONTEND_PORT: 3000
 
 stages:
   - "Build and Push Docker Image"
+  - "Test"
+  - "Deploy Tremplin"
 
 build-and-push-tremplin-api-image:
   stage: "Build and Push Docker Image"
+  image: docker:$DOCKER_VERSION
+  services:
+  - docker:dind
   before_script:
   - cd packages/api
   - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
@@ -18,11 +37,30 @@ build-and-push-tremplin-api-image:
   - docker build -t "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA"
 
-build-and-push-tremplin-app-image:
+build-and-push-tremplin-frontend-image:
   stage: "Build and Push Docker Image"
+  image: docker:$DOCKER_VERSION
+  services:
+  - docker:dind
   before_script:
   - cd packages/app
   - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
   script:
-  - docker build -t "$CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA" .
-  - docker push "$CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA"
+  - docker build -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
+  - docker push "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA"
+
+deploy-tremplin-api:
+  stage: "Deploy Tremplin"
+  extends: .deploy-tremplin-api-k8s
+  variables:
+    PORT: ${API_PORT}
+  environment:
+    name: dev
+
+deploy-tremplin-frontend:
+  stage: "Deploy Tremplin"
+  extends: .deploy-tremplin-frontend-k8s
+  variables:
+    PORT: ${FRONTEND_PORT}
+  environment:
+    name: dev
