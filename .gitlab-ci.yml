@@ -12,7 +12,7 @@ variables:
 stages:
 - info
 - "build and push base image"
-- "build and push images"
+- "build and push tremplin images"
 
 info:
   stage: info
@@ -36,19 +36,18 @@ build-base:
     - docker build -t ${REGISTRY_IMAGE}/base:${APP_VERSION} .
     - docker push ${REGISTRY_IMAGE}/base:${APP_VERSION}
 
-# build-image-app:
-#   services:
-#     - docker:dind
-#   stage: "build and push images"
-#   before_script:
-#     - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
-#     - apk update && apk add --no-cache bash py-pip openssl
-#     - pip install docker-compose==${DOCKER_COMPOSE_VERSION}
-#   script:
-#     - docker-compose build
-#     - docker push ${REGISTRY_IMAGE}/api:${APP_VERSION}
-#     - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
-#   after_script:
-#     - docker logout
+build-tremplin-api:
+  extends: .build
+  stage: "build and push tremplin images"
+  script:
+     - docker build -t ${REGISTRY_IMAGE}/api:latest -t ${REGISTRY_IMAGE}/api:${APP_VERSION} --build-arg BASE_IMAGE=socialgouv/tremplin:master packages/api
+     - docker push ${REGISTRY_IMAGE}/api:${APP_VERSION}
+
+build-tremplin-app:
+  extends: .build
+  stage: "build and push tremplin images"
+  script:
+     - docker build -t ${REGISTRY_IMAGE}/app:latest -t ${REGISTRY_IMAGE}/app:${APP_VERSION} --build-arg BASE_IMAGE=socialgouv/tremplin:master packages/app
+     - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
 
 
