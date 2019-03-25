@@ -7,6 +7,7 @@ variables:
   DOCKER_HOST: tcp://localhost:2375
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   DOCKER_VERSION: "18.06"
+  NODE_VERSION: "10.12.0"
   K8S_SERVER: $K8S_SERVER_DEV
   K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_DEV
   K8S_NAMESPACE: $K8S_NAMESPACE_DEV
@@ -34,7 +35,10 @@ build-and-push-tremplin-api-image:
   - cd packages/api
   - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
   script:
-  - docker build -t "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA" .
+  - >-
+    docker build
+    --build-arg NODE_VERSION=$NODE_VERSION
+    -t "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA"
 
 build-and-push-tremplin-frontend-image:
@@ -46,7 +50,10 @@ build-and-push-tremplin-frontend-image:
   - cd packages/app
   - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
   script:
-  - docker build -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
+  - >-
+    docker build
+    --build-arg NODE_VERSION=$NODE_VERSION
+    -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA"
 
 deploy-tremplin-api:
