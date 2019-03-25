@@ -1,24 +1,13 @@
-ARG DOCKER_NODE_IMAGE=node:10.15-jessie
+ARG BASE_IMAGE=socialgouv/tremplin:master
 
-FROM ${DOCKER_NODE_IMAGE} as builder
+FROM ${BASE_IMAGE} as tremplin-base-image
 
-WORKDIR /app
-
-COPY  packages/api/package.json /app/package.json
-COPY  ./yarn.lock /app/yarn.lock
-RUN yarn install
-
-COPY  packages/api/src /app/src
-COPY  packages/api/tsconfig.json /app/tsconfig.json
-RUN yarn build
-
-FROM ${DOCKER_NODE_IMAGE}
+FROM node:10-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/dist /app/dist
-COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/package.json /app/package.json
+COPY --from=tremplin-base-image /app/packages/api/dist /app/dist
+COPY --from=tremplin-base-image /app/packages/api/package.json /app/package.json
 
 EXPOSE 1337
 

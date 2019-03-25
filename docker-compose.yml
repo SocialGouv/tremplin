@@ -5,7 +5,6 @@ services:
     build:
       context: .
       dockerfile: ./packages/app/Dockerfile
-    image: ${REGISTRY_IMAGE}/app:${APP_VERSION}
     depends_on:
       - tremplin-api
     ports:
@@ -17,5 +16,4 @@ services:
     build:
       context: .
       dockerfile: ./packages/api/Dockerfile
-    image: ${REGISTRY_IMAGE}/api:${APP_VERSION}
 
