@@ -11,6 +11,7 @@ variables:
 
 stages:
 - info
+- "build and push base image"
 - "build and push images"
 
 info:
@@ -18,19 +19,36 @@ info:
   script:
     - docker --version
 
-build-image-app:
+.build:
   services:
     - docker:dind
-  stage: "build and push images"
   before_script:
     - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
     - apk update && apk add --no-cache bash py-pip openssl
     - pip install docker-compose==${DOCKER_COMPOSE_VERSION}
-  script:
-    - docker-compose build
-    - docker push ${REGISTRY_IMAGE}/api:${APP_VERSION}
-    - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
   after_script:
     - docker logout
+
+build-base:
+  extends: .build
+  stage: "build and push base image"
+  script:
+    - docker build -t ${REGISTRY_IMAGE}/base:${APP_VERSION}
+    - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
+
+# build-image-app:
+#   services:
+#     - docker:dind
+#   stage: "build and push images"
+#   before_script:
+#     - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+#     - apk update && apk add --no-cache bash py-pip openssl
+#     - pip install docker-compose==${DOCKER_COMPOSE_VERSION}
+#   script:
+#     - docker-compose build
+#     - docker push ${REGISTRY_IMAGE}/api:${APP_VERSION}
+#     - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
+#   after_script:
+#     - docker logout
 
 

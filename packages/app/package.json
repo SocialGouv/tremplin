@@ -7,8 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && next export",
     "lint": "tslint -p tsconfig.json -t stylish"
   },
   "dependencies": {
