@@ -34,7 +34,7 @@ build-base:
   stage: "build and push base image"
   script:
     - docker build -t ${REGISTRY_IMAGE}/base:${APP_VERSION} .
-    - docker push ${REGISTRY_IMAGE}/app:${APP_VERSION}
+    - docker push ${REGISTRY_IMAGE}/base:${APP_VERSION}
 
 # build-image-app:
 #   services:
