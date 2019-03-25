@@ -1,0 +1,15 @@
+---
+version: "3"
+
+services:
+  tremplin-frontend:
+    build: ./packages/app
+    depends_on:
+    - tremplin-api
+    ports:
+    - 3000:3000
+
+  tremplin-api:
+    build: ./packages/api
+    ports:
+    - 1337:1337
