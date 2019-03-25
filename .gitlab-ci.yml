@@ -2,10 +2,9 @@
 image: docker:18.09
 
 variables:
-# https://docs.gitlab.com/ce/ci/variables/README.html
-  DOCKER_NODE_IMAGE: node:10.15-jessie
   DOCKER_COMPOSE_VERSION: 1.19.0
   DOCKER_HOST: tcp://localhost:2375
+  API_URL: /api
 
 stages:
 - info
@@ -31,21 +30,21 @@ build-base:
   extends: .build
   stage: "build and push base image"
   script:
-    - docker build -t $CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA .
+    - docker build -t $CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA --build-arg API_URL=${API_URL} .
     - docker push $CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA
 
 build-tremplin-api:
   extends: .build
   stage: "build and push tremplin images"
   script:
-     - docker build -t $CI_REGISTRY_IMAGE/api:latest -t $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/api
+     - docker build -t $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/api
      - docker push $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA
 
 build-tremplin-app:
   extends: .build
   stage: "build and push tremplin images"
   script:
-     - docker build -t $CI_REGISTRY_IMAGE/app:latest -t $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/app
+     - docker build -t $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/app
      - docker push $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA
 
 

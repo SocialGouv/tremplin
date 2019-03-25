@@ -1,19 +1,26 @@
 version: "3"
 
 services:
-  tremplin-app:
+  app:
     build:
-      context: .
-      dockerfile: ./packages/app/Dockerfile
+      context: ./packages/app
+      dockerfile: ./Dockerfile
+      #
+      # this app is built statically so we cannot inject env vars at runtime
+      # we use args to expose them as env var *during the build phase, inside the container*
+      #
+      args:
+        API_URL: "/api"
     depends_on:
-      - tremplin-api
+      - api
     ports:
       - 3000:80
 
-  tremplin-api:
+  api:
     ports:
       - 1337:1337
     build:
-      context: .
-      dockerfile: ./packages/api/Dockerfile
+      context: ./packages/api
+      dockerfile: ./Dockerfile
+
 
