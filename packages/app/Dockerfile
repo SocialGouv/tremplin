@@ -12,4 +12,4 @@ RUN yarn build
 
 EXPOSE ${PORT}
 
-ENTRYPOINT [ "yarn", "start"]
+CMD [ "yarn", "start"]
