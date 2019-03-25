@@ -1,23 +1,15 @@
-ARG DOCKER_NODE_IMAGE=node:10.15-jessie
+ARG BASE_IMAGE=socialgouv/tremplin:master
 
-FROM ${DOCKER_NODE_IMAGE} as builder
+FROM ${BASE_IMAGE} as tremplin-base-image
 
-WORKDIR /app
-
-COPY  packages/app/ /app/
-COPY  yarn.lock /app/yarn.lock
-RUN yarn install
-RUN yarn build
-
-FROM ${DOCKER_NODE_IMAGE}
+FROM node:10-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/.next /app/.next
-COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/package.json /app/package.json
-COPY  packages/app/next.config.js /app/next.config.js
-COPY  packages/app/static /app/static
+COPY --from=tremplin-base-image /app/packages/app/next.config.js/app/next.config.js
+COPY --from=tremplin-base-image /app/packages/app/static /app/static
+COPY --from=tremplin-base-image /app/packages/app/package.json /app/package.json
+COPY --from=tremplin-base-image /app/packages/app/.next /app/.next
 
 EXPOSE 3000
 
