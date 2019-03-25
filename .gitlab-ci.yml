@@ -8,14 +8,7 @@ variables:
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   DOCKER_VERSION: "18.06"
   NODE_VERSION: "10.12.0"
-  K8S_SERVER: $K8S_SERVER_DEV
-  K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_DEV
-  K8S_NAMESPACE: $K8S_NAMESPACE_DEV
-  K8S_USERNAME: $K8S_USERNAME_DEV
-  K8S_CONTEXT: $K8S_CONTEXT_DEV
-  K8S_TOKEN: $K8S_TOKEN_DEV
   IMAGE_TAG: $CI_COMMIT_SHA
-  BRANCH_NAME: -$CI_COMMIT_REF_NAME
   ENVIRONMENT: $CI_ENVIRONMENT_NAME
   TREMPLIN_REGISTRY: $CI_REGISTRY_IMAGE
   API_PORT: 1337
@@ -23,7 +16,6 @@ variables:
 
 stages:
   - "Build and Push Docker Image"
-  - "Test"
   - "Deploy Tremplin"
 
 build-and-push-tremplin-api-image:
@@ -56,18 +48,78 @@ build-and-push-tremplin-frontend-image:
     -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA"
 
-deploy-tremplin-api:
+##########################################
+### DEPLOY TREMPLIN TO K8S DEV CLUSTER ###
+##########################################
+
+deploy-tremplin-api-dev:
   stage: "Deploy Tremplin"
   extends: .deploy-tremplin-api-k8s
   variables:
+    K8S_SERVER: $K8S_SERVER_DEV
+    K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_DEV
+    K8S_NAMESPACE: $K8S_NAMESPACE_DEV
+    K8S_USERNAME: $K8S_USERNAME_DEV
+    K8S_CONTEXT: $K8S_CONTEXT_DEV
+    K8S_TOKEN: $K8S_TOKEN_DEV
+    BRANCH_NAME: -$CI_COMMIT_REF_NAME
     PORT: ${API_PORT}
   environment:
     name: dev
+  except:
+  - master
 
-deploy-tremplin-frontend:
+deploy-tremplin-frontend-dev:
   stage: "Deploy Tremplin"
   extends: .deploy-tremplin-frontend-k8s
   variables:
+    K8S_SERVER: $K8S_SERVER_DEV
+    K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_DEV
+    K8S_NAMESPACE: $K8S_NAMESPACE_DEV
+    K8S_USERNAME: $K8S_USERNAME_DEV
+    K8S_CONTEXT: $K8S_CONTEXT_DEV
+    K8S_TOKEN: $K8S_TOKEN_DEV
+    BRANCH_NAME: -$CI_COMMIT_REF_NAME
     PORT: ${FRONTEND_PORT}
   environment:
     name: dev
+  except:
+  - master
+
+###########################################
+### DEPLOY TREMPLIN TO K8S PROD CLUSTER ###
+###########################################
+
+deploy-tremplin-api-prod:
+  stage: "Deploy Tremplin"
+  extends: .deploy-tremplin-api-k8s
+  variables:
+    K8S_SERVER: $K8S_SERVER_PROD
+    K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_PROD
+    K8S_NAMESPACE: $K8S_NAMESPACE_PROD
+    K8S_USERNAME: $K8S_USERNAME_PROD
+    K8S_CONTEXT: $K8S_CONTEXT_PROD
+    K8S_TOKEN: $K8S_TOKEN_PROD
+    BRANCH_NAME: ''
+    PORT: ${API_PORT}
+  environment:
+    name: ops
+  only:
+  - master
+
+deploy-tremplin-frontend-prod:
+  stage: "Deploy Tremplin"
+  extends: .deploy-tremplin-frontend-k8s
+  variables:
+    K8S_SERVER: $K8S_SERVER_PROD
+    K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_PROD
+    K8S_NAMESPACE: $K8S_NAMESPACE_PROD
+    K8S_USERNAME: $K8S_USERNAME_PROD
+    K8S_CONTEXT: $K8S_CONTEXT_PROD
+    K8S_TOKEN: $K8S_TOKEN_PROD
+    BRANCH_NAME: ''
+    PORT: ${FRONTEND_PORT}
+  environment:
+    name: ops
+  only:
+  - master
