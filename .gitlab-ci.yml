@@ -38,14 +38,14 @@ build-tremplin-api:
   extends: .build
   stage: "build and push tremplin images"
   script:
-     - docker build -t $CI_REGISTRY_IMAGE/api:latest -t $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/api
+     - docker build -t $CI_REGISTRY_IMAGE/api:latest -t $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/api packages/api
      - docker push $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA
 
 build-tremplin-app:
   extends: .build
   stage: "build and push tremplin images"
   script:
-     - docker build -t $CI_REGISTRY_IMAGE/app:latest -t $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/app
+     - docker build -t $CI_REGISTRY_IMAGE/app:latest -t $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA --build-arg BASE_IMAGE=$CI_REGISTRY_IMAGE/base:$CI_COMMIT_SHA packages/app packages/app
      - docker push $CI_REGISTRY_IMAGE/app:$CI_COMMIT_SHA
 
 
