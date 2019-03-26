@@ -1,4 +1,5 @@
 import { Icon } from '@components/elements';
+import { Text } from '@components/elements/Text';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
@@ -21,34 +22,23 @@ const MapView = dynamic<MapViewProps>((() => import("@components/map/MapView")) 
 const TopBar = styled.div`
   height: 100px;
 	border: 1px solid #CCCCCC;
-	background-color: ${props => props.theme.color.white};
+	background-color: ${props => props.theme.colors.white};
   box-shadow: 0 6px 14px 0 rgba(51,51,51,0.2);
 
 
   .topbar__brand {
-      color: ${props => props.theme.color.blueLight};
-      font-family: "Roboto Condensed";
-      font-size: 34px;
-      padding-right: 20px;
-
       :hover {
         cursor: pointer;
       }
 
   }
-
-  .topbar__slogan {
-      color: rgba(96,103,114,0.87);
-      font-family: "Roboto Condensed";
-      font-size: ${props => props.theme.fontSize.base};
-  }
 `
 
 const Button = styled.button`
     border-radius: 5px;
-    background-color: ${props => props.theme.color.red};
-    color: ${props => props.theme.color.white};
-    font-size: ${props => props.theme.fontSize.xs};
+    background-color: ${props => props.theme.colors.red};
+    color: ${props => props.theme.colors.white};
+    font-size: ${props => props.theme.fontSizes[1]};
     padding: 20px 20px;
     outline: none;
     border: none;
@@ -72,16 +62,13 @@ const Heading = styled.div`
   .heading__title {
     display: block;
     padding: 0 0 5px 0;
-
-    color: ${props => props.theme.color.white};
-    font-size: 32px;
 }
 
 .heading__hint {
   display: block;
 
-  color: ${props => props.theme.color.white};
-  font-size: ${props => props.theme.fontSize.xxl};
+  color: ${props => props.theme.colors.white};
+  font-size: ${props => props.theme.fontSizes[5]};
 }
 `
 
@@ -102,8 +89,8 @@ const Heading = styled.div`
 //     margin: 0 0 0 10px;
 //     line-height: 70px;
 
-//     color: ${props => props.theme.color.greyDarker};
-//     font-size: ${props => props.theme.fontSize.xl};
+//     color: ${props => props.theme.colors.grey[3]er};
+//     font-size: ${props => props.theme.fontSizes.xl};
 //     font-weight: 500;
 //     text-transform: uppercase;
 //     :hover {
@@ -119,7 +106,7 @@ const Block = styled.div<{ grey?: boolean }>`
   border-bottom: 1px solid #CCCCCC;
   padding: 30px 0 50px 0;
 
-  background-color: ${props => props.grey ? props.theme.color.greyLight : props.theme.color.white};
+  background-color: ${props => props.grey ? props.theme.colors.grey[0] : props.theme.colors.white};
 
   img {
     width: 100%;
@@ -133,7 +120,7 @@ const Block = styled.div<{ grey?: boolean }>`
   .block__header-title {
     display: block;
 
-	  color: ${props => props.theme.color.blue};
+	  color: ${props => props.theme.colors.blue};
 	  font-size: 32px;
     font-weight: 500;
   }
@@ -141,7 +128,7 @@ const Block = styled.div<{ grey?: boolean }>`
   .block__header-hint {
     display: block;
 
-    color: ${props => props.theme.color.greyDark};
+    color: ${props => props.theme.colors.grey[3]};
     font-size: 22px;
   }
 `
@@ -152,7 +139,7 @@ const Section = styled.div`
     display: block;
     padding: 0 0 10px 0;
 
-    color: ${props => props.theme.color.greyDark};
+    color: ${props => props.theme.colors.grey[3]};
     font-size: 22px;
   }
 
@@ -164,8 +151,8 @@ const Section = styled.div`
   .text {
     line-height: 26px;
 
-    color: ${props => props.theme.color.greyDarker};
-    font-size: ${props => props.theme.fontSize.base};
+    color: ${props => props.theme.colors.grey[3]};
+    font-size: ${props => props.theme.fontSizes[3]};
   }
 
   ul {
@@ -179,8 +166,8 @@ const Contact = styled.div`
   width: 100%;
   z-index: 1000; /* leaflet component constraint */
 
-	border: 1px solid ${props => props.theme.color.border};
-	background-color: ${props => props.theme.color.white};
+	border: 1px solid ${props => props.theme.colors.grey[2]};
+	background-color: ${props => props.theme.colors.white};
 
   .contact__wrapper {
     padding-top: 20px;
@@ -192,14 +179,14 @@ const Contact = styled.div`
       ${media.phone`display: none;`}
 
       .contact__question {
-        color: ${props => props.theme.color.greyDark};
-        font-size: ${props => props.theme.fontSize.base};
+        color: ${props => props.theme.colors.grey[3]};
+        font-size: ${props => props.theme.fontSizes[2]};
       }
 
       .contact__person {
           padding-left: 20px;
-          color: ${props => props.theme.color.almostBlack};;
-          font-size: ${props => props.theme.fontSize.xl};
+          color: ${props => props.theme.colors.black[0]};;
+          font-size: ${props => props.theme.fontSizes[5]};
           font-weight: 500;
       }
     }
@@ -231,18 +218,18 @@ class JobOfferPage extends Component<any, any> {
             <Flex full alignCenter noResponsive>
               <Item>
                 <Link href="/">
-                  <span className="topbar__brand">Tremplin</span>
+                  <Text fontSize={4} color="blue.1" fontFamily="Roboto Condensed" pr={3} className="topbar__brand">Tremplin</Text>
                 </Link>
               </Item>
               <Item basis="250px">
-                <span className="topbar__slogan">Rapprocher les professionnels de santé de leur futur territoire d’exercie</span>
+                <Text fontSize={2} color="grey.1" fontFamily="Roboto Condensed" >Rapprocher les professionnels de santé de leur futur territoire d’exercie</Text>
               </Item>
             </Flex>
           </Container>
         </TopBar>
         <Heading>
           <Container>
-            <span className="heading__title">Maison médicalisée rénovée en centre-ville de Bérat (31700)</span>
+            <Text fontSize={4} color="white" className="heading__title">Maison médicalisée rénovée en centre-ville de Bérat (31700)</Text>
             <span className="heading__hint">Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00</span>
           </Container>
         </Heading>

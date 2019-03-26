@@ -1,2 +1,4 @@
-export { default as styled } from './styledComponents';
-export { media } from './mixin';
+export { theme, ThemeInterface } from '@components/styles/theme';
+export { default as styled, media } from './styledComponents';
+export { TypographyProps, typographyStyle } from './styledSystem';
+
