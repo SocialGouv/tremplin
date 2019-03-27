@@ -1,6 +1,6 @@
 import { Button, Icon } from '@components/elements';
 import { Text } from '@components/elements/Text';
-import { JobOfferBlock, JobOfferBlockHeader } from '@components/jobOffers';
+import { JobOfferBlock, JobOfferBlockHeader, JobOfferHeader } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
@@ -9,6 +9,7 @@ import { media, styled } from '@components/styles';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Component } from 'react';
+import { height } from 'styled-system';
 
 // https://github.com/zeit/next.js/issues/4515
 // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/33163
@@ -42,14 +43,6 @@ const TopBar = styled.div`
 // ============================================================
 
 
-const Heading = styled.div`
-  padding: 250px 0 30px 0;
-
-  background-image: url("/static/assets/photos/heading.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-
-`
 
 // const BlockNav = styled.div`
 //   position: sticky;
@@ -177,12 +170,9 @@ class JobOfferPage extends Component<any, any> {
             </Flex>
           </Container>
         </TopBar>
-        <Heading>
-          <Container>
-            <Text as="div" fontSize={7} color="white" paddingBottom={1} >Maison médicalisée rénovée en centre-ville de Bérat (31700)</Text>
-            <Text as="div" fontSize={3} color="white" >Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00</Text>
-          </Container>
-        </Heading>
+        <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')"
+          title="Maison médicalisée rénovée en centre-ville de Bérat (31700)"
+          hint="Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00" />
         {/* <BlockNav>
             <Row>
               <Link href="#block1"><div className="blocks-nav__item active">Exercice</div></Link>

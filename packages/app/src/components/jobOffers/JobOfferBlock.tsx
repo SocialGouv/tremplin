@@ -20,8 +20,8 @@ export const JobOfferBlockHeader = (props: {
 }) => {
   return (
     <Box pt={2} pb={3}>
-      {props.title && <Text as="div" fontSize={8} fontWeight={5} color="blue.2">{props.title}</Text>}
-      {props.hint && <Text as="div" fontSize={6} color="grey.3">{props.hint}</Text>}
+      {props.title && <Text as="div" fontSize={7} fontWeight={5} color="blue.2">{props.title}</Text>}
+      {props.hint && <Text as="div" fontSize={5} color="grey.3">{props.hint}</Text>}
     </Box>
   )
 }
