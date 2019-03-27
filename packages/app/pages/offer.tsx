@@ -1,4 +1,4 @@
-import { Icon } from '@components/elements';
+import { Icon, Button } from '@components/elements';
 import { Text } from '@components/elements/Text';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
@@ -34,17 +34,6 @@ const TopBar = styled.div`
   }
 `
 
-const Button = styled.button`
-    border-radius: 5px;
-    background-color: ${props => props.theme.colors.red};
-    color: ${props => props.theme.colors.white};
-    font-size: ${props => props.theme.fontSizes[1]};
-    padding: 20px 20px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
-`
 // ============================================================
 // ============================================================
 // OFFER COMPONENTS
@@ -434,8 +423,8 @@ class JobOfferPage extends Component<any, any> {
               <span className="contact__person">Suzanne Langlois, secrétaire de mairie</span>
             </div>
             <div className="contact__buttonbar">
-              <Button>06 99 99 55 44</Button>
-              <Button>CONTACTER PAR MAIL</Button>
+              <Button fontSize={1} color="white" bg="red">06 99 99 55 44</Button>
+              <Button fontSize={1} color="white" bg="red">CONTACTER PAR MAIL</Button>
             </div>
           </Container>
         </Contact>
