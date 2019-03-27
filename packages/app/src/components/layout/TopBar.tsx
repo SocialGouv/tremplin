@@ -1,7 +1,6 @@
 import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import Link from "next/link";
-import styled from "styled-components";
 import { Container } from "./Container";
 import { Flex, Item } from "./flex/Flex";
 

@@ -1,5 +1,5 @@
-import { Button, Icon } from '@components/elements';
-import { JobOfferBlock, JobOfferBlockHeader, JobOfferHeader } from '@components/jobOffers';
+import { Button } from '@components/elements';
+import { JobOfferBlock, JobOfferBlockHeader, JobOfferHeader, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
@@ -11,12 +11,6 @@ import { Component } from 'react';
 // https://github.com/zeit/next.js/issues/4515
 // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/33163
 const MapView = dynamic<MapViewProps>((() => import("@components/map/MapView")) as any, { ssr: false });
-
-
-// OFFER COMPONENTS
-// ============================================================
-// ============================================================
-
 
 
 // const BlockNav = styled.div`
@@ -50,33 +44,6 @@ const MapView = dynamic<MapViewProps>((() => import("@components/map/MapView")) 
 //   }
 // `
 
-
-const Section = styled.div`
-
-  .section__title {
-    display: block;
-    padding: 0 0 10px 0;
-
-    color: ${props => props.theme.colors.grey[3]};
-    font-size: 22px;
-  }
-
-  .section__content {
-    display: block;
-    padding: 0 0 20px 0;
-  }
-
-  .text {
-    line-height: 26px;
-
-    color: ${props => props.theme.colors.grey[3]};
-    font-size: ${props => props.theme.fontSizes[3]};
-  }
-
-  ul {
-    list-style: none;
-  }
-`
 
 const Contact = styled.div`
   position: fixed;
@@ -117,14 +84,11 @@ const Contact = styled.div`
   }
 
 `
-
-// MOCK
-
-const FakeImage = styled.div`
-  background-color: #aaa;
-  width: 100%;
-  height: 400px;
-`
+// const FakeImage = styled.div`
+//   background-color: #aaa;
+//   width: 100%;
+//   height: 400px;
+// `
 
 class JobOfferPage extends Component<any, any> {
 
@@ -144,42 +108,50 @@ class JobOfferPage extends Component<any, any> {
             </Flex>
         </BlockNav> */}
         <JobOfferBlock>
-          <JobOfferBlockHeader title="Lieu d'exercice" hint="Chemin de catalanie, Bérat (31700), Occitanie" />
+          <JobOfferBlockHeader title="Lieu d'exercice" />
           <Flex justifyBetween>
             <Item basis="calc(50% - 10px)">
-              <img src="/static/assets/photos/lobby.jpg"></img>
+              <MapView lat={44.7333} lng={5.0333} zoom={12}></MapView>
             </Item>
             <Item basis="calc(50% - 10px)">
-              <Section>
-                <span className="section__title">Présentation</span>
-                <span className="section__content text">Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</span>
-              </Section>
-              <Section>
-                <span className="section__title">Equipements</span>
-                <div className="section__content text">
-                  <div><Icon checkCircle /> Salle d'attente</div>
-                  <div><Icon checkCircle /> Secretariat</div>
-                  <div><Icon checkCircle /> Logiciel de prise de rendez-vous</div>
-                </div>
-              </Section>
+              <JobOfferSection title="Condition d'exercice">
+                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+              </JobOfferSection>
+              <JobOfferSection title="Structure d'accueil">
+                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+              </JobOfferSection>
             </Item>
           </Flex>
         </JobOfferBlock>
         <JobOfferBlock>
+          <JobOfferBlockHeader title="Cadre de vie" />
+          <Flex justifyBetween>
+            <Item basis="calc(50% - 10px)">
+              <JobOfferSection title="Vie de famille, employabilité, loisirs">
+                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+              </JobOfferSection>
+            </Item>
+            <Item basis="calc(50% - 10px)">
+              <JobOfferSection title="Territoire">
+                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+              </JobOfferSection>
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        {/* <JobOfferBlock>
           <JobOfferBlockHeader title="Emplacement" hint="Bérat (31700), Occitanie" />
           <Flex justifyBetween>
             <Item basis="calc(60% - 10px)">
               <MapView lat={44.7333} lng={5.0333} zoom={12}></MapView>
             </Item>
             <Item basis="calc(40% - 10px)">
-              <Section>
-                <span className="section__title">Transport</span>
+              <JobOfferSection title="Transport">
                 <div className="section__content text">
                   <div><Icon checkCircle /> Proximité de Toulouse</div>
                   <div><Icon checkCircle /> Autoroute A64 à 7km</div>
                   <div><Icon checkCircle /> Stations de ski à 1h - Mer à 1h30</div>
                 </div>
-              </Section>
+              </JobOfferSection>
             </Item>
           </Flex>
         </JobOfferBlock>
@@ -187,20 +159,20 @@ class JobOfferPage extends Component<any, any> {
           <JobOfferBlockHeader title="Condition d'exercice" hint="Lorem ipsum dolor sit amet" />
           <Flex justifyBetween>
             <Item basis="calc(30% - 10px)">
-              <Section>
+              <JobOfferSection>
                 <div className="section__content text">
                   <div><Icon checkCircle /> Statut salarié</div>
                   <div><Icon checkCircle /> Conventionné Secteur 1</div>
                   <div><Icon checkCircle /> Temps partiel</div>
                   <div><Icon checkCircle /> Visites à domicile</div>
                 </div>
-              </Section>
+              </JobOfferSection>
             </Item>
             <Item basis="calc(50% - 10px)">
-              <Section>
+              <JobOfferSection>
                 <div className="section__content text">Patientèle estimée à 4 500 habitants (plus de 3 000 habitants sur la commune</div>
                 <div className="section__content text">Professionnels déjà installés dans la maison médicale: un médecin généraliste (Dr Yveline DESIREL)</div>
-              </Section>
+              </JobOfferSection>
             </Item>
           </Flex>
         </JobOfferBlock>
@@ -208,56 +180,51 @@ class JobOfferPage extends Component<any, any> {
           <JobOfferBlockHeader title="Offre médicale à proximité" hint="Lorem ipsum dolor sit amet" />
           <Flex justifyBetween>
             <Item basis="calc(50% - 10px)">
-              <Section>
-                <span className="section__title">Nombre de paramédicaux</span>
+              <JobOfferSection title="Nombre de paramédicaux">
                 <div className="section__content text">
                   <div><Icon checkCircle /> 4 infirmières</div>
                   <div><Icon checkCircle /> Une kinésithérapeute</div>
                   <div><Icon checkCircle /> Une ostéopathe</div>
                 </div>
-              </Section>
+              </JobOfferSection>
             </Item>
             <Item basis="calc(50% - 10px)">
-              <Section>
-                <span className="section__title">Équipements</span>
+              <JobOfferSection title="Équipements">
                 <div className="section__content text">
                   <div><Icon checkCircle /> Clinique ou CHU à 20km</div>
                   <div><Icon checkCircle /> Centre de radio-echographie à 7km</div>
                   <div><Icon checkCircle /> Laboratoire d'analyse à moins de 10km</div>
                 </div>
-              </Section>
+              </JobOfferSection>
             </Item>
           </Flex>
-          <Section>
-            <span className="section__title">Présentation</span>
+          <JobOfferSection title="Présentation">
             <div className="section__content text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
-          </Section>
+          </JobOfferSection>
         </JobOfferBlock>
         <JobOfferBlock>
           <JobOfferBlockHeader title="Cadre de vie" hint="Un cadre de vie idéal pour s'épanouir en famille" />
           <Flex justifyBetween>
             <Item basis="calc(50% - 10px)"><FakeImage></FakeImage></Item>
             <Item basis="calc(50% - 10px)">
-              <Section>
-                <span className="section__title">Equipements municipaux</span>
+              <JobOfferSection title="Equipements municipaux">
                 <div className="section__content text">
                   <div><Icon checkCircle /> 1 crèche, 1 collège, 1 lycée à moins de 20km</div>
                   <div><Icon checkCircle /> Proximité des services publics</div>
                   <div><Icon checkCircle /> 1 équipement sportif</div>
                 </div>
-              </Section>
-              <Section>
+              </JobOfferSection>
+              <JobOfferSection title="Commerce">
                 <span className="section__title">Commerce</span>
                 <div className="section__content text">
                   <div><Icon checkCircle /> proximité des commerces</div>
                   <div><Icon checkCircle /> proximité des commerces</div>
                   <div><Icon checkCircle /> grand parking public</div>
                 </div>
-              </Section>
-              <Section>
-                <span className="section__title">Présentation</span>
+              </JobOfferSection>
+              <JobOfferSection title="Présentation">
                 <div className="section__content  text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
-              </Section>
+              </JobOfferSection>
             </Item>
           </Flex>
         </JobOfferBlock>
@@ -273,24 +240,22 @@ class JobOfferPage extends Component<any, any> {
           <JobOfferBlockHeader title="Aides à l'installation" hint="Lorem ipsum dolor sit amet" />
           <Flex justifyBetween>
             <Item basis="calc(60% - 10px)">
-              <Section>
-                <span className="section__title">Présentation</span>
+              <JobOfferSection title="Présentation">
                 <div className="section__content  text">Commune classée en zone de vigilance, possibilité d’obtention de différentes aides (Contrat de praticien territorial de médecine générale PTMG, contrat d’engagement de service public CESP)</div>
-              </Section>
+              </JobOfferSection>
             </Item>
             <Item basis="calc(20% - 10px)">
-              <Section>
-                <span className="section__title">Aides éligibles</span>
+              <JobOfferSection title="Aides éligibles">
                 <div className="section__content text">
                   <div><Icon checkCircle /> CESP</div>
                   <div><Icon checkCircle /> PTMC</div>
                   <div><Icon checkCircle /> ZRR</div>
                 </div>
-              </Section>
+              </JobOfferSection>
             </Item>
             <Item basis="calc(20% - 10px)"></Item>
           </Flex>
-        </JobOfferBlock>
+        </JobOfferBlock> */}
         <Contact>
           <Container className="contact__wrapper">
             <div className="contact__infobar">
