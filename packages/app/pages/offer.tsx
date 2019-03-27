@@ -1,5 +1,4 @@
 import { Button, Icon } from '@components/elements';
-import { Text } from '@components/elements/Text';
 import { JobOfferBlock, JobOfferBlockHeader, JobOfferHeader } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
@@ -7,37 +6,13 @@ import { Flex } from '@components/layout/flex/Flex';
 import { MapViewProps } from '@components/map';
 import { media, styled } from '@components/styles';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { Component } from 'react';
-import { height } from 'styled-system';
 
 // https://github.com/zeit/next.js/issues/4515
 // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/33163
 const MapView = dynamic<MapViewProps>((() => import("@components/map/MapView")) as any, { ssr: false });
 
-// ============================================================
-// ============================================================
-// GLOBAL COMPONENTS
-// ============================================================
-// ============================================================
 
-const TopBar = styled.div`
-  height: 100px;
-	border: 1px solid #CCCCCC;
-	background-color: ${props => props.theme.colors.white};
-  box-shadow: 0 6px 14px 0 rgba(51,51,51,0.2);
-
-
-  .topbar__brand {
-      :hover {
-        cursor: pointer;
-      }
-
-  }
-`
-
-// ============================================================
-// ============================================================
 // OFFER COMPONENTS
 // ============================================================
 // ============================================================
@@ -156,20 +131,6 @@ class JobOfferPage extends Component<any, any> {
   public render() {
     return (
       <PageLayout>
-        <TopBar>
-          <Container full>
-            <Flex full alignCenter noResponsive>
-              <Item>
-                <Link href="/">
-                  <Text fontSize={4} color="blue.1" fontFamily="Roboto Condensed" pr={3} className="topbar__brand">Tremplin</Text>
-                </Link>
-              </Item>
-              <Item basis="250px">
-                <Text fontSize={2} color="grey.1" fontFamily="Roboto Condensed" >Rapprocher les professionnels de santé de leur futur territoire d’exercie</Text>
-              </Item>
-            </Flex>
-          </Container>
-        </TopBar>
         <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')"
           title="Maison médicalisée rénovée en centre-ville de Bérat (31700)"
           hint="Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00" />
