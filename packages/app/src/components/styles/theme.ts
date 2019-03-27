@@ -1,29 +1,36 @@
+export interface ThemeInterface {
 
-export default interface ThemeInterface {
-  color: {
-    black: string,
-    almostBlack: string,
+  fontSizes: number[];
+  fontWeight: number[];
+  space: number[];
+  colors: {
+    black: string[],
+    blue: string[],
+    grey: string[],
+    red: string,
+    white: string
+  }
 
-    blueLighter: string,
-    blueLight: string,
-    blue: string,
+}
 
+export const theme: ThemeInterface = {
 
-    greyLight: string;
-    greyDark: string;
-    greyDarker: string;
+  fontSizes: [
+    12, 14, 16, 18, 20, 22, 24, 32, 48, 64, 72
+  ],
+  fontWeight: [
+    100, 200, 300, 400, 500, 600, 700, 800
+  ],
+  space: [
+    // margin and padding
+    0, 4, 8, 16, 32, 64, 128, 256, 512
+  ],
 
-    white: string;
-
-    red: string;
-
-    border: string;
-  },
-  fontSize: {
-    xxs: string,
-    xs: string,
-    base: string,
-    xl: string,
-    xxl: string,
+  colors: {
+    black: ["#26353f", "#0c0c0e"],
+    blue: ["#1E74FC", "#2263FF", "#0063FF"],
+    grey: ["#EEEEEE", "#666666", "#333333"],
+    red: "#FF6558",
+    white: "#FFFFFF",
   }
 }

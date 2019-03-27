@@ -1,6 +1,8 @@
 import * as React from "react";
+import { Fragment } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { TopBar } from "./TopBar";
 
 export class PageLayout extends React.Component<{ header?: boolean }> {
 
@@ -10,11 +12,12 @@ export class PageLayout extends React.Component<{ header?: boolean }> {
 
   public render() {
     return (
-      <div>
+      <Fragment>
+        <TopBar></TopBar>
         {this.props.header && <Header />}
         {this.props.children}
         <Footer></Footer>
-      </div>
+      </Fragment>
     );
   }
 

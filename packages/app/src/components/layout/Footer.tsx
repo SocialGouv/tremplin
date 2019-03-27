@@ -5,18 +5,18 @@ import { Container } from "./Container";
 const StyledFooter = styled.div`
 	height: 250px;
 	border: 1px solid #979797;
-	background-color: ${props => props.theme.color.greyLight};
+	background-color: ${props => props.theme.colors.grey[0]};
 
   span, a {
-    font-size: ${props => props.theme.fontSize.xxs};
+    font-size: ${props => props.theme.fontSizes[5]};
   }
 
   span {
-    color: ${props => props.theme.color.greyDark};
+    color: ${props => props.theme.colors.grey[3]};
   }
 
   a {
-    color: ${props => props.theme.color.blueLighter};
+    color: ${props => props.theme.colors.blue[0]};
   }
 
   img {
