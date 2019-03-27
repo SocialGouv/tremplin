@@ -40,7 +40,7 @@ export interface JobOffer {
   medicalStructureWebSite: '';
 
   lifestyleFamily: '';
-  lefestyleTerritory: '';
+  lifestyleTerritory: '';
 
   contacts: Contact[];
 
@@ -76,7 +76,7 @@ export const fakeJobOffer: JobOffer = {
   medicalStructureWebSite: '',
 
   lifestyleFamily: '',
-  lefestyleTerritory: '',
+  lifestyleTerritory: '',
 
   contacts: [
 

@@ -14,10 +14,10 @@ export class JobOfferSection extends Component<{ title?: string }> {
   }
 }
 
-export const JobOfferSectionContent = (props: { children?: any }) => {
+export const JobOfferSectionContent = (props: { content: string }) => {
   return (
     <Text pb={4} fontSize={2} color="grey.2" lineHeight="24px">
-      {props.children}
+      {props.content}
     </Text>
   )
 }

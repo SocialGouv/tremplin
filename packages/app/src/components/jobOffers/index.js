@@ -16,3 +16,4 @@ export {
   JobOfferSectionContent
 }
 from './JobOfferSection';
+export * from './JobOfferMap';
