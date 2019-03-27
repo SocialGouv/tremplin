@@ -4,11 +4,11 @@ import { JobOfferProps } from "./JobOfferProps";
 
 
 
-export class JobOfferListItem extends Component<JobOfferProps, any> {
+export class JobOfferListItem extends Component<JobOfferProps> {
 
   public render() {
     return (<li>
-      <Link href={`/offer?title=${this.props.jobOffer.title}`}>
+      <Link href={`/offer?reference=${this.props.jobOffer.reference}`}>
         <a>{this.props.jobOffer.title}</a>
       </Link>
     </li>)

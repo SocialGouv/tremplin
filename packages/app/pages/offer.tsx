@@ -5,8 +5,12 @@ import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
 import { MapViewProps } from '@components/map';
 import { media, styled } from '@components/styles';
+import { asString } from '@components/utils';
+import { fakeJobOffer, JobOffer } from '@domain';
+import { jobOfferRepository } from '@repository';
 import dynamic from 'next/dynamic';
-import { Component } from 'react';
+import { SingletonRouter, withRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 // https://github.com/zeit/next.js/issues/4515
 // https://github.com/DefinitelyTyped/DefinitelyTyped/pull/33163
@@ -90,15 +94,31 @@ const Contact = styled.div`
 //   height: 400px;
 // `
 
-class JobOfferPage extends Component<any, any> {
+interface JobOfferProps {
+  router: SingletonRouter;
+}
 
-  public render() {
-    return (
-      <PageLayout>
-        <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')"
-          title="Maison médicalisée rénovée en centre-ville de Bérat (31700)"
-          hint="Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00" />
-        {/* <BlockNav>
+const JobOfferPage = (props: JobOfferProps) => {
+
+  const [jobOffer, setJobOffer] = useState<JobOffer>(fakeJobOffer);
+
+  useEffect(() => {
+    const reference = asString(props.router, 'reference');
+    if (reference == null) {
+      return;
+    }
+    const subscription = jobOfferRepository().findOne(reference).subscribe(res => { setJobOffer(res); });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  return (
+    <PageLayout>
+      <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')"
+        title={jobOffer.title}
+        hint="Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00" />
+      {/* <BlockNav>
             <Row>
               <Link href="#block1"><div className="blocks-nav__item active">Exercice</div></Link>
               <div className="blocks-nav__item">Offre médicale</div>
@@ -107,38 +127,38 @@ class JobOfferPage extends Component<any, any> {
               <Link href="#block5"><div className="blocks-nav__item">Aide à l'installation</div></Link>
             </Flex>
         </BlockNav> */}
-        <JobOfferBlock>
-          <JobOfferBlockHeader title="Lieu d'exercice" />
-          <Flex justifyBetween>
-            <Item basis="calc(50% - 10px)">
-              <MapView lat={44.7333} lng={5.0333} zoom={12}></MapView>
-            </Item>
-            <Item basis="calc(50% - 10px)">
-              <JobOfferSection title="Condition d'exercice">
-                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
-              </JobOfferSection>
-              <JobOfferSection title="Structure d'accueil">
-                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
-              </JobOfferSection>
-            </Item>
-          </Flex>
-        </JobOfferBlock>
-        <JobOfferBlock>
-          <JobOfferBlockHeader title="Cadre de vie" />
-          <Flex justifyBetween>
-            <Item basis="calc(50% - 10px)">
-              <JobOfferSection title="Vie de famille, employabilité, loisirs">
-                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
-              </JobOfferSection>
-            </Item>
-            <Item basis="calc(50% - 10px)">
-              <JobOfferSection title="Territoire">
-                <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
-              </JobOfferSection>
-            </Item>
-          </Flex>
-        </JobOfferBlock>
-        {/* <JobOfferBlock>
+      <JobOfferBlock>
+        <JobOfferBlockHeader title="Lieu d'exercice" />
+        <Flex justifyBetween>
+          <Item basis="calc(50% - 10px)">
+            <MapView lat={44.7333} lng={5.0333} zoom={9}></MapView>
+          </Item>
+          <Item basis="calc(50% - 10px)">
+            <JobOfferSection title="Condition d'exercice">
+              <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+            </JobOfferSection>
+            <JobOfferSection title="Structure d'accueil">
+              <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+            </JobOfferSection>
+          </Item>
+        </Flex>
+      </JobOfferBlock>
+      <JobOfferBlock>
+        <JobOfferBlockHeader title="Cadre de vie" />
+        <Flex justifyBetween>
+          <Item basis="calc(50% - 10px)">
+            <JobOfferSection title="Vie de famille, employabilité, loisirs">
+              <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+            </JobOfferSection>
+          </Item>
+          <Item basis="calc(50% - 10px)">
+            <JobOfferSection title="Territoire">
+              <JobOfferSectionContent>Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</JobOfferSectionContent>
+            </JobOfferSection>
+          </Item>
+        </Flex>
+      </JobOfferBlock>
+      {/* <JobOfferBlock>
           <JobOfferBlockHeader title="Emplacement" hint="Bérat (31700), Occitanie" />
           <Flex justifyBetween>
             <Item basis="calc(60% - 10px)">
@@ -256,22 +276,20 @@ class JobOfferPage extends Component<any, any> {
             <Item basis="calc(20% - 10px)"></Item>
           </Flex>
         </JobOfferBlock> */}
-        <Contact>
-          <Container className="contact__wrapper">
-            <div className="contact__infobar">
-              <span className="contact__question">Vous avez une question? Contacter</span>
-              <span className="contact__person">Suzanne Langlois, secrétaire de mairie</span>
-            </div>
-            <div className="contact__buttonbar">
-              <Button fontSize={1} color="white" bg="red">06 99 99 55 44</Button>
-              <Button fontSize={1} color="white" bg="red">CONTACTER PAR MAIL</Button>
-            </div>
-          </Container>
-        </Contact>
-      </PageLayout >
-    );
-  }
-
+      <Contact>
+        <Container className="contact__wrapper">
+          <div className="contact__infobar">
+            <span className="contact__question">Vous avez une question? Contacter</span>
+            <span className="contact__person">Suzanne Langlois, secrétaire de mairie</span>
+          </div>
+          <div className="contact__buttonbar">
+            <Button fontSize={1} color="white" bg="red">06 99 99 55 44</Button>
+            <Button fontSize={1} color="white" bg="red">CONTACTER PAR MAIL</Button>
+          </div>
+        </Container>
+      </Contact>
+    </PageLayout >
+  );
 }
 
-export default JobOfferPage;
+export default withRouter<JobOfferProps>(JobOfferPage);

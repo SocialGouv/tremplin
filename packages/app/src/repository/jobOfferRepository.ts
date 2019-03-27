@@ -3,9 +3,15 @@ import getConfig from "next/config";
 import { from, Observable } from "rxjs";
 import { mergeMap } from 'rxjs/operators';
 
-export const jobOfferRepository = (): { findAll: () => Observable<JobOffer[]> } => {
+interface DataRepository<T> {
+  findAll: () => Observable<T[]>;
+  findOne: (id: string | number) => Observable<T>
+}
+
+export const jobOfferRepository = (): DataRepository<JobOffer> => {
   return {
-    findAll: () => api<JobOffer[]>(`job-offers`)
+    findAll: () => api<JobOffer[]>(`job-offers`),
+    findOne: (id: string | number) => api<JobOffer>(`job-offers/${id}`)
   }
 }
 

@@ -19,7 +19,7 @@ export default () => {
     <PageLayout>
       <h1>Offres</h1>
       <ul>
-        {jobOffers.map(jobOffer => <JobOfferListItem key={jobOffer.id} jobOffer={jobOffer}></JobOfferListItem>)}
+        {jobOffers.map(jobOffer => <JobOfferListItem key={jobOffer.reference} jobOffer={jobOffer}></JobOfferListItem>)}
       </ul>
     </PageLayout>
   )

@@ -1,7 +1,6 @@
 import { ThemeInterface } from '@components/styles/theme';
 import * as styledComponents from "styled-components";
 
-
 const {
   default: styled,
   css,
