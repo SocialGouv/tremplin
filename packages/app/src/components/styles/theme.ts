@@ -1,7 +1,7 @@
 export interface ThemeInterface {
 
   fontSizes: number[];
-  fontWeight: number[];
+  fontWeights: number[];
   space: number[];
   colors: {
     black: string[],
@@ -18,7 +18,7 @@ export const theme: ThemeInterface = {
   fontSizes: [
     12, 14, 16, 18, 20, 22, 24, 32, 48, 64, 72
   ],
-  fontWeight: [
+  fontWeights: [
     100, 200, 300, 400, 500, 600, 700, 800
   ],
   space: [

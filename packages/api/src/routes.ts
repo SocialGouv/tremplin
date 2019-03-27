@@ -1,5 +1,6 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
+import { datas } from './datas/offers';
 
 const routeOptions: Router.IRouterOptions = {
   prefix: '/api'
@@ -8,19 +9,11 @@ const routeOptions: Router.IRouterOptions = {
 const router = new Router(routeOptions);
 
 router.get('/job-offers', (ctx: Koa.Context) => {
-  const jobOffers: any[] = [
-    {
-      "id": 1,
-      "title": "Remplacement dans la Drôme"
-    }, {
-      "id": 2,
-      "title": "Remplacement à Val Thorens"
-    }, {
-      "id": 3,
-      "title": "Remplacement à Perpignan"
-    }
-  ]
-  ctx.body = jobOffers;
+  ctx.body = datas;
+});
+
+router.get('/job-offers/:reference', (ctx: Koa.Context) => {
+  ctx.body = datas.find((jobOffer) => jobOffer.reference === ctx.params.reference);
 });
 
 export { router };
