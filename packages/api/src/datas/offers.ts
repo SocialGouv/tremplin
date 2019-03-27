@@ -3,9 +3,9 @@ const berat = {
   publishedAt: new Date(2019, 4, 1),
 
   title: "Installation médecin généraliste à Bérat (31 - Haute-Garonne)",
-  avantage1: "La pizzeraria fermée",
-  avantage2: "Possibilité de créer une MSP",
-  avantage3: "Possibilité de créer un secretariat",
+  advantage1: "La pizzeraria fermée",
+  advantage2: "Possibilité de créer une MSP",
+  advantage3: "Possibilité de créer un secretariat",
 
   address: {
     address: '85 Route de Rieumes, 31370 Berat)',
@@ -20,7 +20,7 @@ const berat = {
 
   emergencyDistance: 45,
   structureType: 'Maison de santé',
-  ContractType: 'Libéral',
+  contractType: 'Libéral',
   secretariatType: 'Pas de secretariat',
 
   workCondition: 'Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.',

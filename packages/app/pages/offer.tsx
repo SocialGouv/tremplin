@@ -1,7 +1,7 @@
+import { Text } from '@components/elements/Text';
 import { JobOfferBlock, JobOfferBlockHeader, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Flex } from '@components/layout/flex/Flex';
-import { media, styled } from '@components/styles';
 import { asString } from '@components/utils';
 import { fakeJobOffer, JobOffer } from '@domain';
 import { jobOfferRepository } from '@repository';
@@ -32,6 +32,15 @@ const JobOfferPage = (props: JobOfferProps) => {
       <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')" />
       <JobOfferBlock>
         <JobOfferBlockHeader title={jobOffer.title} />
+        <Text as="div" pb={2}>Type d'exercice: {jobOffer.contractType}</Text>
+        <Text as="div" pb={2}>Distance urgence: {jobOffer.emergencyDistance} KM</Text>
+        <Text as="div" pb={2}>Site web: {jobOffer.medicalStructureWebSite}</Text>
+        <Text as="div" pb={2}>Secretariat: {jobOffer.secretariatType}</Text>
+        <Text as="div" pb={2}>Type de structure: {jobOffer.structureType}</Text>
+        <Text as="div" pb={2}>Point fort 1: {jobOffer.advantage1}</Text>
+        <Text as="div" pb={2}>Point fort 2: {jobOffer.advantage2}</Text>
+        <Text as="div" pb={2}>Point fort 3: {jobOffer.advantage3}</Text>
+        <Text as="div">Publié le: {jobOffer.publishedAt.toLocaleString()}</Text>
       </JobOfferBlock>
       <JobOfferBlock>
         <JobOfferBlockHeader title="Lieu d'exercice" />
