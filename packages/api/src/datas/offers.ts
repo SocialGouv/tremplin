@@ -34,6 +34,12 @@ const berat = {
     name: 'Evelyne TEYSSEDRE',
     phone: '05.34.47.85.60',
     position: 'Pharmacienne',
+    email: 'maisonmedicale31@orange.fr'
+  },
+  {
+    name: 'Dr Yveline DESIREL',
+    phone: '05.34.47.85.60',
+    position: 'Médecin Généraliste',
     email: 'maisonmedicale31(at)orange.fr'
   }]
 }

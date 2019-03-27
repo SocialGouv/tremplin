@@ -15,7 +15,6 @@ export const JobOfferMap = (props: { address: Address }) => {
         <Icon mapMarker></Icon><Text pl={1}>{props.address.address}</Text>
       </Box>
       <MapView lat={props.address.geoCode.lat} lng={props.address.geoCode.lng} zoom={9}></MapView>
-
     </Fragment>
   )
 }

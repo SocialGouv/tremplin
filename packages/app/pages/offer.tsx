@@ -1,7 +1,5 @@
-import { Button } from '@components/elements';
-import { JobOfferBlock, JobOfferBlockHeader, JobOfferHeader, JobOfferSection, JobOfferSectionContent, JobOfferMap } from '@components/jobOffers';
+import { JobOfferBlock, JobOfferBlockHeader, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
-import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
 import { media, styled } from '@components/styles';
 import { asString } from '@components/utils';
@@ -9,44 +7,6 @@ import { fakeJobOffer, JobOffer } from '@domain';
 import { jobOfferRepository } from '@repository';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-
-const Contact = styled.div`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000; /* leaflet component constraint */
-
-	border: 1px solid ${props => props.theme.colors.grey[2]};
-	background-color: ${props => props.theme.colors.white};
-
-  .contact__wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    .contact__infobar {
-      display: inline-block;
-
-      ${media.phone`display: none;`}
-
-      .contact__question {
-        color: ${props => props.theme.colors.grey[3]};
-        font-size: ${props => props.theme.fontSizes[2]};
-      }
-
-      .contact__person {
-          padding-left: 20px;
-          color: ${props => props.theme.colors.black[0]};;
-          font-size: ${props => props.theme.fontSizes[5]};
-          font-weight: 500;
-      }
-    }
-
-    .contact__buttonbar {
-      padding-left: 30px;
-      display: inline-block;
-    }
-  }
-`
 
 interface JobOfferProps {
   router: SingletonRouter;
@@ -104,18 +64,7 @@ const JobOfferPage = (props: JobOfferProps) => {
           </Item>
         </Flex>
       </JobOfferBlock>
-      <Contact>
-        <Container className="contact__wrapper">
-          <div className="contact__infobar">
-            <span className="contact__question">Vous avez une question? Contacter</span>
-            <span className="contact__person">Suzanne Langlois, secrétaire de mairie</span>
-          </div>
-          <div className="contact__buttonbar">
-            <Button fontSize={1} color="white" bg="red">06 99 99 55 44</Button>
-            <Button fontSize={1} color="white" bg="red">CONTACTER PAR MAIL</Button>
-          </div>
-        </Container>
-      </Contact>
+      <JobOfferContacts contacts={jobOffer.contacts} />
     </PageLayout >
   );
 }
