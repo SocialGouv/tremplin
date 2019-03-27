@@ -1,14 +1,11 @@
 import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
-import { Container } from "@components/layout/Container";
 
 
 export const JobOfferBlock = (props: { children?: any, grey?: boolean }) => {
   return (
-    <Box pt={4} pb={5} borderBottom="1px solid #CCCCCC" bg={props.grey ? "color.grey.1" : "color.white"}>
-      <Container>
-        {props.children}
-      </Container>
+    <Box pl="10%" pr="10%" pt={4} pb={5} borderBottom="1px solid #CCCCCC" bg={props.grey ? "color.grey.1" : "color.white"}>
+      {props.children}
     </Box>
   )
 }
