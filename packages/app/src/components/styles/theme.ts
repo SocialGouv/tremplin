@@ -1,6 +1,7 @@
 export interface ThemeInterface {
 
   fontSizes: number[];
+  fontWeight: number[];
   space: number[];
   colors: {
     black: string[],
@@ -15,7 +16,10 @@ export interface ThemeInterface {
 export const theme: ThemeInterface = {
 
   fontSizes: [
-    12, 14, 16, 20, 24, 32, 48, 64, 72
+    12, 14, 16, 18, 20, 22, 24, 32, 48, 64, 72
+  ],
+  fontWeight: [
+    100, 200, 300, 400, 500, 600, 700, 800
   ],
   space: [
     // margin and padding
@@ -29,6 +33,4 @@ export const theme: ThemeInterface = {
     red: "#FF6558",
     white: "#FFFFFF",
   }
-
-
 }

@@ -1,5 +1,6 @@
-import { Icon, Button } from '@components/elements';
+import { Button, Icon } from '@components/elements';
 import { Text } from '@components/elements/Text';
+import { JobOfferBlock, JobOfferBlockHeader } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Container } from '@components/layout/Container';
 import { Flex } from '@components/layout/flex/Flex';
@@ -48,17 +49,6 @@ const Heading = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 
-  .heading__title {
-    display: block;
-    padding: 0 0 5px 0;
-}
-
-.heading__hint {
-  display: block;
-
-  color: ${props => props.theme.colors.white};
-  font-size: ${props => props.theme.fontSizes[5]};
-}
 `
 
 // const BlockNav = styled.div`
@@ -91,36 +81,7 @@ const Heading = styled.div`
 //     }
 //   }
 // `
-const Block = styled.div<{ grey?: boolean }>`
-  border-bottom: 1px solid #CCCCCC;
-  padding: 30px 0 50px 0;
 
-  background-color: ${props => props.grey ? props.theme.colors.grey[0] : props.theme.colors.white};
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .block__header {
-    padding: 20px 0
-  }
-
-  .block__header-title {
-    display: block;
-
-	  color: ${props => props.theme.colors.blue};
-	  font-size: 32px;
-    font-weight: 500;
-  }
-
-  .block__header-hint {
-    display: block;
-
-    color: ${props => props.theme.colors.grey[3]};
-    font-size: 22px;
-  }
-`
 
 const Section = styled.div`
 
@@ -218,12 +179,11 @@ class JobOfferPage extends Component<any, any> {
         </TopBar>
         <Heading>
           <Container>
-            <Text fontSize={4} color="white" className="heading__title">Maison médicalisée rénovée en centre-ville de Bérat (31700)</Text>
-            <span className="heading__hint">Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00</span>
+            <Text as="div" fontSize={7} color="white" paddingBottom={1} >Maison médicalisée rénovée en centre-ville de Bérat (31700)</Text>
+            <Text as="div" fontSize={3} color="white" >Médecin Généraliste | Offre publiée le 27 février 2019 à 18:00</Text>
           </Container>
         </Heading>
         {/* <BlockNav>
-          <Container>
             <Row>
               <Link href="#block1"><div className="blocks-nav__item active">Exercice</div></Link>
               <div className="blocks-nav__item">Offre médicale</div>
@@ -231,191 +191,155 @@ class JobOfferPage extends Component<any, any> {
               <div className="blocks-nav__item">Région</div>
               <Link href="#block5"><div className="blocks-nav__item">Aide à l'installation</div></Link>
             </Flex>
-          </Container>
         </BlockNav> */}
-        <Block grey id="block1">
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Lieu d'exercice</span>
-              <span className="block__header-hint">Chemin de catalanie, Bérat (31700), Occitanie</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(50% - 10px)">
-                <img src="/static/assets/photos/lobby.jpg"></img>
-              </Item>
-              <Item basis="calc(50% - 10px)">
-                <Section>
-                  <span className="section__title">Présentation</span>
-                  <span className="section__content text">Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</span>
-                </Section>
-                <Section>
-                  <span className="section__title">Equipements</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> Salle d'attente</div>
-                    <div><Icon checkCircle /> Secretariat</div>
-                    <div><Icon checkCircle /> Logiciel de prise de rendez-vous</div>
-                  </div>
-                </Section>
-              </Item>
-            </Flex>
-          </Container>
-        </Block>
-        <Block>
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Emplacement</span>
-              <span className="block__header-hint">Bérat (31700), Occitanie</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(60% - 10px)">
-                <MapView lat={44.7333} lng={5.0333} zoom={12}></MapView>
-              </Item>
-              <Item basis="calc(40% - 10px)">
-                <Section>
-                  <span className="section__title">Transport</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> Proximité de Toulouse</div>
-                    <div><Icon checkCircle /> Autoroute A64 à 7km</div>
-                    <div><Icon checkCircle /> Stations de ski à 1h - Mer à 1h30</div>
-                  </div>
-                </Section>
-              </Item>
-            </Flex>
-          </Container>
-        </Block>
-        <Block>
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Condition d'exercice</span>
-              <span className="block__header-hint">Lorem ipsum dolor sit amet</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(30% - 10px)">
-                <Section>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> Statut salarié</div>
-                    <div><Icon checkCircle /> Conventionné Secteur 1</div>
-                    <div><Icon checkCircle /> Temps partiel</div>
-                    <div><Icon checkCircle /> Visites à domicile</div>
-                  </div>
-                </Section>
-              </Item>
-              <Item basis="calc(50% - 10px)">
-                <Section>
-                  <div className="section__content text">Patientèle estimée à 4 500 habitants (plus de 3 000 habitants sur la commune</div>
-                  <div className="section__content text">Professionnels déjà installés dans la maison médicale: un médecin généraliste (Dr Yveline DESIREL)</div>
-                </Section>
-              </Item>
-            </Flex>
-          </Container>
-        </Block>
-        <Block>
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Offre médicale à proximité</span>
-              <span className="block__header-hint">Lorem ipsum dolor sit amet</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(50% - 10px)">
-                <Section>
-                  <span className="section__title">Nombre de paramédicaux</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> 4 infirmières</div>
-                    <div><Icon checkCircle /> Une kinésithérapeute</div>
-                    <div><Icon checkCircle /> Une ostéopathe</div>
-                  </div>
-                </Section>
-              </Item>
-              <Item basis="calc(50% - 10px)">
-                <Section>
-                  <span className="section__title">Équipements</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> Clinique ou CHU à 20km</div>
-                    <div><Icon checkCircle /> Centre de radio-echographie à 7km</div>
-                    <div><Icon checkCircle /> Laboratoire d'analyse à moins de 10km</div>
-                  </div>
-                </Section>
-              </Item>
-            </Flex>
-            <Section>
-              <span className="section__title">Présentation</span>
-              <div className="section__content text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
-            </Section>
-          </Container>
-        </Block>
-        <Block>
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Cadre de vie</span>
-              <span className="block__header-hint">Un cadre de vie idéal pour s'épanouir en famille</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(50% - 10px)"><FakeImage></FakeImage></Item>
-              <Item basis="calc(50% - 10px)">
-                <Section>
-                  <span className="section__title">Equipements municipaux</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> 1 crèche, 1 collège, 1 lycée à moins de 20km</div>
-                    <div><Icon checkCircle /> Proximité des services publics</div>
-                    <div><Icon checkCircle /> 1 équipement sportif</div>
-                  </div>
-                </Section>
-                <Section>
-                  <span className="section__title">Commerce</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> proximité des commerces</div>
-                    <div><Icon checkCircle /> proximité des commerces</div>
-                    <div><Icon checkCircle /> grand parking public</div>
-                  </div>
-                </Section>
-                <Section>
-                  <span className="section__title">Présentation</span>
-                  <div className="section__content  text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
-                </Section>
-              </Item>
-            </Flex>
-          </Container>
-        </Block>
-        <Block>
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Région</span>
-              <span className="block__header-hint">Bérat (31700), Occitanie</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(70% - 10px)"><FakeImage></FakeImage></Item>
-              <Item basis="calc(30% - 10px)">
-              </Item>
-            </Flex>
-          </Container>
-        </Block>
-        <Block id="block5">
-          <Container>
-            <div className="block__header">
-              <span className="block__header-title">Aides à l'installation</span>
-              <span className="block__header-hint">Lorem ipsum dolor sit amet</span>
-            </div>
-            <Flex justifyBetween>
-              <Item basis="calc(60% - 10px)">
-                <Section>
-                  <span className="section__title">Présentation</span>
-                  <div className="section__content  text">Commune classée en zone de vigilance, possibilité d’obtention de différentes aides (Contrat de praticien territorial de médecine générale PTMG, contrat d’engagement de service public CESP)</div>
-                </Section>
-              </Item>
-              <Item basis="calc(20% - 10px)">
-                <Section>
-                  <span className="section__title">Aides éligibles</span>
-                  <div className="section__content text">
-                    <div><Icon checkCircle /> CESP</div>
-                    <div><Icon checkCircle /> PTMC</div>
-                    <div><Icon checkCircle /> ZRR</div>
-                  </div>
-                </Section>
-              </Item>
-              <Item basis="calc(20% - 10px)"></Item>
-            </Flex>
-          </Container>
-        </Block>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Lieu d'exercice" hint="Chemin de catalanie, Bérat (31700), Occitanie" />
+          <Flex justifyBetween>
+            <Item basis="calc(50% - 10px)">
+              <img src="/static/assets/photos/lobby.jpg"></img>
+            </Item>
+            <Item basis="calc(50% - 10px)">
+              <Section>
+                <span className="section__title">Présentation</span>
+                <span className="section__content text">Maison médicale neuve pluridisciplinaire (kiné-psychiatre-psychologue-orthophonistes-infirmières) - grand bureau avec terrasse. Informatisée, une patientéle jeune et dynamique. Projet de collaboration pour septembre 2019 avec bureau neuf pour collaborateur. Pellentesque tellus. Donec eget tortor vel dolor varius consectetuer. Donec mauris nibh, pretium a, tempus eget, varius in, eros. Cras lacus. Nam tellus purus, accumsan commodo, aliquam vitae, posuere nec, odio.</span>
+              </Section>
+              <Section>
+                <span className="section__title">Equipements</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> Salle d'attente</div>
+                  <div><Icon checkCircle /> Secretariat</div>
+                  <div><Icon checkCircle /> Logiciel de prise de rendez-vous</div>
+                </div>
+              </Section>
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Emplacement" hint="Bérat (31700), Occitanie" />
+          <Flex justifyBetween>
+            <Item basis="calc(60% - 10px)">
+              <MapView lat={44.7333} lng={5.0333} zoom={12}></MapView>
+            </Item>
+            <Item basis="calc(40% - 10px)">
+              <Section>
+                <span className="section__title">Transport</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> Proximité de Toulouse</div>
+                  <div><Icon checkCircle /> Autoroute A64 à 7km</div>
+                  <div><Icon checkCircle /> Stations de ski à 1h - Mer à 1h30</div>
+                </div>
+              </Section>
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Condition d'exercice" hint="Lorem ipsum dolor sit amet" />
+          <Flex justifyBetween>
+            <Item basis="calc(30% - 10px)">
+              <Section>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> Statut salarié</div>
+                  <div><Icon checkCircle /> Conventionné Secteur 1</div>
+                  <div><Icon checkCircle /> Temps partiel</div>
+                  <div><Icon checkCircle /> Visites à domicile</div>
+                </div>
+              </Section>
+            </Item>
+            <Item basis="calc(50% - 10px)">
+              <Section>
+                <div className="section__content text">Patientèle estimée à 4 500 habitants (plus de 3 000 habitants sur la commune</div>
+                <div className="section__content text">Professionnels déjà installés dans la maison médicale: un médecin généraliste (Dr Yveline DESIREL)</div>
+              </Section>
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Offre médicale à proximité" hint="Lorem ipsum dolor sit amet" />
+          <Flex justifyBetween>
+            <Item basis="calc(50% - 10px)">
+              <Section>
+                <span className="section__title">Nombre de paramédicaux</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> 4 infirmières</div>
+                  <div><Icon checkCircle /> Une kinésithérapeute</div>
+                  <div><Icon checkCircle /> Une ostéopathe</div>
+                </div>
+              </Section>
+            </Item>
+            <Item basis="calc(50% - 10px)">
+              <Section>
+                <span className="section__title">Équipements</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> Clinique ou CHU à 20km</div>
+                  <div><Icon checkCircle /> Centre de radio-echographie à 7km</div>
+                  <div><Icon checkCircle /> Laboratoire d'analyse à moins de 10km</div>
+                </div>
+              </Section>
+            </Item>
+          </Flex>
+          <Section>
+            <span className="section__title">Présentation</span>
+            <div className="section__content text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
+          </Section>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Cadre de vie" hint="Un cadre de vie idéal pour s'épanouir en famille" />
+          <Flex justifyBetween>
+            <Item basis="calc(50% - 10px)"><FakeImage></FakeImage></Item>
+            <Item basis="calc(50% - 10px)">
+              <Section>
+                <span className="section__title">Equipements municipaux</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> 1 crèche, 1 collège, 1 lycée à moins de 20km</div>
+                  <div><Icon checkCircle /> Proximité des services publics</div>
+                  <div><Icon checkCircle /> 1 équipement sportif</div>
+                </div>
+              </Section>
+              <Section>
+                <span className="section__title">Commerce</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> proximité des commerces</div>
+                  <div><Icon checkCircle /> proximité des commerces</div>
+                  <div><Icon checkCircle /> grand parking public</div>
+                </div>
+              </Section>
+              <Section>
+                <span className="section__title">Présentation</span>
+                <div className="section__content  text">Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus. Nam a justo quis ante consectetuer ullamcorper. Ut bibendum, elit a congue ultricies, sem ligula adipiscing tellus, sed tempus est urna in lectus. Integer non dolor. Phasellus vehicula sem ac erat. Phasellus tincidunt iaculis lacus. Donec quam pede, interdum eget, egestas a, iaculis in, tellus.</div>
+              </Section>
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Région" hint="Bérat (31700), Occitanie" />
+          <Flex justifyBetween>
+            <Item basis="calc(70% - 10px)"><FakeImage></FakeImage></Item>
+            <Item basis="calc(30% - 10px)">
+            </Item>
+          </Flex>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader title="Aides à l'installation" hint="Lorem ipsum dolor sit amet" />
+          <Flex justifyBetween>
+            <Item basis="calc(60% - 10px)">
+              <Section>
+                <span className="section__title">Présentation</span>
+                <div className="section__content  text">Commune classée en zone de vigilance, possibilité d’obtention de différentes aides (Contrat de praticien territorial de médecine générale PTMG, contrat d’engagement de service public CESP)</div>
+              </Section>
+            </Item>
+            <Item basis="calc(20% - 10px)">
+              <Section>
+                <span className="section__title">Aides éligibles</span>
+                <div className="section__content text">
+                  <div><Icon checkCircle /> CESP</div>
+                  <div><Icon checkCircle /> PTMC</div>
+                  <div><Icon checkCircle /> ZRR</div>
+                </div>
+              </Section>
+            </Item>
+            <Item basis="calc(20% - 10px)"></Item>
+          </Flex>
+        </JobOfferBlock>
         <Contact>
           <Container className="contact__wrapper">
             <div className="contact__infobar">
