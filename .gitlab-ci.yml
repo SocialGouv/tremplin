@@ -62,7 +62,6 @@ deploy-tremplin-api-dev:
     K8S_USERNAME: $K8S_USERNAME_DEV
     K8S_CONTEXT: $K8S_CONTEXT_DEV
     K8S_TOKEN: $K8S_TOKEN_DEV
-    BRANCH_NAME: -$CI_COMMIT_REF_NAME
     PORT: ${API_PORT}
   environment:
     name: dev
@@ -79,7 +78,6 @@ deploy-tremplin-frontend-dev:
     K8S_USERNAME: $K8S_USERNAME_DEV
     K8S_CONTEXT: $K8S_CONTEXT_DEV
     K8S_TOKEN: $K8S_TOKEN_DEV
-    BRANCH_NAME: -$CI_COMMIT_REF_NAME
     PORT: ${FRONTEND_PORT}
   environment:
     name: dev
@@ -92,7 +90,7 @@ deploy-tremplin-frontend-dev:
 
 deploy-tremplin-api-prod:
   stage: "Deploy Tremplin"
-  extends: .deploy-tremplin-api-k8s
+  extends: .deploy-tremplin-api-prod-k8s
   variables:
     K8S_SERVER: $K8S_SERVER_PROD
     K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_PROD
@@ -100,7 +98,7 @@ deploy-tremplin-api-prod:
     K8S_USERNAME: $K8S_USERNAME_PROD
     K8S_CONTEXT: $K8S_CONTEXT_PROD
     K8S_TOKEN: $K8S_TOKEN_PROD
-    BRANCH_NAME: ''
+    HASH_BRANCH_INGRESS: ''
     PORT: ${API_PORT}
   environment:
     name: ops
@@ -109,7 +107,7 @@ deploy-tremplin-api-prod:
 
 deploy-tremplin-frontend-prod:
   stage: "Deploy Tremplin"
-  extends: .deploy-tremplin-frontend-k8s
+  extends: .deploy-tremplin-frontend-prod-k8s
   variables:
     K8S_SERVER: $K8S_SERVER_PROD
     K8S_CLUSTER_NAME: $K8S_CLUSTER_NAME_PROD
@@ -117,7 +115,7 @@ deploy-tremplin-frontend-prod:
     K8S_USERNAME: $K8S_USERNAME_PROD
     K8S_CONTEXT: $K8S_CONTEXT_PROD
     K8S_TOKEN: $K8S_TOKEN_PROD
-    BRANCH_NAME: ''
+    HASH_BRANCH_INGRESS: ''
     PORT: ${FRONTEND_PORT}
   environment:
     name: ops
