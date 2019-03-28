@@ -14,6 +14,7 @@
   - kubectl apply -f k8s/tremplin-api/deployment-api.yml
   - kubectl apply -f k8s/tremplin-api/service-api.yml
   - kubectl apply -f k8s/tremplin-api/ingress-api.yml
+  - echo "Tremplin api available at - http://"$HASH_BRANCH_INGRESS"tremplin-api.dev.factory.social.gouv.fr"
   allow_failure: false
 
 .deploy-tremplin-api-prod-k8s:
@@ -29,4 +30,5 @@
   - kubectl apply -f k8s/tremplin-api/deployment-api.yml
   - kubectl apply -f k8s/tremplin-api/service-api.yml
   - kubectl apply -f k8s/tremplin-api/ingress-api.yml
+  - echo "Tremplin api available at - http://tremplin-api.ops.factory.social.gouv.fr"
   allow_failure: false
