@@ -15,8 +15,52 @@ variables:
   FRONTEND_PORT: 3000
 
 stages:
-  - "Build and Push Docker Image"
-  - "Deploy Tremplin"
+- "Prepare"
+- "Build and Push Docker Image"
+- "Deploy Tremplin"
+- "Send Url"
+
+###########################################
+###               PREPARE               ###
+###########################################
+
+prepare-deploy-id:
+  stage: "Prepare"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - envsubst < k8s/scripts/get-deploy-id.sh > k8s/scripts/get-github-deploy-id.sh
+  script:
+  - sh k8s/scripts/get-github-deploy-id.sh
+  environment:
+    name: dev
+  except:
+  - master
+  artifacts:
+    paths:
+    - github_deploy_id
+
+prepare-deploy-id-prod:
+  stage: "Prepare"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - envsubst < k8s/scripts/get-deploy-id.sh > k8s/scripts/get-github-deploy-id.sh
+  script:
+  - sh k8s/scripts/get-github-deploy-id.sh
+  environment:
+    name: ops
+  only:
+  - master
+  artifacts:
+    paths:
+    - github_deploy_id
+
+###########################################
+###            BUILD IMAGES             ###
+###########################################
 
 build-and-push-tremplin-api-image:
   stage: "Build and Push Docker Image"
@@ -117,6 +161,45 @@ deploy-tremplin-frontend-prod:
     K8S_TOKEN: $K8S_TOKEN_PROD
     HASH_BRANCH_INGRESS: ''
     PORT: ${FRONTEND_PORT}
+  environment:
+    name: ops
+  only:
+  - master
+
+###########################################
+###         SEND URL TO GITHUB          ###
+###########################################
+
+send-url:
+  stage: "Send Url"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
+  - export HASH_BRANCH_NAME=$HASH_BRANCH_NAME
+  - export URL=http://$HASH_BRANCH_NAME-tremplin.${CI_ENVIRONMENT_NAME}.factory.social.gouv.fr/
+  - export DEPLOY_ID=$(cat github_deploy_id)
+  - envsubst < k8s/scripts/send-url.sh > k8s/scripts/send-url-to-github.sh
+  script:
+  - sh k8s/scripts/send-url-to-github.sh $CI_COMMIT_REF_NAME
+  environment:
+    name: dev
+  except:
+  - master
+
+send-url-prod:
+  stage: "Send Url"
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  variables:
+    URL: http://tremplin.$CI_ENVIRONMENT_NAME.factory.social.gouv.fr/
+  before_script:
+  - export DEPLOY_ID=$(cat github_deploy_id)
+  - envsubst < k8s/scripts/send-url.sh > k8s/scripts/send-url-to-github.sh
+  script:
+  - sh k8s/scripts/send-url-to-github.sh $CI_COMMIT_REF_NAME
   environment:
     name: ops
   only:
