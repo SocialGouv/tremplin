@@ -13,7 +13,7 @@ def get_active_branches():
 
 def get_active_k8s_tags():
   active_k8s_tag_list = []
-  raw_k8s_tag_list = check_output("kubectl get pods -o go-template --template '{{range .items}}{{.metadata.labels.branch}}{{end}}'", shell=True)
+  raw_k8s_tag_list = check_output("kubectl get deployments -o go-template --template '{{range .items}}{{.metadata.labels.branch}}{{end}}'", shell=True)
   for active_k8s_tag in raw_k8s_tag_list.decode('utf-8').replace('<no value>','').split('tremplin-'):
     active_k8s_tag_list.append(active_k8s_tag)
   return active_k8s_tag_list
