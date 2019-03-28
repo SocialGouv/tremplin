@@ -2,23 +2,23 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: tremplin-api${BRANCH_NAME}
+  name: tremplin-api${HASH_BRANCH_NAME}
   labels:
-    app: tremplin-api${BRANCH_NAME}
-    branch: tremplin${BRANCH_NAME}
+    app: tremplin-api${HASH_BRANCH_NAME}
+    branch: tremplin${HASH_BRANCH_NAME}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tremplin-api${BRANCH_NAME}
+      app: tremplin-api${HASH_BRANCH_NAME}
   template:
     metadata:
       labels:
-        app: tremplin-api${BRANCH_NAME}
+        app: tremplin-api${HASH_BRANCH_NAME}
     spec:
       containers:
       - image:  ${TREMPLIN_REGISTRY}/api:${IMAGE_TAG}
-        name: tremplin-api${BRANCH_NAME}
+        name: tremplin-api${HASH_BRANCH_NAME}
         ports:
         - containerPort: ${PORT}
         livenessProbe:

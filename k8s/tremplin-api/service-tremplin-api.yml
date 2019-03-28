@@ -2,13 +2,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: tremplin-api${BRANCH_NAME}
+  name: tremplin-api${HASH_BRANCH_NAME}
   labels:
-    app: tremplin-api${BRANCH_NAME}
-    branch: tremplin${BRANCH_NAME}
+    app: tremplin-api${HASH_BRANCH_NAME}
+    branch: tremplin${HASH_BRANCH_NAME}
 spec:
   selector:
-    app: tremplin-api${BRANCH_NAME}
+    app: tremplin-api${HASH_BRANCH_NAME}
   ports:
   - port: ${PORT}
     name: api

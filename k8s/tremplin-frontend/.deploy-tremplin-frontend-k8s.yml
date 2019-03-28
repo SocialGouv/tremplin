@@ -3,6 +3,9 @@
     name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
     entrypoint: [""]
   before_script:
+  - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
+  - export HASH_BRANCH_INGRESS=$HASH_BRANCH_NAME-
+  - export HASH_BRANCH_NAME=-$HASH_BRANCH_NAME
   - /apps/create-kubeconfig.sh
   - envsubst < k8s/tremplin-frontend/deployment-tremplin-frontend.yml > k8s/tremplin-frontend/deployment-frontend.yml
   - envsubst < k8s/tremplin-frontend/service-tremplin-frontend.yml > k8s/tremplin-frontend/service-frontend.yml
@@ -11,4 +14,21 @@
   - kubectl apply -f k8s/tremplin-frontend/deployment-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/service-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/ingress-frontend.yml
+  - echo "Tremplin frontend available at - http://"$HASH_BRANCH_INGRESS"tremplin.dev.factory.social.gouv.fr"
+  allow_failure: false
+
+.deploy-tremplin-frontend-prod-k8s:
+  image:
+    name: $CI_REGISTRY/$IMAGE_INFRA_BASE_NAME/docker-kube:latest
+    entrypoint: [""]
+  before_script:
+  - /apps/create-kubeconfig.sh
+  - envsubst < k8s/tremplin-frontend/deployment-tremplin-frontend.yml > k8s/tremplin-frontend/deployment-frontend.yml
+  - envsubst < k8s/tremplin-frontend/service-tremplin-frontend.yml > k8s/tremplin-frontend/service-frontend.yml
+  - envsubst < k8s/tremplin-frontend/ingress-tremplin-frontend.yml > k8s/tremplin-frontend/ingress-frontend.yml
+  script:
+  - kubectl apply -f k8s/tremplin-frontend/deployment-frontend.yml
+  - kubectl apply -f k8s/tremplin-frontend/service-frontend.yml
+  - kubectl apply -f k8s/tremplin-frontend/ingress-frontend.yml
+  - echo "Tremplin frontend available at - http://tremplin.ops.factory.social.gouv.fr"
   allow_failure: false

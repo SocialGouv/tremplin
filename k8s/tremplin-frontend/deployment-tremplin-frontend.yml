@@ -2,19 +2,19 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: tremplin-frontend${BRANCH_NAME}
+  name: tremplin-frontend${HASH_BRANCH_NAME}
   labels:
-    app: tremplin-frontend${BRANCH_NAME}
-    branch: tremplin${BRANCH_NAME}
+    app: tremplin-frontend${HASH_BRANCH_NAME}
+    branch: tremplin${HASH_BRANCH_NAME}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tremplin-frontend${BRANCH_NAME}
+      app: tremplin-frontend${HASH_BRANCH_NAME}
   template:
     metadata:
       labels:
-        app: tremplin-frontend${BRANCH_NAME}
+        app: tremplin-frontend${HASH_BRANCH_NAME}
     spec:
       containers:
       - image:  ${TREMPLIN_REGISTRY}/frontend:${IMAGE_TAG}
@@ -35,6 +35,6 @@ spec:
           periodSeconds: 5
         env:
         - name: API_URL
-          value: http://tremplin-api${BRANCH_NAME}.${ENVIRONMENT}.factory.social.gouv.fr/api
+          value: http://${HASH_BRANCH_INGRESS}tremplin-api.${ENVIRONMENT}.factory.social.gouv.fr/api
         - name: PORT
           value: "${PORT}"

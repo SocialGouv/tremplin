@@ -2,16 +2,16 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: tremplin-frontend${BRANCH_NAME}
+  name: tremplin-frontend${HASH_BRANCH_NAME}
   labels:
-    app: tremplin-frontend${BRANCH_NAME}
-    branch: tremplin${BRANCH_NAME}
+    app: tremplin-frontend${HASH_BRANCH_NAME}
+    branch: tremplin${HASH_BRANCH_NAME}
 spec:
   rules:
-  - host: tremplin${BRANCH_NAME}.${ENVIRONMENT}.factory.social.gouv.fr
+  - host: ${HASH_BRANCH_INGRESS}tremplin.${ENVIRONMENT}.factory.social.gouv.fr
     http:
       paths:
       - path: /
         backend:
-          serviceName: tremplin-frontend${BRANCH_NAME}
+          serviceName: tremplin-frontend${HASH_BRANCH_NAME}
           servicePort: ${PORT}
