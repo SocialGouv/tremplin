@@ -111,7 +111,7 @@ deploy-tremplin-api-dev:
   environment:
     name: dev
   except:
-  - master
+  - ops
 
 deploy-tremplin-frontend-dev:
   stage: "Deploy Tremplin"
@@ -127,7 +127,7 @@ deploy-tremplin-frontend-dev:
   environment:
     name: dev
   except:
-  - master
+  - ops
 
 ###########################################
 ### DEPLOY TREMPLIN TO K8S PROD CLUSTER ###
@@ -148,7 +148,7 @@ deploy-tremplin-api-prod:
   environment:
     name: ops
   only:
-  - master
+  - ops
 
 deploy-tremplin-frontend-prod:
   stage: "Deploy Tremplin"
@@ -165,7 +165,7 @@ deploy-tremplin-frontend-prod:
   environment:
     name: ops
   only:
-  - master
+  - ops
 
 ###########################################
 ###         SEND URL TO GITHUB          ###
