@@ -1,7 +1,7 @@
 import { JobOffer } from "@domain";
 import getConfig from "next/config";
 import { from, Observable } from "rxjs";
-import { mergeMap } from 'rxjs/operators';
+import { filter, mergeMap, tap } from 'rxjs/operators';
 
 interface DataRepository<T> {
   findAll: () => Observable<T[]>;
@@ -20,6 +20,7 @@ const config = getConfig();
 
 function api<T>(url: string): Observable<T> {
   return from(fetch(`${config.publicRuntimeConfig.API_URL}/${url}`)).pipe(
+    filter((res) => ![204, 404].includes(res.status)),
     mergeMap(res => res.json())
   );
 }

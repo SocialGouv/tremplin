@@ -1,5 +1,5 @@
 const berat = {
-  reference: "BERAT",
+  reference: "BERAT201904",
   publishedAt: new Date(2019, 4, 1),
 
   title: "Installation médecin généraliste à Bérat (31 - Haute-Garonne)",
