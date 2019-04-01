@@ -1,3 +1,4 @@
+import "@components/piwik";
 import { theme } from "@components/styles";
 import App, { Container, NextAppContext } from "next/app";
 import React from "react";
