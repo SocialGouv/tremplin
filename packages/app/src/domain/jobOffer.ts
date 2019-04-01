@@ -33,7 +33,7 @@ export interface JobOffer {
   emergencyDistance: number;
   structureType: StructureType;
   contractType: ContractType;
-  secretariatType: SecretariatType;
+  secretariatType: SecretariatType[];
 
   workCondition: '';
   medicalStructure: '';
@@ -69,7 +69,7 @@ export const fakeJobOffer: JobOffer = {
   emergencyDistance: 50,
   structureType: 'Clinique',
   contractType: 'Libéral',
-  secretariatType: 'Secrétariat sur place',
+  secretariatType: ['Secrétariat sur place'],
 
   workCondition: '',
   medicalStructure: '',

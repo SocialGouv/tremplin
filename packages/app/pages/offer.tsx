@@ -35,7 +35,7 @@ const JobOfferPage = (props: JobOfferProps) => {
         <Text as="div" pb={2}>Type d'exercice: {jobOffer.contractType}</Text>
         <Text as="div" pb={2}>Distance urgence: {jobOffer.emergencyDistance} KM</Text>
         <Text as="div" pb={2}>Site web: {jobOffer.medicalStructureWebSite}</Text>
-        <Text as="div" pb={2}>Secretariat: {jobOffer.secretariatType}</Text>
+        <Text as="div" pb={2}>Secretariat: {jobOffer.secretariatType.map((sec) => sec)}</Text>
         <Text as="div" pb={2}>Type de structure: {jobOffer.structureType}</Text>
         <Text as="div" pb={2}>Point fort 1: {jobOffer.advantage1}</Text>
         <Text as="div" pb={2}>Point fort 2: {jobOffer.advantage2}</Text>
