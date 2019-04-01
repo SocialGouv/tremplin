@@ -8,7 +8,7 @@ export const JobOfferContacts = (props: { contacts: Contact[] }) => {
   return (
     <Box pt={3} pb={3} zIndex={1000} position="fixed" bottom="0" width="100%" borderColor="grey.0" border="1px solid" bg="white" >
       <Container>
-        {props.contacts.map((contact) => <JobOfferContact contact={contact} />)}
+        {props.contacts.map((contact, index) => <JobOfferContact key={index} contact={contact} />)}
       </Container>
     </Box>
   )

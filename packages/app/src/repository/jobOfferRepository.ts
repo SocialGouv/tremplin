@@ -1,7 +1,7 @@
 import { JobOffer } from "@domain";
 import getConfig from "next/config";
 import { from, Observable } from "rxjs";
-import { filter, mergeMap, tap } from 'rxjs/operators';
+import { filter, mergeMap } from 'rxjs/operators';
 
 interface DataRepository<T> {
   findAll: () => Observable<T[]>;
