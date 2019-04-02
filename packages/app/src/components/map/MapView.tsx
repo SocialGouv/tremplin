@@ -15,7 +15,7 @@ export default class MapView extends Component<MapViewProps> {
         />
         <Marker position={position}>
           <Popup>
-            Crest
+            {this.props.markerLabel}
           </Popup>
         </Marker>
       </Map>

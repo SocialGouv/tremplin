@@ -14,7 +14,7 @@ export const JobOfferMap = (props: { address: Address }) => {
       <Box pb={2} fontSize={3} color="grey.1">
         <Icon mapMarker></Icon><Text pl={1}>{props.address.address}</Text>
       </Box>
-      <MapView lat={props.address.geoCode.lat} lng={props.address.geoCode.lng} zoom={9}></MapView>
+      <MapView lat={props.address.geoCode.lat} lng={props.address.geoCode.lng} markerLabel={props.address.city} zoom={9}></MapView>
     </Fragment>
   )
 }
