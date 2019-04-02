@@ -1,5 +1,6 @@
+import { Box, Icon } from '@components/elements';
 import { Text } from '@components/elements/Text';
-import { JobOfferBlock, JobOfferBlockHeader, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
+import { JobOfferBlock, JobOfferBlockHeader, JobOfferBlockHeader1, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Flex } from '@components/layout/flex/Flex';
 import { asString } from '@components/utils';
@@ -31,22 +32,34 @@ const JobOfferPage = (props: JobOfferProps) => {
     <PageLayout>
       <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')" />
       <JobOfferBlock>
-        <JobOfferBlockHeader title={jobOffer.title} />
-        <Text as="div" pb={2}>Type d'exercice: {jobOffer.contractType}</Text>
+        <JobOfferBlockHeader1 title={jobOffer.title} />
+        <Box pb={3}>
+          <Icon color="rgba(0, 105, 204, 0.87)" user></Icon>
+          <Text pl={2} fontSize={2}>{jobOffer.contractType} en {jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
+        </Box>
+        <Flex justifyBetween>
+          <Item basis="calc(50% - 10px)" >
+            <Box marginTop="10%">
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage1}</Text></Box>
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage2}</Text></Box>
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage3}</Text></Box>
+            </Box>
+          </Item>
+          <Item basis="calc(50% - 10px)">
+            <JobOfferMap address={jobOffer.address}></JobOfferMap>
+          </Item>
+        </Flex>
+        {/*
         <Text as="div" pb={2}>Distance urgence: {jobOffer.emergencyDistance} KM</Text>
         <Text as="div" pb={2}>Site web: {jobOffer.medicalStructureWebSite}</Text>
         <Text as="div" pb={2}>Secretariat: {jobOffer.secretariatType.map((sec) => sec)}</Text>
-        <Text as="div" pb={2}>Type de structure: {jobOffer.structureType}</Text>
-        <Text as="div" pb={2}>Point fort 1: {jobOffer.advantage1}</Text>
-        <Text as="div" pb={2}>Point fort 2: {jobOffer.advantage2}</Text>
-        <Text as="div" pb={2}>Point fort 3: {jobOffer.advantage3}</Text>
-        <Text as="div">Publié le: {jobOffer.publishedAt.toLocaleString()}</Text>
+
+        <Text as="div">Publié le: {jobOffer.publishedAt.toLocaleString()}</Text> */}
       </JobOfferBlock>
       <JobOfferBlock>
         <JobOfferBlockHeader title="Lieu d'exercice" />
         <Flex justifyBetween>
           <Item basis="calc(50% - 10px)">
-            <JobOfferMap address={jobOffer.address}></JobOfferMap>
           </Item>
           <Item basis="calc(50% - 10px)">
             <JobOfferSection title="Condition d'exercice">

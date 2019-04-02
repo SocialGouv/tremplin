@@ -14,6 +14,17 @@ export const JobOfferBlock = (props: { children?: any, grey?: boolean }) => {
 }
 
 
+export const JobOfferBlockHeader1 = (props: {
+  title: string,
+  hint?: string
+}) => {
+  return (
+    <Box pt={2} pb={2}>
+      {props.title && <Text as="div" fontSize={7} fontWeight={4} color="black1.2">{props.title}</Text>}
+    </Box>
+  )
+}
+
 export const JobOfferBlockHeader = (props: {
   title: string,
   hint?: string

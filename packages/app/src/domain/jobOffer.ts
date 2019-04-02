@@ -49,7 +49,7 @@ export interface JobOffer {
 export const fakeJobOffer: JobOffer = {
   reference: '',
 // tslint:disable-next-line: object-literal-sort-keys
-  publishedAt: new Date(),
+  publishedAt: new Date('2019-04-01 10:00:00'),
 
   title: '',
   advantage1: '',

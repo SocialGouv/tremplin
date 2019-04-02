@@ -1,8 +1,9 @@
 const berat = {
   reference: "BERAT201904",
-  publishedAt: new Date(2019, 4, 1),
+  publishedAt: new Date('2019-04-02 10:00:00'),
 
-  title: "La maison médicale de Bérat recherche un second médecin généraliste libéral (exercice semi-rural)",
+  // title: "La maison médicale de Bérat recherche un second médecin généraliste libéral (exercice semi-rural)",
+  title: "Installation médecin généraliste à Bérat (31700)",
   advantage1: "De nombreux professionnels installlés dans la maison de santé",
   advantage2: "Possibilité de secrétariat",
   advantage3: "Un bassin de vie dynamique offrant tous les services",

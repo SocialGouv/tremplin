@@ -1,31 +1,37 @@
-import { IconProp, library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle, faIgloo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faIgloo, faMapMarkerAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Component } from 'react';
-
-library.add(faCheckCircle);
-library.add(faMapMarkerAlt)
-library.add(faIgloo);
 
 interface IconProps {
   checkCircle?: boolean;
   mapMarker?: boolean;
+  star?: boolean;
+  user?: boolean;
+
   color?: string;
+  size?: SizeProp;
 }
 
 export class Icon extends Component<IconProps> {
 
   public render() {
-    return <FontAwesomeIcon color={this.props.color} icon={this.getIcon(this.props)} />
+    return <FontAwesomeIcon size={this.props.size} color={this.props.color} icon={this.getIcon(this.props)} />
   }
 
-  private getIcon(props: IconProps): IconProp {
+  private getIcon(props: IconProps): any {
+    let icon: any = faIgloo;
     if (props.checkCircle) {
-      return faCheckCircle;
+      icon = faCheckCircle;
     } else if (props.mapMarker) {
-      return faMapMarkerAlt;
+      icon = faMapMarkerAlt;
+    } else if (props.star) {
+      icon = faStar;
+    } else if (props.user) {
+      icon = faUser;
     }
-    return faIgloo;
+    return icon;
   }
 }
 
