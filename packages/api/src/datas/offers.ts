@@ -25,21 +25,21 @@ const berat = {
   secretariatType: ['Pas de secretariat', 'Rendez vous en ligne']
 ,
   workCondition: 'La maison de santé de Berat cherche un second médecin généraliste pour compléter son équipe.\
-  </br></br>\
+  </br>\
   La maison de santé est composée d\'un médecin généraliste (Dr Yveline DESIREL) et de plusieurs paramédicaux (4 infirmières, une kinésithérapeute, un osthéopathe, 1 orthophoniste).\
   Deux psychologues, un chirurgien dentiste et une pharmacie sont à proximité immédiate.\
-  </br></br>\
+  </br>\
   L\'exercice est varié (semi-rural) et la maison de santé sert un territoire estimé à 4500 habitants (plus de 3000 sur la commune).\
-  </br></br>\
+  </br>\
   Il est possible d\'effectuer des gardes dans deux maisons d\'urgence de proximité (Peyssies et Frouzins)\
-  </br></br>\
+  </br>\
   Il n\'y a pas de secrétariat sur place mais cela peut être envisagé avec l\'arrivée d\'un second médecin.\
-  </br></br>\
+  </br>\
   Le cabinet disponible est un local de 27 m². Le bâtiment est récent (2014), aux normes PMR et BBC, et se compose d\'une entrée (conçu pour intégrer un secrétariat), de plusieurs espaces d\'attente et de sanitaires communs.',
   medicalStructure: 'La maison de santé bénéficie d\'un emplacement de premier choix, en centre-ville, à proximité des commerces (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse), des services publics (mairie, écoles, poste), d\'un grand parking public et d\'une résidence intergénérationnelle.\
-  </br></br>\
+  </br>\
   Les patients ont accès à un laboratoire d\'analyses médicales à 12km (Carbonne), un centre de radio-échographie à 17km (Rieux Volvestre), aux plateaux techniques de Muret (CH et clinique) à 20km, de Toulouse (CHU) et Saint-Gaudens à 40km.\
-  </br></br>\
+  </br>\
   La commune est classée en zone d\'action complémentaire. L\'installation est possible pour les titulaires d\'un contrat d\'engagement de service public. Des aides à l\'installation sont également possibles (notamment le contrat de praticien territorial de médecine générale).',
   medicalStructureWebSite: '',
 

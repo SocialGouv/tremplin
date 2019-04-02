@@ -5,7 +5,7 @@ import { Container } from "@components/layout/Container";
 
 export const JobOfferBlock = (props: { children?: any, grey?: boolean }) => {
   return (
-    <Box pt={4} pb={5} borderBottom="1px solid #CCCCCC" bg={props.grey ? "color.grey.1" : "color.white"}>
+    <Box pt={4} pb={5} borderBottom="2px solid" borderColor="grey.6" bg={props.grey ? "brown.9" : "color.white"}>
       <Container>
         {props.children}
       </Container>
@@ -27,12 +27,16 @@ export const JobOfferBlockHeader1 = (props: {
 
 export const JobOfferBlockHeader = (props: {
   title: string,
-  hint?: string
+  hint?: string,
+  children?: any
 }) => {
   return (
-    <Box pt={2} pb={2}>
-      {props.title && <Text as="div" fontSize={7} fontWeight={5} color="blue.2">{props.title}</Text>}
-      {props.hint && <Text as="div" fontSize={5} color="grey.2">{props.hint}</Text>}
+    <Box pt={1} pb={3}>
+      <Box pb={2}>
+        {props.title && <Text as="div" fontSize={7} fontWeight={5} color="blue.2">{props.title}</Text>}
+        {props.hint && <Text as="div" fontSize={5} color="grey.2">{props.hint}</Text>}
+      </Box>
+      {props.children}
     </Box>
   )
 }

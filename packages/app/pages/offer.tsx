@@ -49,42 +49,39 @@ const JobOfferPage = (props: JobOfferProps) => {
             <JobOfferMap address={jobOffer.address}></JobOfferMap>
           </Item>
         </Flex>
-        {/*
-        <Text as="div" pb={2}>Distance urgence: {jobOffer.emergencyDistance} KM</Text>
-        <Text as="div" pb={2}>Site web: {jobOffer.medicalStructureWebSite}</Text>
-        <Text as="div" pb={2}>Secretariat: {jobOffer.secretariatType.map((sec) => sec)}</Text>
+      </JobOfferBlock>
 
-        <Text as="div">Publié le: {jobOffer.publishedAt.toLocaleString()}</Text> */}
-      </JobOfferBlock>
       <JobOfferBlock>
-        <JobOfferBlockHeader title="Lieu d'exercice" />
-        <Flex justifyBetween>
-          <Item basis="calc(50% - 10px)">
-          </Item>
-          <Item basis="calc(50% - 10px)">
-            <JobOfferSection title="Condition d'exercice">
-              <JobOfferSectionContent content={jobOffer.workCondition} />
-            </JobOfferSection>
-            <JobOfferSection title="Structure d'accueil">
-              <JobOfferSectionContent content={jobOffer.medicalStructure} />
-            </JobOfferSection>
-          </Item>
-        </Flex>
+        <JobOfferBlockHeader title="Conditions d'exercice" >
+          <Box pb={3}>
+            {jobOffer.secretariatType.map((sec) => <Text color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
+          </Box>
+        </JobOfferBlockHeader>
+        <JobOfferSection>
+          <JobOfferSectionContent content={jobOffer.workCondition} />
+        </JobOfferSection>
       </JobOfferBlock>
+
       <JobOfferBlock>
+        <JobOfferBlockHeader title="Structure d'accueil" >
+          <Box pb={3}>
+            <Text color="grey.1" fontSize={4} pr={3} >• Urgences les plus proches à {jobOffer.emergencyDistance} km</Text>
+          </Box>
+        </JobOfferBlockHeader>
+
+        <JobOfferSection>
+          <JobOfferSectionContent content={jobOffer.medicalStructure} />
+        </JobOfferSection>
+      </JobOfferBlock>
+
+      <JobOfferBlock grey>
         <JobOfferBlockHeader title="Cadre de vie" />
-        <Flex justifyBetween>
-          <Item basis="calc(50% - 10px)">
-            <JobOfferSection title="Vie de famille, employabilité, loisirs">
-              <JobOfferSectionContent content={jobOffer.lifestyleFamily} />
-            </JobOfferSection>
-          </Item>
-          <Item basis="calc(50% - 10px)">
-            <JobOfferSection title="Territoire">
-              <JobOfferSectionContent content={jobOffer.lifestyleTerritory} />
-            </JobOfferSection>
-          </Item>
-        </Flex>
+        <JobOfferSection title="Vie de famille">
+          <JobOfferSectionContent content={jobOffer.lifestyleFamily} />
+        </JobOfferSection>
+        <JobOfferSection title="Territoire">
+          <JobOfferSectionContent content={jobOffer.lifestyleTerritory} />
+        </JobOfferSection>
       </JobOfferBlock>
       <JobOfferContacts contacts={jobOffer.contacts} />
     </PageLayout >
