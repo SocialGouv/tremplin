@@ -2,6 +2,7 @@ import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Container } from "./Container";
 import { Flex, Item } from "./flex/Flex";
+import { Marianne } from "./marianne";
 
 export const TopBar = () => {
   return (
@@ -9,7 +10,7 @@ export const TopBar = () => {
       <Container full>
         <Flex full alignCenter noResponsive>
           <Item>
-            <img height="30px" width="60px" src="/static/assets/img/marianne.svg"></img>
+            <Marianne height="30px" width="60px"></Marianne>
           </Item>
           <Item>
             <Box pl={4}>

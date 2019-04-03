@@ -3,16 +3,17 @@ import { Text } from "@components/elements/Text";
 import { Component } from "react";
 import { Container } from "./Container";
 import { Flex, Item } from "./flex/Flex";
+import { Marianne } from "./marianne";
 
 export class Footer extends Component<{}> {
 
   public render() {
     return (
-      <Box bg="rgba(184, 196, 204, 0.2)">
+      <Box bg="rgba(184, 196, 204, 0.2)" height="250px">
         <Container>
           <Flex>
             <Item>
-              <img src="/static/assets/img/marianne.svg"></img>
+              <Marianne width="150px" height="82px"></Marianne>
             </Item>
             <Item>
               <Text>Un projet conçu au sein de l’incubateur des ministères sociaux.</Text>
