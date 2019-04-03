@@ -1,25 +1,7 @@
+export * from './TopBar';
+export * from './Footer';
 export {
-  TopBar
-}
-from './TopBar';
-export {
-  Header
-}
-from './Header';
-export {
-  Footer
-}
-from './Footer';
-export {
-  Heading
-}
-from './Heading';
-export {
-  PageLayout
+  default as PageLayout
 }
 from './PageLayout';
-export {
-  Flex,
-  Item
-}
-from './flex/Flex';
+export * from './flex/Flex';

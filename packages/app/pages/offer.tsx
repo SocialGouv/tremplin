@@ -54,7 +54,7 @@ const JobOfferPage = (props: JobOfferProps) => {
       <JobOfferBlock>
         <JobOfferBlockHeader title="Conditions d'exercice" >
           <Box pb={3}>
-            {jobOffer.secretariatType.map((sec) => <Text color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
+            {jobOffer.secretariatType.map((sec, index) => <Text key={index} color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
           </Box>
         </JobOfferBlockHeader>
         <JobOfferSection>
