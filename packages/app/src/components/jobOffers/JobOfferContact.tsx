@@ -3,8 +3,14 @@ import { Text } from "@components/elements/Text";
 import { Flex } from "@components/layout";
 import { Container } from "@components/layout/Container";
 import { trackContactEmail, trackContactPhone } from "@components/piwik";
+import { media, styled } from "@components/styles";
 import { Contact } from "@domain";
 import { useState } from "react";
+
+const ContactLabelBox = styled(Box)`
+  ${media.phone`display: none;`}
+  ${media.tablet`display: none;`}
+`
 
 export const JobOfferContacts = (props: { contacts: Contact[] }) => {
 
@@ -12,17 +18,21 @@ export const JobOfferContacts = (props: { contacts: Contact[] }) => {
     <Box bg="red" pt={3} pb={3} /*zIndex={1000} position="fixed" bottom="0"*/ width="100%" borderColor="grey.0" border="1px solid" >
       <Container>
         <Flex>
-          <Box pr={5} pt={4} maxWidth="150px" >
+          <ContactLabelBox pr={5} pt={4} maxWidth="150px" >
             <Text as="div" color="white" fontSize={5} fontWeight={4} lineHeight={4}>
               Vous avez une question? contactez
             </Text>
-          </Box>
+          </ContactLabelBox>
           {props.contacts.map((contact, index) => <JobOfferContact key={index} contact={contact} />)}
         </Flex>
       </Container>
     </Box>
   )
 }
+
+const ContactButton = styled(Button)`
+  width: 230px;
+`
 
 const JobOfferContact = (props: { contact: Contact }) => {
 
@@ -49,9 +59,9 @@ const JobOfferContact = (props: { contact: Contact }) => {
         </Text>
       </Box>
       <Box pt={3} display="flex" flexDirection="column" alignItems="center">
-        {(props.contact.phone && !phoneVisble) && <Button width="230px" onClick={handleClick} variant="primary"><Icon call></Icon><Text pl={2}>Voir le numéro</Text></Button>}
-        {phoneVisble && <Button width="230px" variant="inverse"><Icon call></Icon><Text pl={2}>{props.contact.phone}</Text></Button>}
-        {props.contact.email && <Button width="230px" onClick={contactByEmail} variant="primary"><Icon email></Icon><Text pl={2}>Envoyer une message</Text></Button>}
+        {(props.contact.phone && !phoneVisble) && <ContactButton onClick={handleClick} variant="primary"><Icon call></Icon><Text pl={2}>Voir le numéro</Text></ContactButton>}
+        {phoneVisble && <ContactButton variant="inverse"><Icon call></Icon><Text pl={2}>{props.contact.phone}</Text></ContactButton>}
+        {props.contact.email && <ContactButton onClick={contactByEmail} variant="primary"><Icon email></Icon><Text pl={2}>Envoyer une message</Text></ContactButton>}
       </Box>
     </Box>
   )
