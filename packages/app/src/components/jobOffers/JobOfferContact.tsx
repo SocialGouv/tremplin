@@ -60,7 +60,7 @@ const JobOfferContact = (props: { contact: Contact }) => {
       </Box>
       <Box pt={3} display="flex" flexDirection="column" alignItems="center">
         {(props.contact.phone && !phoneVisble) && <ContactButton onClick={handleClick} variant="primary"><Icon call></Icon><Text pl={2}>Voir le numéro</Text></ContactButton>}
-        {phoneVisble && <ContactButton variant="inverse"><Icon call></Icon><Text pl={2}>{props.contact.phone}</Text></ContactButton>}
+        {phoneVisble && <a href={`tel:${props.contact.phone}`}><ContactButton variant="inverse"><Icon call></Icon><Text pl={2}>{props.contact.phone}</Text></ContactButton></a>}
         {props.contact.email && <ContactButton onClick={contactByEmail} variant="primary"><Icon email></Icon><Text pl={2}>Envoyer une message</Text></ContactButton>}
       </Box>
     </Box>

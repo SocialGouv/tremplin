@@ -54,7 +54,7 @@ const berat = {
 
   contacts: [{
     name: 'Evelyne TEYSSEDRE',
-    phone: '05.34.47.85.60',
+    phone: '05 34 47 85 60',
     position: 'Pharmacienne',
     email: 'maisonmedicale31@orange.fr'
   }
