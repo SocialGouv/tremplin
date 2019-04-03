@@ -1,6 +1,6 @@
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faIgloo, faMapMarkerAlt, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faIgloo, faMapMarkerAlt, faPhone, faUser, faMailBulk } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Component } from 'react';
 
@@ -9,7 +9,8 @@ interface IconProps {
   mapMarker?: boolean;
   star?: boolean;
   user?: boolean;
-  call?: boolean
+  call?: boolean;
+  email?: boolean;
 
   color?: string;
   size?: SizeProp;
@@ -33,6 +34,8 @@ export class Icon extends Component<IconProps> {
       icon = faUser;
     } else if (props.call) {
       icon = faPhone;
+    } else if (props.email) {
+      icon = faMailBulk;
     }
     return icon;
   }

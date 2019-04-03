@@ -20,3 +20,11 @@ const doTrackPageChange = url => {
   ReactPiwik.push(["setGenerationTimeMs", 0]);
   ReactPiwik.push(["trackPageView"]);
 };
+
+export const trackContactPhone = (value) => {
+  ReactPiwik.push(['trackEvent', 'offre', 'contact-phone', value]);
+}
+
+export const trackContactEmail = (value) => {
+  ReactPiwik.push(['trackEvent', 'offre', 'contact-email', value]);
+}

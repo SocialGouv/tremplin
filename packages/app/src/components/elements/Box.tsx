@@ -1,7 +1,7 @@
 import { styled, TypographyProps, typographyStyle } from "@components/styles";
-import { backgroundImage, BackgroundImageProps, backgroundPosition, BackgroundPositionProps, backgroundRepeat, BackgroundRepeatProps, border, BorderProps, borders, BordersProps, bottom, BottomProps, color, ColorProps, height, HeightProps, position, PositionProps, space, SpaceProps, width, WidthProps, zIndex, ZIndexProps, borderColor, BorderColorProps, flex, FlexProps, textAlign, TextAlignProps } from "styled-system";
+import { alignItems, AlignItemsProps, backgroundImage, BackgroundImageProps, backgroundPosition, BackgroundPositionProps, backgroundRepeat, BackgroundRepeatProps, border, borderColor, BorderColorProps, BorderProps, borders, BordersProps, bottom, BottomProps, color, ColorProps, display, DisplayProps, flex, flexDirection, FlexDirectionProps, FlexProps, height, HeightProps, justifyContent, JustifyContentProps, maxWidth, MaxWidthProps, position, PositionProps, space, SpaceProps, textAlign, TextAlignProps, width, WidthProps, zIndex, ZIndexProps } from "styled-system";
 
-export interface BoxProps extends TextAlignProps, FlexProps, BorderColorProps, ZIndexProps, BottomProps, WidthProps, SpaceProps, ColorProps, PositionProps, BorderProps, BordersProps, BackgroundImageProps, BackgroundPositionProps, BackgroundRepeatProps, HeightProps, TypographyProps {
+export interface BoxProps extends AlignItemsProps, JustifyContentProps, FlexDirectionProps, DisplayProps, MaxWidthProps, TextAlignProps, FlexProps, BorderColorProps, ZIndexProps, BottomProps, WidthProps, SpaceProps, ColorProps, PositionProps, BorderProps, BordersProps, BackgroundImageProps, BackgroundPositionProps, BackgroundRepeatProps, HeightProps, TypographyProps {
 
 }
 
@@ -27,7 +27,14 @@ export const Box = styled.div<BoxProps>`
   /*LAYOUT*/
   ${height}
   ${width}
+  ${maxWidth}
+  ${display}
+
+  /*FLEX WRAPPER*/
   ${flex}
+  ${flexDirection}
+  ${justifyContent}
+  ${alignItems}
 
   ${textAlign}
 
