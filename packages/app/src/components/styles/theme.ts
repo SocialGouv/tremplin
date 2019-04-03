@@ -1,8 +1,18 @@
+import { border } from 'styled-system';
+
+type ButtonStyleType = Readonly<{
+  color: string;
+  backgroundColor: string;
+  fontSize: number;
+  border: string;
+}>;
+
 export interface ThemeInterface {
   fonts: string[];
   fontSizes: number[];
   fontWeights: number[];
   space: number[];
+  lineHeights: number[];
   colors: {
     black: string[],
     blue: string[],
@@ -10,9 +20,16 @@ export interface ThemeInterface {
     grey: string[],
     red: string,
     white: string
+  },
+  buttons: {
+    primary: ButtonStyleType;
+    inverse: ButtonStyleType;
   }
 
 }
+
+const colorWhite = "#FFFFFF";
+const colorRed = "#FF6558";
 
 export const theme: ThemeInterface = {
 
@@ -27,6 +44,10 @@ export const theme: ThemeInterface = {
   space: [
     // margin and padding
     0, 4, 8, 16, 32, 64, 128, 256, 512
+  ],
+
+  lineHeights: [
+    0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2
   ],
 
   colors: {
@@ -75,7 +96,23 @@ export const theme: ThemeInterface = {
       "rgba(94, 109, 119, 0.3)",
       "rgba(94, 109, 119, 0.2)",
     ],
-    red: "#FF6558",
-    white: "#FFFFFF",
+    red: colorRed,
+    white: colorWhite,
+  },
+  // tslint:disable-next-line: object-literal-sort-keys
+  buttons: {
+    primary: {
+      backgroundColor: colorRed,
+      border: `solid 1px ${colorWhite}`,
+      color: colorWhite,
+      fontSize: 15
+    },
+    // tslint:disable-next-line: object-literal-sort-keys
+    inverse: {
+      backgroundColor: colorWhite,
+      border: `solid 1px ${colorRed}`,
+      color: colorRed,
+      fontSize: 15
+    }
   }
 }
