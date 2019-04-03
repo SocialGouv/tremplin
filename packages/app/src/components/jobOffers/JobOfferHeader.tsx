@@ -1,20 +1,12 @@
 import { Box } from "@components/elements";
-import { Text } from "@components/elements/Text";
-import { Container } from "@components/layout/Container";
-import { Component } from "react";
+import { styled } from "@components/styles";
 
-export class JobOfferHeader extends Component<{ imgUrl: string, title?: string, hint?: string }> {
+const ImageBox = styled(Box)`
+  background-size: cover;
+`
 
-  public render() {
-    return (
-      <Box pt={7} pb={5} backgroundImage={this.props.imgUrl} backgroundPosition="center" backgroundRepeat="no-repeat">
-        <Container>
-          {this.props.title && <Text as="div" fontSize={7} color="white" paddingBottom={1} >{this.props.title}</Text>}
-          {this.props.hint && <Text as="div" fontSize={3} color="white" >{this.props.hint}</Text>}
-        </Container>
-      </Box>
+export const JobOfferHeader = (props: { imgUrl: string }) => {
+   return (
+      <ImageBox pt={7} pb={5} backgroundImage={props.imgUrl} backgroundPosition="center" backgroundRepeat="no-repeat" />
     )
-  }
-
 }
-
