@@ -72,6 +72,7 @@ export const theme: ThemeInterface = {
       "rgba(0, 105, 204, 0.4)",
       "rgba(0, 105, 204, 0.3)",
       "rgba(0, 105, 204, 0.2)",
+      "rgba(0, 105, 204, 0.1)",
     ],
     brown: [
       "rgba(145, 97, 19, 1)",
@@ -95,6 +96,7 @@ export const theme: ThemeInterface = {
       "rgba(94, 109, 119, 0.4)",
       "rgba(94, 109, 119, 0.3)",
       "rgba(94, 109, 119, 0.2)",
+      "rgba(94, 109, 119, 0.1)",
     ],
     red: colorRed,
     white: colorWhite,

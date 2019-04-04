@@ -32,7 +32,7 @@ const JobOfferPage = (props: JobOfferProps) => {
       <JobOfferHeader jobOffer={jobOffer} />
       <JobOfferBlock>
         <JobOfferBlockHeader1 title={jobOffer.title} />
-        <Box pb={3}>
+        <Box pb={4}>
           <Icon color="rgba(0, 105, 204, 0.87)" user></Icon>
           <Text pl={2} fontSize={2}>{jobOffer.contractType} en {jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
         </Box>
@@ -49,23 +49,26 @@ const JobOfferPage = (props: JobOfferProps) => {
           </Item>
         </Flex>
       </JobOfferBlock>
-
       <JobOfferBlock>
         <JobOfferBlockHeader title="Conditions d'exercice" >
-          <Box pb={3}>
-            {jobOffer.secretariatType.map((sec, index) => <Text key={index} color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
-          </Box>
+          {jobOffer.secretariatType.map((sec, index) => <Text key={index} color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
         </JobOfferBlockHeader>
         <JobOfferSection>
           <JobOfferSectionContent content={jobOffer.workCondition} />
         </JobOfferSection>
       </JobOfferBlock>
 
+      <JobOfferBlock color='grey'>
+        <JobOfferSection title="Quelques photos">
+          <Flex>
+            {jobOffer.photos.map((photo, index) => <Box key={index} pr={3}><img alt={photo.description} height="190px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
+          </Flex>
+        </JobOfferSection>
+      </JobOfferBlock>
+
       <JobOfferBlock>
         <JobOfferBlockHeader title="Structure d'accueil" >
-          <Box pb={3}>
-            <Text color="grey.1" fontSize={4} pr={3} >• Urgences les plus proches à {jobOffer.emergencyDistance} km</Text>
-          </Box>
+          <Text color="grey.1" fontSize={4} pr={3} >• Urgences les plus proches à {jobOffer.emergencyDistance} km</Text>
         </JobOfferBlockHeader>
 
         <JobOfferSection>
@@ -73,7 +76,7 @@ const JobOfferPage = (props: JobOfferProps) => {
         </JobOfferSection>
       </JobOfferBlock>
 
-      <JobOfferBlock grey>
+      <JobOfferBlock color='brown'>
         <JobOfferBlockHeader title="Cadre de vie" />
         <JobOfferSection title="Vie de famille">
           <JobOfferSectionContent content={jobOffer.lifestyleFamily} />

@@ -6,8 +6,8 @@ export class JobOfferSection extends Component<{ title?: string }> {
 
   public render() {
     return (
-      <Box pb={3}>
-        {this.props.title && <Text as="div" fontSize={6} color="blue.1" pb={2}>{this.props.title}</Text>}
+      <Box pt={1} pb={1} >
+        {this.props.title && <Text as="div" fontSize={4} color="blue.1" pb={2}>{this.props.title}</Text>}
         {this.props.children}
       </Box>
     )
@@ -16,7 +16,7 @@ export class JobOfferSection extends Component<{ title?: string }> {
 
 export const JobOfferSectionContent = (props: { content: string }) => {
   return (
-    <Text pb={4} fontSize={2} color="black.1" lineHeight="24px">
+    <Text fontSize={2} color="black.1" lineHeight="24px">
       <div dangerouslySetInnerHTML={{ __html: `${props.content}` }} />
     </Text>
   )
