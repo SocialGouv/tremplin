@@ -29,7 +29,7 @@ const JobOfferPage = (props: JobOfferProps) => {
 
   return (
     <PageLayout>
-      <JobOfferHeader imgUrl="url('static/assets/photos/heading.jpg')" />
+      <JobOfferHeader jobOffer={jobOffer} />
       <JobOfferBlock>
         <JobOfferBlockHeader1 title={jobOffer.title} />
         <Box pb={3}>

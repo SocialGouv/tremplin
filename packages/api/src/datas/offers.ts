@@ -8,6 +8,17 @@ const berat = {
   advantage2: "Possibilité de secrétariat",
   advantage3: "Un bassin de vie dynamique offrant tous les services",
 
+  photos: [{
+    header: true,
+    name: 'BERAT201904_02.jpg',
+    description: 'Maison de santé de Bérat'
+  },
+  {
+    header: false,
+    name: 'BERAT201904_01.jpg',
+    description: 'Salle d\'attente'
+  }],
+
   address: {
     address: '85 Route de Rieumes, 31370 Bérat',
     street: '85 Route de Rieumes',
@@ -23,7 +34,7 @@ const berat = {
   structureType: 'Maison de santé',
   contractType: 'Libéral',
   secretariatType: ['Pas de secretariat', 'Rendez vous en ligne']
-,
+  ,
   workCondition: 'La maison de santé de Berat cherche un second médecin généraliste pour compléter son équipe.\
   </br>\
   La maison de santé est composée d\'un médecin généraliste (Dr Yveline DESIREL) et de plusieurs paramédicaux (4 infirmières, une kinésithérapeute, un osthéopathe, 1 orthophoniste).\

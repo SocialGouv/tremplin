@@ -1,4 +1,4 @@
-import { StructureType } from './jobOffer';
+import { StructureType, Photo } from './jobOffer';
 export type StructureType = 'Hôpital' | 'Clinique' | 'Maison de santé' | 'Centre de santé' | 'Cabinet de groupe' | 'Cabinet individuel'
 export type ContractType = 'Libéral' | 'Salarié';
 export type SecretariatType = 'Secrétariat sur place' | 'Plateforme téléphonique' | 'Rendez-vous en ligne' | 'Pas de secretariat';
@@ -20,6 +20,12 @@ export type Contact = Readonly<{
   email: '';
 }>;
 
+export type Photo = Readonly<{
+  name: string;
+  header: boolean;
+  description: string;
+}>;
+
 export interface JobOffer {
   reference: '';
   publishedAt: Date;
@@ -28,6 +34,8 @@ export interface JobOffer {
   advantage1: '';
   advantage2: '';
   advantage3: '';
+
+  photos: Photo[];
 
   address: Address;
   emergencyDistance: number;
@@ -55,6 +63,8 @@ export const fakeJobOffer: JobOffer = {
   advantage1: '',
   advantage2: '',
   advantage3: '',
+
+  photos: [],
 
   address: {
     address: '',
