@@ -4,9 +4,8 @@ module.exports = {
       "module-resolver",
       {
         "alias": {
+          "@api": "./src/api",
           "@components": "./src/components",
-          "@domain": "./src/domain",
-          "@repository": "./src/repository",
         },
         "root": [
           "./"

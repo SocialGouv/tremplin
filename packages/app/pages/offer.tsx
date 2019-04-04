@@ -1,11 +1,10 @@
+import { fakeJobOffer, JobOffer, jobOfferRepository } from '@api';
 import { Box, Icon } from '@components/elements';
 import { Text } from '@components/elements/Text';
 import { JobOfferBlock, JobOfferBlockHeader, JobOfferBlockHeader1, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Flex } from '@components/layout/flex/Flex';
 import { asString } from '@components/utils';
-import { fakeJobOffer, JobOffer } from '@domain';
-import { jobOfferRepository } from '@repository';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 

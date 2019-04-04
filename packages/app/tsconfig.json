@@ -20,11 +20,8 @@
       "@components/*": [
         "./src/components/*"
       ],
-      "@repository": [
-        "./src/repository"
-      ],
-      "@domain": [
-        "./src/domain"
+      "@api": [
+        "./src/api"
       ],
     },
   }

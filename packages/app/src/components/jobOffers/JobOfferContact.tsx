@@ -1,10 +1,10 @@
+import { Contact } from "@api";
 import { Box, Button, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Flex } from "@components/layout";
 import { Container } from "@components/layout/Container";
 import { trackContactEmail, trackContactPhone } from "@components/piwik";
 import { media, styled } from "@components/styles";
-import { Contact } from "@domain";
 import { useState } from "react";
 
 const ContactLabelBox = styled(Box)`

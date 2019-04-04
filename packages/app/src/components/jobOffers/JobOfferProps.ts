@@ -1,4 +1,4 @@
-import { JobOffer } from "@domain";
+import { JobOffer } from "@api";
 
 export interface JobOfferProps {
   jobOffer: JobOffer;

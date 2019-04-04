@@ -1,10 +1,9 @@
+import { JobOffer, jobOfferRepository } from "@api";
 import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { JobOfferListItem } from "@components/jobOffers";
 import { Container } from "@components/layout/Container";
 import PageLayout from "@components/layout/PageLayout";
-import { JobOffer } from "@domain";
-import { jobOfferRepository } from "@repository";
 import { useEffect, useState } from "react";
 
 export default () => {

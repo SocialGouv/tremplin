@@ -1,7 +1,7 @@
+import { Address } from "@api";
 import { Box, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { MapViewProps } from "@components/map";
-import { Address } from "@domain";
 import dynamic from "next/dynamic";
 import { Fragment } from "react";
 // https://github.com/zeit/next.js/issues/4515
