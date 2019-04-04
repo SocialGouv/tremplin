@@ -1,15 +1,13 @@
-import getConfig from "next/config";
 import Router from "next/router";
 import ReactPiwik from "react-piwik";
 import { debug } from "util";
 
-const config = getConfig();
 
-export const piwikInit = () => {
+export const piwikInit = (piwikURL, siteId) => {
   const piwik = new ReactPiwik({
-    siteId: config.publicRuntimeConfig.PIWIK_SITE_ID,
+    siteId: siteId,
     trackErrors: true,
-    url: config.publicRuntimeConfig.PIWIK_URL,
+    url: piwikURL,
   });
   Router.events.on('routeChangeStart', (url) => {
     doTrackPageChange(url);

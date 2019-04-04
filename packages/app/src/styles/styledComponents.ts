@@ -1,4 +1,4 @@
-import { ThemeInterface } from '@styles/theme';
+import { ThemeInterface } from '@styles';
 import * as styledComponents from "styled-components";
 
 const {
