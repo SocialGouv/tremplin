@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <link rel="shortcut icon" href="/static/favicon.ico" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
           <link rel="stylesheet" href="/static/css/leaflet/leaflet.css" />
