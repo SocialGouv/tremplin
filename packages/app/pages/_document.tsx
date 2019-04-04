@@ -33,6 +33,11 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <title>Tremplin</title>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta name="description" content="" />
+          <meta name="author" content="" />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
