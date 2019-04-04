@@ -4,7 +4,7 @@ import { Text } from '@components/elements/Text';
 import { JobOfferBlock, JobOfferBlockHeader, JobOfferBlockHeader1, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@components/jobOffers';
 import { Item, PageLayout } from '@components/layout';
 import { Flex } from '@components/layout/flex/Flex';
-import { asString } from '@components/utils';
+import { asString } from '@util';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 

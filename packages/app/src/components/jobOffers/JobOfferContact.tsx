@@ -3,8 +3,8 @@ import { Box, Button, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Flex } from "@components/layout";
 import { Container } from "@components/layout/Container";
-import { trackContactEmail, trackContactPhone } from "@components/piwik";
 import { media, styled } from "@components/styles";
+import { logger } from "@util";
 import { useState } from "react";
 
 const ContactLabelBox = styled(Box)`
@@ -40,13 +40,13 @@ const JobOfferContact = (props: { contact: Contact }) => {
 
   const handleClick = () => {
     setPhoneVisible(true);
-    trackContactPhone(props.contact.name);
+    logger.trackEvent("offre", "contact-phone", props.contact.name);
   }
 
   const contactByEmail = () => {
     if (window) {
       window.location.href = `mailto:${props.contact.email}`;
-      trackContactEmail(props.contact.name);
+      logger.trackEvent("offre", "contact-email", props.contact.name);
     }
   }
 

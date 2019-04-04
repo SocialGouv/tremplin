@@ -1,5 +1,5 @@
-import "@components/piwik";
 import { theme } from "@components/styles";
+import { logger } from "@util";
 import App, { Container, NextAppContext } from "next/app";
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -16,8 +16,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     cursor: pointer;
   }
-
 `
+
+// init PiwikReact
+logger.init();
 
 export default class MyApp extends App {
 

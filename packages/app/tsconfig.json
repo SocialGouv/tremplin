@@ -23,6 +23,9 @@
       "@api": [
         "./src/api"
       ],
+      "@util": [
+        "./src/util"
+      ],
     },
   }
 }
