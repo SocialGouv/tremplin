@@ -1,4 +1,4 @@
-import { theme } from "@components/styles";
+import { theme } from "@styles";
 import { logger } from "@util";
 import App, { Container, NextAppContext } from "next/app";
 import React from "react";

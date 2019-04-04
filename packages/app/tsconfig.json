@@ -26,6 +26,12 @@
       "@util": [
         "./src/util"
       ],
+      "@features/*": [
+        "./src/features/*"
+      ],
+      "@styles": [
+        "./src/styles"
+      ]
     },
   }
 }

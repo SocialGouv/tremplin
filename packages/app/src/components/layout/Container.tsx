@@ -1,5 +1,4 @@
-import { styled } from "@components/styles";
-import { css } from "@components/styles/styledComponents";
+import { css, styled } from "@styles";
 
 interface ContainerProps {
   full?: boolean;

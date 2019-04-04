@@ -1,5 +1,4 @@
-import { media, styled } from "@components/styles";
-import { css } from "@components/styles/styledComponents";
+import { css, media, styled } from "@styles";
 
 interface FlexProps {
   inline?: boolean;

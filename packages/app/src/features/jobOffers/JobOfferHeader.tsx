@@ -1,5 +1,5 @@
 import { Box } from "@components/elements";
-import { styled } from "@components/styles";
+import { styled } from "@styles";
 
 const ImageBox = styled(Box)`
   background-size: cover;

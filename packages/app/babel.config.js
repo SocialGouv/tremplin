@@ -6,6 +6,8 @@ module.exports = {
         "alias": {
           "@api": "./src/api",
           "@components": "./src/components",
+          "@features": "./src/features",
+          "@styles": "./src/styles",
           "@util": "./src/util",
         },
         "root": [

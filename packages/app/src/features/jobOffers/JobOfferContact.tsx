@@ -3,7 +3,7 @@ import { Box, Button, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Flex } from "@components/layout";
 import { Container } from "@components/layout/Container";
-import { media, styled } from "@components/styles";
+import { media, styled } from "@styles";
 import { logger } from "@util";
 import { useState } from "react";
 

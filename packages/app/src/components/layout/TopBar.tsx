@@ -1,10 +1,9 @@
 import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
-import { media, styled } from "@components/styles";
+import { media, styled } from "@styles";
 import { Container } from "./Container";
 import { Flex } from "./flex/Flex";
 import { Marianne } from "./marianne";
-import Link from "next/link";
 
 const ResponsiveBox = styled(Box)`
   ${media.phone`display: none;`}
