@@ -9,7 +9,7 @@ const berat = {
   advantage3: "Un bassin de vie dynamique offrant tous les services",
 
   photos: [{
-    header: true,
+    header: false,
     name: 'BERAT201904_02.jpg',
     description: 'Maison de santé de Bérat'
   },
@@ -54,8 +54,10 @@ const berat = {
   La commune est classée en zone d\'action complémentaire. L\'installation est possible pour les titulaires d\'un contrat d\'engagement de service public. Des aides à l\'installation sont également possibles (notamment le contrat de praticien territorial de médecine générale).',
   medicalStructureWebSite: '',
 
-  lifestyleFamily: 'La commune de Bérat propose un cadre de vie agréable avec des services publics ( crèche, assistantes maternelle, école primaire, poste, médiathèque, mairie), des commerces de proximité (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse,banque, marché, supérette), des grandes surfaces à proximité et un fort tissu associatif (théatre, danse, photo, sport, écriture, ...)',
-  lifestyleTerritory: '- Autoroute A64 à 7 km\
+  lifestyle: 'La commune de Bérat propose un cadre de vie agréable avec des services publics ( crèche, assistantes maternelle, école primaire, poste, médiathèque, mairie), des commerces de proximité (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse,banque, marché, supérette), des grandes surfaces à proximité et un fort tissu associatif (théatre, danse, photo, sport, écriture, ...)\
+  </br>\
+  </br>\
+  - Autoroute A64 à 7 km\
   <br/>\
   - Gare à 7km\
   <br/>\

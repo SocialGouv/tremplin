@@ -78,11 +78,8 @@ const JobOfferPage = (props: JobOfferProps) => {
 
       <JobOfferBlock color='brown'>
         <JobOfferBlockHeader title="Cadre de vie" />
-        <JobOfferSection title="Vie de famille">
-          <JobOfferSectionContent content={jobOffer.lifestyleFamily} />
-        </JobOfferSection>
-        <JobOfferSection title="Territoire">
-          <JobOfferSectionContent content={jobOffer.lifestyleTerritory} />
+        <JobOfferSection >
+          <JobOfferSectionContent content={jobOffer.lifestyle} />
         </JobOfferSection>
       </JobOfferBlock>
       <JobOfferContacts contacts={jobOffer.contacts} />

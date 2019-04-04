@@ -1,4 +1,4 @@
-import { StructureType, Photo } from './jobOffer';
+import { Photo, StructureType } from './jobOffer';
 export type StructureType = 'Hôpital' | 'Clinique' | 'Maison de santé' | 'Centre de santé' | 'Cabinet de groupe' | 'Cabinet individuel'
 export type ContractType = 'Libéral' | 'Salarié';
 export type SecretariatType = 'Secrétariat sur place' | 'Plateforme téléphonique' | 'Rendez-vous en ligne' | 'Pas de secretariat';
@@ -47,8 +47,7 @@ export interface JobOffer {
   medicalStructure: '';
   medicalStructureWebSite: '';
 
-  lifestyleFamily: '';
-  lifestyleTerritory: '';
+  lifestyle: '';
 
   contacts: Contact[];
 
@@ -85,8 +84,7 @@ export const fakeJobOffer: JobOffer = {
   medicalStructure: '',
   medicalStructureWebSite: '',
 
-  lifestyleFamily: '',
-  lifestyleTerritory: '',
+  lifestyle: '',
 
   contacts: [
 
