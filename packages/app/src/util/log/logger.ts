@@ -12,7 +12,7 @@ class Logger {
 
   public init() {
     if (this.piwik.enabled) {
-      piwikInit(this.piwik.siteURL, this.piwik.siteURL);
+      piwikInit(this.piwik.siteURL, this.piwik.siteId);
     }
   }
 
