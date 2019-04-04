@@ -4,6 +4,7 @@ import { Text } from "@components/elements/Text";
 import { Container } from "@components/layout/Container";
 import PageLayout from "@components/layout/PageLayout";
 import { JobOfferListItem } from "@features/jobOffers";
+import { getEnvironment } from "@util";
 import { useEffect, useState } from "react";
 
 export default () => {
@@ -31,7 +32,7 @@ export default () => {
       <Box bg="#fff0e4" height="40px" textAlign="center" pt={3} >
         <Text fontSize={1} >Le produit est en construction, il n'est pas encore accessible au public.</Text>
       </Box>
-      {process.env.NODE_ENV === 'development' &&
+      {getEnvironment().home.showOffers &&
         <Container>
           <ul>
             {jobOffers.map(jobOffer => <JobOfferListItem key={jobOffer.reference} jobOffer={jobOffer}></JobOfferListItem>)}
