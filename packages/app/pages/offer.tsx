@@ -33,15 +33,15 @@ const JobOfferPage = (props: JobOfferProps) => {
       <JobOfferBlock>
         <JobOfferBlockHeader1 title={jobOffer.title} />
         <Box pb={4}>
-          <Icon color="rgba(0, 105, 204, 0.87)" user></Icon>
+          <Icon color="rgba(0, 105, 204, 0.87)" iconPrefix='far' iconName='user'></Icon>
           <Text pl={2} fontSize={2}>{jobOffer.contractType} en {jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
         </Box>
         <Flex justifyBetween>
           <Item basis="calc(50% - 10px)" >
             <Box marginTop="10%">
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage1}</Text></Box>
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage2}</Text></Box>
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" star></Icon><Text pl={2} >{jobOffer.advantage3}</Text></Box>
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage1}</Text></Box>
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage2}</Text></Box>
+              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage3}</Text></Box>
             </Box>
           </Item>
           <Item basis="calc(50% - 10px)">

@@ -1,6 +1,8 @@
+import { initIconLibrary } from "@components/elements/Icon";
 import { theme } from "@styles";
 import { logger } from "@util";
 import App, { Container, NextAppContext } from "next/app";
+import Head from "next/head";
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
@@ -20,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
 // init PiwikReact
 logger.init();
+initIconLibrary();
 
 export default class MyApp extends App {
 
@@ -42,6 +45,9 @@ export default class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <React.Fragment>
+            <Head>
+              <title>Tremplin</title>
+            </Head>
             <GlobalStyle></GlobalStyle>
             <Component {...pageProps} />
           </React.Fragment>

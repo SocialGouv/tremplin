@@ -33,7 +33,6 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Tremplin</title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
           <meta name="description" content="" />
