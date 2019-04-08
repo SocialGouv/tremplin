@@ -1,10 +1,12 @@
-import { border } from 'styled-system';
 
 type ButtonStyleType = Readonly<{
   color: string;
   backgroundColor: string;
   fontSize: number;
   border: string;
+  "&:hover": {
+    opacity: number,
+  },
 }>;
 
 export interface ThemeInterface {
@@ -107,14 +109,20 @@ export const theme: ThemeInterface = {
       backgroundColor: colorRed,
       border: `solid 1px ${colorWhite}`,
       color: colorWhite,
-      fontSize: 15
+      fontSize: 15,
+      "&:hover": {
+        opacity : 0.8,
+      }
     },
     // tslint:disable-next-line: object-literal-sort-keys
     inverse: {
       backgroundColor: colorWhite,
       border: `solid 1px ${colorRed}`,
       color: colorRed,
-      fontSize: 15
+      fontSize: 15,
+      "&:hover": {
+        opacity : 0.8,
+      }
     }
   }
 }
