@@ -72,7 +72,7 @@ const JobOfferContact = (props: { contact: Contact }) => {
         </a>}
         {props.contact.email &&
         <ContactButton onClick={contactByEmail} variant="primary">
-          <Icon iconPrefix='fas' iconName='mailbox'></Icon><Text pl={2}>Envoyer une message</Text>
+          <Icon iconPrefix='fas' iconName='envelope'></Icon><Text pl={2}>Envoyer un email</Text>
         </ContactButton>}
       </Box>
     </Box>

@@ -1,11 +1,11 @@
 import { IconPack, library, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faIgloo, faMailBulk, faMapMarkerAlt, faPhone, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faIgloo, faMapMarkerAlt, faPhone, faStar, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Component } from 'react';
 
 interface IconProps {
-  iconName: 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'mailbox';
+  iconName: 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'envelope';
   iconPrefix: 'far' | 'fas';
 
   color?: string;
@@ -19,11 +19,11 @@ export const initIconLibrary = () => {
   library.add(farPack);
   library.add(faCheckCircle);
   library.add(faIgloo);
-  library.add(faMailBulk);
   library.add(faMapMarkerAlt);
   library.add(faPhone);
   library.add(faUser);
   library.add(faStar);
+  library.add(faEnvelope);
 
 }
 
