@@ -21,7 +21,7 @@ const BetaGouvLink = styled.a`
 export const TopBar = () => {
   return (
     <Box bg="color.white" height="100px" border="1px solid #CCCCCC" >
-      <Container full>
+      <Container>
         <Flex full alignCenter noResponsive>
           <Marianne height="30px" width="60px"></Marianne>
           <BetaGouvLink href="https://beta.gouv.fr/startups/tremplin.html" target="_BLANK">

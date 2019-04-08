@@ -15,7 +15,7 @@ const ContactLabelBox = styled(Box)`
 export const JobOfferContacts = (props: { contacts: Contact[] }) => {
 
   return (
-    <Box bg="red" pt={3} pb={3} /*zIndex={1000} position="fixed" bottom="0"*/ width="100%" borderColor="grey.0" border="1px solid" >
+    <Box bg="red" pt={3} pb={3} /*zIndex={1000} position="fixed" bottom="0"*/ borderColor="grey.0" border="1px solid" >
       <Container>
         <Flex>
           <ContactLabelBox pr={5} pt={4} maxWidth="150px" >
