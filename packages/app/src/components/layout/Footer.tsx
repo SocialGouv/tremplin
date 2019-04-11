@@ -3,7 +3,6 @@ import { Text } from "@components/elements/Text";
 import { Component } from "react";
 import styled from "styled-components";
 import { Container } from "./Container";
-import { Flex, Item } from "./flex/Flex";
 import { Marianne } from "./marianne";
 
 const StyledLink = styled.a`
@@ -17,20 +16,16 @@ export class Footer extends Component<{}> {
     return (
       <Box bg="rgba(184, 196, 204, 0.2)" height="250px">
         <Container>
-          <Box paddingTop={3}>
-            <Flex>
-              <Item >
-                <Marianne width="150px" height="82px"></Marianne>
-              </Item>
-              <Item>
-                <Box paddingTop={4} paddingBottom={5} paddingLeft={6}>
-                  <Text as="div" fontSize={4} color="black.1">Un projet conçu au sein de l’incubateur des ministères sociaux.</Text>
-                </Box>
-                <Box paddingTop={3} paddingBottom={3} paddingLeft={6}>
-                  <Text color="grey.1" fontSize={2}>© 2019 Tremplin | <StyledLink href="mailto:contact@tremplin.beta.gouv.fr">Contact</StyledLink></Text>
-                </Box>
-              </Item>
-            </Flex>
+          <Box display="flex" paddingTop={3} alignContent={["center", "flex-start", "flex-start"]} alignItems={["flex-start", "center", "center"]} flexDirection={["column", "row", "row"]}>
+            <Box flex="0 1 auto" pb={2}>
+              <Marianne width={["65px","150px","150px"]} height={["40px","82px","82px"]}></Marianne>
+            </Box>
+            <Box paddingLeft={[0, 4, 4]} flex="0 1 auto">
+              <Text as="div" fontSize={[3,4,4]} color="rgba(51, 51, 51, 0.7)">Un projet conçu au sein de l’incubateur des ministères sociaux.</Text>
+            </Box>
+          </Box>
+          <Box paddingTop={3} paddingBottom={3} >
+            <Text color="black.0" fontSize={2}>© 2019 Tremplin | <StyledLink href="mailto:contact@tremplin.beta.gouv.fr">Contact</StyledLink></Text>
           </Box>
         </Container>
       </Box>

@@ -1,4 +1,5 @@
-import { Box } from "@components/elements";
+import { JobOffer } from "@api";
+import { Box, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Container } from "@components/layout/Container";
 
@@ -26,26 +27,19 @@ const getColor = (val?: ColorType) => {
   }
 }
 
+const H1 = (props: { children?: any }) => <Text as="h1" pt={2} pb={[4, 3, 2]} fontSize={[7, 9, 9]} fontWeight={4} color="black.0">{props.children}</Text>;
+const H2 = (props: { children?: any }) => <Text as="h2" fontSize={6} pt={2} pb={2} fontWeight="bold" color="rgba(0, 105, 204, 0.87)">{props.children}</Text>;
 
-export const JobOfferBlockHeader1 = (props: {
-  title: string,
-  hint?: string
-}) => {
+
+export const JobOfferBlockHeader1 = (props: { jobOffer: JobOffer }) => {
   return (
-    <Box pb={2}>
-      {props.title && <Text as="div" fontSize={7} fontWeight={4} color="black1.2">{props.title}</Text>}
+    <Box pb={3} borderBottom={["1px solid #cccccc", "0px", "0px"]}>
+      <H1>{props.jobOffer.title}</H1>
+      <Box fontSize={2} display="flex" alignItems="center">
+        <Icon size="2x" color="rgba(0, 105, 204, 0.87)" iconPrefix='fas' iconName='user'></Icon>
+        <Text pl={3} color="grey.0" >{props.jobOffer.contractType} en {props.jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
+      </Box>
     </Box>
   )
 }
-
-export const JobOfferBlockHeader = (props: {
-  title: string,
-  children?: any
-}) => {
-  return (
-    <Box pb={3}>
-      <Text as="div" pb={2} fontSize={7} fontWeight={5} color="blue.2">{props.title}</Text>
-      {props.children}
-    </Box>
-  )
-}
+export const JobOfferBlockHeader2 = (props: { title: string, children?: any }) => <Box pb={3}><H2>{props.title}</H2></Box>

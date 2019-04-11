@@ -11,8 +11,9 @@ const MapView = dynamic<MapViewProps>((() => import("@components/map/MapView")) 
 export const JobOfferMap = (props: { address: Address }) => {
   return (
     <Fragment>
-      <Box pb={3} fontSize={2} color="grey.1">
-        <Icon iconPrefix='fas' iconName='map-marker-alt'></Icon><Text pl={3}>{props.address.address}</Text>
+      <Box display="flex" color="grey.0" alignItems="center" fontSize={2} pb={3}>
+        <Icon size="lg" iconPrefix='fas' iconName='map-marker-alt'></Icon>
+        <Text pl={3} >{props.address.address}</Text>
       </Box>
       <MapView lat={props.address.geoCode.lat} lng={props.address.geoCode.lng} markerLabel={props.address.city} zoom={9}></MapView>
     </Fragment>

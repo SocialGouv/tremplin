@@ -8,10 +8,10 @@ const Image = styled.img`
   margin-right: auto;
 `
 
-export const Marianne = (props: { height: string, width: string }) => {
+export const Marianne = (props: { height: any, width: any }) => {
   return (
     <Box padding={1} bg="white" width={props.width} height={props.height} borderColor="grey.5" border="1px solid">
-      <Image src="/static/assets/img/marianne.svg"></Image>
+      <Image width="100%" src="/static/assets/img/marianne.svg"></Image>
     </Box>
   )
 }

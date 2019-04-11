@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
   a {
     cursor: pointer;
   }
+
 `
 
 // init PiwikReact

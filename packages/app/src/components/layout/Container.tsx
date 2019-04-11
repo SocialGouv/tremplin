@@ -8,5 +8,5 @@ export const Container = styled.div<ContainerProps>`
   padding: 0 10% 0 10%;
   margin: 0px;
   overflow: auto;
-  ${props => props.full && css`height: 100%; width: 100%;`}
+  ${props => props.full && css`height: 100%; `}
 `;

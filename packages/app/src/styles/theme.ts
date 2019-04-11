@@ -31,14 +31,14 @@ export interface ThemeInterface {
 }
 
 const colorWhite = "#FFFFFF";
-const colorRed = "#FF6558";
+const colorRed = "rgba(255, 101, 88, 0.8)";
 
 export const theme: ThemeInterface = {
 
   fonts: ["Roboto", "Roboto Condensed"],
 
   fontSizes: [
-    12, 14, 16, 18, 20, 22, 24, 32, 48, 64, 72
+    14, 15, 16, 18, 20, 22, 24, 28, 32, 34
   ],
   fontWeights: [
     100, 200, 300, 400, 500, 600, 700, 800

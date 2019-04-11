@@ -8,7 +8,7 @@ export default class MapView extends Component<MapViewProps> {
   public render() {
     const position: LatLngExpression = [this.props.lat, this.props.lng]
     return (
-      <Map center={position} zoom={this.props.zoom} style={{ height: "300px", width: "100%" }}>
+      <Map center={position} zoom={this.props.zoom} style={{ height: "200px", width: "100%" }}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

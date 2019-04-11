@@ -1,9 +1,9 @@
 import { fakeJobOffer, JobOffer, jobOfferRepository } from '@api';
 import { Box, Icon } from '@components/elements';
 import { Text } from '@components/elements/Text';
-import { Item, PageLayout } from '@components/layout';
-import { Flex } from '@components/layout/flex/Flex';
-import { JobOfferBlock, JobOfferBlockHeader, JobOfferBlockHeader1, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
+import { PageLayout } from '@components/layout';
+import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
+import { styled } from '@styles';
 import { asString } from '@util';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -31,53 +31,51 @@ const JobOfferPage = (props: JobOfferProps) => {
     <PageLayout>
       <JobOfferHeader jobOffer={jobOffer} />
       <JobOfferBlock>
-        <JobOfferBlockHeader1 title={jobOffer.title} />
-        <Box pb={4}>
-          <Icon color="rgba(0, 105, 204, 0.87)" iconPrefix='far' iconName='user'></Icon>
-          <Text pl={2} fontSize={2}>{jobOffer.contractType} en {jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
-        </Box>
-        <Flex justifyBetween>
-          <Item basis="calc(50% - 10px)" >
-            <Box marginTop="10%">
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage1}</Text></Box>
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage2}</Text></Box>
-              <Box pt={3} pb={3}><Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon><Text pl={2} >{jobOffer.advantage3}</Text></Box>
-            </Box>
-          </Item>
-          <Item basis="calc(50% - 10px)">
+        <JobOfferBlockHeader1 jobOffer={jobOffer} />
+        <Box pt={3} display="flex" justifyContent="space-between" flexDirection={["column", "row", "row"]}>
+          <Box display="flex" flexDirection="column" justifyContent="space-around" pb={2} flex="0 1 calc(50% - 10px)">
+            <AdvantageBox advantage={jobOffer.advantage1} />
+            <AdvantageBox advantage={jobOffer.advantage2} />
+            <AdvantageBox advantage={jobOffer.advantage3} />
+          </Box>
+          <Box flex="0 1 calc(50% - 10px)" pt={[2, 0, 0]}>
             <JobOfferMap address={jobOffer.address}></JobOfferMap>
-          </Item>
-        </Flex>
+          </Box>
+        </Box>
       </JobOfferBlock>
       <JobOfferBlock>
-        <JobOfferBlockHeader title="Conditions d'exercice" >
-          {jobOffer.secretariatType.map((sec, index) => <Text key={index} color="grey.1" fontSize={4} pr={3} >• {sec}</Text>)}
-        </JobOfferBlockHeader>
+        <JobOfferBlockHeader2 title="Conditions d'exercice" />
+        <Box display="flex" flexDirection={["column", "row", "row"]}>
+          {jobOffer.secretariatType.map((sec, index) => <SectionHint key={index} hint={sec} />)}
+        </Box>
         <JobOfferSection>
           <JobOfferSectionContent content={jobOffer.workCondition} />
         </JobOfferSection>
       </JobOfferBlock>
 
       <JobOfferBlock color='grey'>
-        <JobOfferSection title="Quelques photos">
-          <Flex>
-            {jobOffer.photos.map((photo, index) => <Box key={index} pr={3}><img alt={photo.description} height="190px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
-          </Flex>
+        <JobOfferBlockHeader2 title="Quelques photos" />
+        <JobOfferSection>
+          <GalleryPhoto>
+            <Box display="flex" flexDirection="row" alignItems="flex-start">
+              {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
+            </Box>
+          </GalleryPhoto>
         </JobOfferSection>
       </JobOfferBlock>
 
       <JobOfferBlock>
-        <JobOfferBlockHeader title="Structure d'accueil" >
-          <Text color="grey.1" fontSize={4} pr={3} >• Urgences les plus proches à {jobOffer.emergencyDistance} km</Text>
-        </JobOfferBlockHeader>
-
+        <JobOfferBlockHeader2 title="Structure d'accueil" />
+        <Box display="flex">
+          <SectionHint hint={`Urgences les plus proches à ${jobOffer.emergencyDistance} km`} />
+        </Box>
         <JobOfferSection>
           <JobOfferSectionContent content={jobOffer.medicalStructure} />
         </JobOfferSection>
       </JobOfferBlock>
 
       <JobOfferBlock color='brown'>
-        <JobOfferBlockHeader title="Cadre de vie" />
+        <JobOfferBlockHeader2 title="Cadre de vie" />
         <JobOfferSection >
           <JobOfferSectionContent content={jobOffer.lifestyle} />
         </JobOfferSection>
@@ -85,6 +83,23 @@ const JobOfferPage = (props: JobOfferProps) => {
       <JobOfferContacts contacts={jobOffer.contacts} />
     </PageLayout >
   );
+};
+
+
+const SectionHint = (props: { hint: string }) => <Text color="grey.2" fontSize={[3, 4, 4]} pb={2} pr={3} >• {props.hint}</Text>;
+
+const GalleryPhoto = styled(Box)({
+  overflowX: 'auto',
+  overflowY: 'hidden'
+})
+
+const AdvantageBox = (props: { advantage: string }) => {
+  return (
+    <Box display="flex" alignItems="center" fontSize={3} pt={3} pb={3}>
+      <Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon>
+      <Text pl={3} >{props.advantage}</Text>
+    </Box>
+  )
 }
 
 export default withRouter<JobOfferProps>(JobOfferPage);

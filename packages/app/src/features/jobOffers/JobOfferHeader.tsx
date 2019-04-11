@@ -9,7 +9,7 @@ const ImageBox = styled(Box)`
 
 export const JobOfferHeader = (props: { jobOffer: JobOffer }) => {
   return (
-    <ImageBox pt={7} pb={5} backgroundImage={`url('${getHeaderImagePath(props.jobOffer)}')`} backgroundPosition="center" backgroundRepeat="no-repeat" />
+    <ImageBox height="300px" backgroundImage={`url('${getHeaderImagePath(props.jobOffer)}')`} backgroundPosition="center" backgroundRepeat="no-repeat" />
   )
 }
 
