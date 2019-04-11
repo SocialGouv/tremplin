@@ -55,6 +55,13 @@ export interface JobOffer {
   lifestyle: '';
   lifestyleLinks: Link[];
 
+  financialAids : {
+    types: string[],
+    cesp: boolean,
+    aids: string[],
+    description: string
+  },
+
   contacts: Contact[];
 
 };
@@ -92,6 +99,13 @@ export const fakeJobOffer: JobOffer = {
 
   lifestyle: '',
   lifestyleLinks: [],
+
+  financialAids : {
+    aids: ['PTMG, PTMA', 'Exonération fiscale'],
+    cesp: true,
+    types: ['ZAC', 'ZRR'],
+    description: ''
+  },
 
   contacts: [
 

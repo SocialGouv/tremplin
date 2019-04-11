@@ -1,11 +1,13 @@
 import { IconPack, library, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faEnvelope, faIgloo, faLink, faMapMarkerAlt, faPhone, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faEnvelope, faIgloo, faLink, faMapMarkerAlt, faPhone, faStar, faUser, faLocationArrow, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Component } from 'react';
 
+export type AppIconName = 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'envelope'| 'link' | 'check-circle' | 'circle' ;
+
 interface IconProps {
-  iconName: 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'envelope'| 'link';
+  iconName: AppIconName;
   iconPrefix: 'far' | 'fas';
 
   color?: string;
@@ -25,7 +27,9 @@ export const initIconLibrary = () => {
   library.add(faStar);
   library.add(faEnvelope);
   library.add(faLink);
-
+  library.add(faCheckCircle);
+  library.add(faLocationArrow);
+  library.add(faCircle);
 }
 
 export class Icon extends Component<IconProps> {

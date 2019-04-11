@@ -7,6 +7,8 @@ import { styled } from '@styles';
 import { asString } from '@util';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { IconName, SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { AppIconName } from '@components/elements/Icon';
 
 interface JobOfferProps {
   router: SingletonRouter;
@@ -34,9 +36,9 @@ const JobOfferPage = (props: JobOfferProps) => {
         <JobOfferBlockHeader1 jobOffer={jobOffer} />
         <Box pt={3} display="flex" justifyContent="space-between" flexDirection={["column", "row", "row"]}>
           <Box display="flex" flexDirection="column" justifyContent="space-around" pb={2} flex="0 1 calc(50% - 10px)">
-            <AdvantageBox advantage={jobOffer.advantage1} />
-            <AdvantageBox advantage={jobOffer.advantage2} />
-            <AdvantageBox advantage={jobOffer.advantage3} />
+            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage1} />
+            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage2} />
+            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage3} />
           </Box>
           <Box flex="0 1 calc(50% - 10px)" pt={[2, 0, 0]}>
             <JobOfferMap address={jobOffer.address}></JobOfferMap>
@@ -91,9 +93,20 @@ const JobOfferPage = (props: JobOfferProps) => {
       </JobOfferBlock>
 
       <JobOfferBlock >
-        <JobOfferBlockHeader2 title="Aide à" />
-        <JobOfferSection >
-          <JobOfferSectionContent content={jobOffer.lifestyle} />
+        <JobOfferBlockHeader2 title="Aides à l'installation" />
+        <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
+          <Box flex="0 1 calc(30% - 10px)">
+            {jobOffer.financialAids.types.map((type, index) => <IconLabel key={index} iconSize="2x" iconColor="#22891f" iconName="circle" label={type} />)}
+          </Box>
+          <Box flex="0 1 calc(30% - 10px)">
+            <IconLabel iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
+          </Box>
+          <Box flex="0 1 calc(30% - 10px)">
+            {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
+          </Box>
+        </Box>
+        <JobOfferSection>
+        <JobOfferSectionContent  content={jobOffer.financialAids.description} />
         </JobOfferSection>
       </JobOfferBlock>
 
@@ -110,11 +123,11 @@ const GalleryPhoto = styled(Box)({
   overflowY: 'hidden'
 })
 
-const AdvantageBox = (props: { advantage: string }) => {
+const IconLabel = (props: { label: string, iconSize: SizeProp, iconName: AppIconName, iconColor: string }) => {
   return (
     <Box display="flex" alignItems="center" fontSize={3} pt={3} pb={3}>
-      <Icon size="lg" color="#ff6558" iconPrefix='far' iconName='star'></Icon>
-      <Text pl={3} >{props.advantage}</Text>
+      <Icon size={props.iconSize} color={props.iconColor} iconPrefix='far' iconName={props.iconName}></Icon>
+      <Text pl={3} >{props.label}</Text>
     </Box>
   )
 }
