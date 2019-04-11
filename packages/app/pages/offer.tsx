@@ -76,10 +76,27 @@ const JobOfferPage = (props: JobOfferProps) => {
 
       <JobOfferBlock color='brown'>
         <JobOfferBlockHeader2 title="Cadre de vie" />
+        <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
+          <Box flex="0 1 calc(70% - 10px)">
+            <JobOfferSection title="Vie de famille" >
+              <JobOfferSectionContent content={jobOffer.lifestyle} />
+            </JobOfferSection>
+          </Box>
+          <Box flex="0 1 calc(30% - 10px)" pt={[3, 0, 0]}>
+            <JobOfferSection title="Quelques liens">
+              {jobOffer.lifestyleLinks.map((link, index) => <LifestyleLink key={index} link={link.link} description={link.description}></LifestyleLink>)}
+            </JobOfferSection>
+          </Box>
+        </Box>
+      </JobOfferBlock>
+
+      <JobOfferBlock >
+        <JobOfferBlockHeader2 title="Aide à" />
         <JobOfferSection >
           <JobOfferSectionContent content={jobOffer.lifestyle} />
         </JobOfferSection>
       </JobOfferBlock>
+
       <JobOfferContacts contacts={jobOffer.contacts} />
     </PageLayout >
   );
@@ -101,5 +118,18 @@ const AdvantageBox = (props: { advantage: string }) => {
     </Box>
   )
 }
+
+const LifestyleLink = (props: { link: string, description: string }) => {
+  return (
+    <Box display="flex" color="#0081d5" alignItems="center" fontSize={2} pt={3} pb={3}>
+      <a href={props.link} target='_BLANK'>
+        <Icon iconPrefix='fas' iconName='link'></Icon>
+        <Text pl={2} >{props.description}</Text>
+      </a>
+    </Box>
+  )
+}
+
+
 
 export default withRouter<JobOfferProps>(JobOfferPage);

@@ -26,6 +26,11 @@ export type Photo = Readonly<{
   description: string;
 }>;
 
+export type Link = Readonly<{
+  description: string;
+  link: string;
+}>;
+
 export interface JobOffer {
   reference: '';
   publishedAt: Date;
@@ -48,6 +53,7 @@ export interface JobOffer {
   medicalStructureWebSite: '';
 
   lifestyle: '';
+  lifestyleLinks: Link[];
 
   contacts: Contact[];
 
@@ -85,6 +91,7 @@ export const fakeJobOffer: JobOffer = {
   medicalStructureWebSite: '',
 
   lifestyle: '',
+  lifestyleLinks: [],
 
   contacts: [
 

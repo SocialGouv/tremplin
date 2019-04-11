@@ -65,6 +65,13 @@ const berat = {
   <br/>\
   - Stations de ski à 1h - Mer à 1h30',
 
+  lifestyleLinks: [
+    {
+      description: 'Conseil départemental',
+      link: 'https://www.haute-garonne.fr'
+    }
+  ],
+
   contacts: [{
     name: 'Evelyne TEYSSEDRE',
     phone: '05 34 47 85 60',
