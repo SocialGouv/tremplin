@@ -134,7 +134,7 @@ const IconLabel = (props: { label: string, iconSize: SizeProp, iconName: AppIcon
 
 const LifestyleLink = (props: { link: string, description: string }) => {
   return (
-    <Box display="flex" color="#0081d5" alignItems="center" fontSize={2} pt={3} pb={3}>
+    <Box display="flex" color="#0081d5" alignItems="center" fontSize={2} pt={1} pb={1}>
       <a href={props.link} target='_BLANK'>
         <Icon iconPrefix='fas' iconName='link'></Icon>
         <Text pl={2} >{props.description}</Text>
