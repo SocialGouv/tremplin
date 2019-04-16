@@ -51,7 +51,8 @@ const berat = {
   </br>\
   Les patients ont accès à un laboratoire d\'analyses médicales à 12km (Carbonne), un centre de radio-échographie à 17km (Rieux Volvestre), aux plateaux techniques de Muret (CH et clinique) à 20km, de Toulouse (CHU) et Saint-Gaudens à 40km.\
   </br>\
-  La commune est classée en zone d\'action complémentaire. L\'installation est possible pour les titulaires d\'un contrat d\'engagement de service public. Des aides à l\'installation sont également possibles (notamment le contrat de praticien territorial de médecine générale).',
+  </br>\
+  Vous pouvez trouver les rapports et portraits de territoires sur <a target="_BLANK" href=\'https://cartosante.atlasante.fr/#c=report&chapter=list_geo&report=r01&selgeo1=tv.31454&selgeo2=fra.99\'>CartoSanté</a>',
   medicalStructureWebSite: '',
 
   lifestyle: 'La commune de Bérat propose un cadre de vie agréable avec des services publics ( crèche, assistantes maternelle, école primaire, poste, médiathèque, mairie), des commerces de proximité (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse,banque, marché, supérette), des grandes surfaces à proximité et un fort tissu associatif (théatre, danse, photo, sport, écriture, ...)\
