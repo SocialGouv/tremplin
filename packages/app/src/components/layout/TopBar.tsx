@@ -20,7 +20,7 @@ export const TopBar = () => {
           <Marianne height="30px" width="60px"></Marianne>
           <BetaGouvLink href="https://beta.gouv.fr/startups/tremplin.html" target="_BLANK">
             <BrandName pl={4}>
-              <Text as="div" fontSize={9} color="blue.1" pr={3} pb={1} fontFamily="1">Tremplin</Text>
+              <Text as="h1" fontSize={9} color="blue.1" pr={3} pb={1} fontFamily="1">Tremplin</Text>
               <Text as="div" fontSize={2} color="grey.1" pr={3} fontFamily="1" >Territoire REMPLacement INstallation</Text>
             </BrandName>
           </BetaGouvLink>

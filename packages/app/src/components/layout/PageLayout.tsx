@@ -5,9 +5,15 @@ import { TopBar } from "./TopBar";
 export default (props: { children: any }) => {
   return (
     <Fragment>
-      <TopBar></TopBar>
-      {props.children}
-      <Footer></Footer>
+      <header role="banner">
+        <TopBar></TopBar>
+      </header>
+      <main role="main">
+        {props.children}
+      </main>
+      <footer role="contentinfo">
+        <Footer></Footer>
+      </footer>
     </Fragment>
   )
 }
