@@ -1,5 +1,6 @@
 import { fakeJobOffer, JobOffer, jobOfferRepository } from '@api';
 import { Box, Icon } from '@components/elements';
+import { AppIconName, AppIconPrefix, AppIconSize } from '@components/elements/Icon';
 import { Text } from '@components/elements/Text';
 import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
@@ -7,8 +8,6 @@ import { styled } from '@styles';
 import { asString } from '@util';
 import { SingletonRouter, withRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { IconName, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { AppIconName } from '@components/elements/Icon';
 
 interface JobOfferProps {
   router: SingletonRouter;
@@ -36,9 +35,9 @@ const JobOfferPage = (props: JobOfferProps) => {
         <JobOfferBlockHeader1 jobOffer={jobOffer} />
         <Box pt={3} display="flex" justifyContent="space-between" flexDirection={["column", "row", "row"]}>
           <Box display="flex" flexDirection="column" justifyContent="space-around" pb={2} flex="0 1 calc(50% - 10px)">
-            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage1} />
-            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage2} />
-            <IconLabel iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage3} />
+            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage1} />
+            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage2} />
+            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage3} />
           </Box>
           <Box flex="0 1 calc(50% - 10px)" pt={[2, 0, 0]}>
             <JobOfferMap address={jobOffer.address}></JobOfferMap>
@@ -96,17 +95,17 @@ const JobOfferPage = (props: JobOfferProps) => {
         <JobOfferBlockHeader2 title="Aides à l'installation" />
         <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
           <Box flex="0 1 calc(30% - 10px)">
-            {jobOffer.financialAids.types.map((type, index) => <IconLabel key={index} iconSize="2x" iconColor="#22891f" iconName="circle" label={type} />)}
+            {jobOffer.financialAids.types.map((type, index) => <IconLabel iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={type} />)}
           </Box>
           <Box flex="0 1 calc(30% - 10px)">
-            <IconLabel iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
+            <IconLabel iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
           </Box>
           <Box flex="0 1 calc(30% - 10px)">
-            {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
+            {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
           </Box>
         </Box>
         <JobOfferSection>
-        <JobOfferSectionContent  content={jobOffer.financialAids.description} />
+          <JobOfferSectionContent content={jobOffer.financialAids.description} />
         </JobOfferSection>
       </JobOfferBlock>
 
@@ -123,10 +122,10 @@ const GalleryPhoto = styled(Box)({
   overflowY: 'hidden'
 })
 
-const IconLabel = (props: { label: string, iconSize: SizeProp, iconName: AppIconName, iconColor: string }) => {
+const IconLabel = (props: { label: string, iconPrefix: AppIconPrefix, iconSize: AppIconSize, iconName: AppIconName, iconColor: string }) => {
   return (
     <Box display="flex" alignItems="center" fontSize={3} pt={3} pb={3}>
-      <Icon size={props.iconSize} color={props.iconColor} iconPrefix='far' iconName={props.iconName}></Icon>
+      <Icon size={props.iconSize} color={props.iconColor} iconPrefix={props.iconPrefix} iconName={props.iconName}></Icon>
       <Text pl={3} >{props.label}</Text>
     </Box>
   )
