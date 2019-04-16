@@ -6,8 +6,9 @@ import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
 import { styled } from '@styles';
 import { asString } from '@util';
+import Head from 'next/head';
 import { SingletonRouter, withRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 interface JobOfferProps {
   router: SingletonRouter;
@@ -29,88 +30,93 @@ const JobOfferPage = (props: JobOfferProps) => {
   }, []);
 
   return (
-    <PageLayout>
-      <JobOfferHeader jobOffer={jobOffer} />
-      <JobOfferBlock>
-        <JobOfferBlockHeader1 jobOffer={jobOffer} />
-        <Box pt={3} display="flex" justifyContent="space-between" flexDirection={["column", "row", "row"]}>
-          <Box display="flex" flexDirection="column" justifyContent="space-around" pb={2} flex="0 1 calc(50% - 10px)">
-            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage1} />
-            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage2} />
-            <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage3} />
-          </Box>
-          <Box flex="0 1 calc(50% - 10px)" pt={[2, 0, 0]}>
-            <JobOfferMap address={jobOffer.address}></JobOfferMap>
-          </Box>
-        </Box>
-      </JobOfferBlock>
-      <JobOfferBlock>
-        <JobOfferBlockHeader2 title="Conditions d'exercice" />
-        <Box display="flex" flexDirection={["column", "row", "row"]}>
-          {jobOffer.secretariatType.map((sec, index) => <SectionHint key={index} hint={sec} />)}
-        </Box>
-        <JobOfferSection>
-          <JobOfferSectionContent content={jobOffer.workCondition} />
-        </JobOfferSection>
-      </JobOfferBlock>
-
-      <JobOfferBlock color='grey'>
-        <JobOfferBlockHeader2 title="Quelques photos" />
-        <JobOfferSection>
-          <GalleryPhoto>
-            <Box display="flex" flexDirection="row" alignItems="flex-start">
-              {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
+    <Fragment>
+      <Head>
+        <title>{jobOffer.title}</title>
+      </Head>
+      <PageLayout>
+        <JobOfferHeader jobOffer={jobOffer} />
+        <JobOfferBlock>
+          <JobOfferBlockHeader1 jobOffer={jobOffer} />
+          <Box pt={3} display="flex" justifyContent="space-between" flexDirection={["column", "row", "row"]}>
+            <Box display="flex" flexDirection="column" justifyContent="space-around" pb={2} flex="0 1 calc(50% - 10px)">
+              <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage1} />
+              <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage2} />
+              <IconLabel iconPrefix="far" iconSize="lg" iconColor="#ff6558" iconName="star" label={jobOffer.advantage3} />
             </Box>
-          </GalleryPhoto>
-        </JobOfferSection>
-      </JobOfferBlock>
+            <Box flex="0 1 calc(50% - 10px)" pt={[2, 0, 0]}>
+              <JobOfferMap address={jobOffer.address}></JobOfferMap>
+            </Box>
+          </Box>
+        </JobOfferBlock>
+        <JobOfferBlock>
+          <JobOfferBlockHeader2 title="Conditions d'exercice" />
+          <Box display="flex" flexDirection={["column", "row", "row"]}>
+            {jobOffer.secretariatType.map((sec, index) => <SectionHint key={index} hint={sec} />)}
+          </Box>
+          <JobOfferSection>
+            <JobOfferSectionContent content={jobOffer.workCondition} />
+          </JobOfferSection>
+        </JobOfferBlock>
 
-      <JobOfferBlock>
-        <JobOfferBlockHeader2 title="Structure d'accueil" />
-        <Box display="flex">
-          <SectionHint hint={`Urgences les plus proches à ${jobOffer.emergencyDistance} km`} />
-        </Box>
-        <JobOfferSection>
-          <JobOfferSectionContent content={jobOffer.medicalStructure} />
-        </JobOfferSection>
-      </JobOfferBlock>
+        <JobOfferBlock color='grey'>
+          <JobOfferBlockHeader2 title="Quelques photos" />
+          <JobOfferSection>
+            <GalleryPhoto>
+              <Box display="flex" flexDirection="row" alignItems="flex-start">
+                {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
+              </Box>
+            </GalleryPhoto>
+          </JobOfferSection>
+        </JobOfferBlock>
 
-      <JobOfferBlock color='brown'>
-        <JobOfferBlockHeader2 title="Cadre de vie" />
-        <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
-          <Box flex="0 1 calc(70% - 10px)">
-            <JobOfferSection title="Vie de famille" >
-              <JobOfferSectionContent content={jobOffer.lifestyle} />
-            </JobOfferSection>
+        <JobOfferBlock>
+          <JobOfferBlockHeader2 title="Structure d'accueil" />
+          <Box display="flex">
+            <SectionHint hint={`Urgences les plus proches à ${jobOffer.emergencyDistance} km`} />
           </Box>
-          <Box flex="0 1 calc(30% - 10px)" pt={[3, 0, 0]}>
-            <JobOfferSection title="Quelques liens">
-              {jobOffer.lifestyleLinks.map((link, index) => <LifestyleLink key={index} link={link.link} description={link.description}></LifestyleLink>)}
-            </JobOfferSection>
-          </Box>
-        </Box>
-      </JobOfferBlock>
+          <JobOfferSection>
+            <JobOfferSectionContent content={jobOffer.medicalStructure} />
+          </JobOfferSection>
+        </JobOfferBlock>
 
-      <JobOfferBlock >
-        <JobOfferBlockHeader2 title="Aides à l'installation" />
-        <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
-          <Box flex="0 1 calc(30% - 10px)">
-            {jobOffer.financialAids.types.map((type, index) => <IconLabel iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={type} />)}
+        <JobOfferBlock color='brown'>
+          <JobOfferBlockHeader2 title="Cadre de vie" />
+          <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
+            <Box flex="0 1 calc(70% - 10px)">
+              <JobOfferSection title="Vie de famille" >
+                <JobOfferSectionContent content={jobOffer.lifestyle} />
+              </JobOfferSection>
+            </Box>
+            <Box flex="0 1 calc(30% - 10px)" pt={[3, 0, 0]}>
+              <JobOfferSection title="Quelques liens">
+                {jobOffer.lifestyleLinks.map((link, index) => <LifestyleLink key={index} link={link.link} description={link.description}></LifestyleLink>)}
+              </JobOfferSection>
+            </Box>
           </Box>
-          <Box flex="0 1 calc(30% - 10px)">
-            <IconLabel iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
-          </Box>
-          <Box flex="0 1 calc(30% - 10px)">
-            {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
-          </Box>
-        </Box>
-        <JobOfferSection>
-          <JobOfferSectionContent content={jobOffer.financialAids.description} />
-        </JobOfferSection>
-      </JobOfferBlock>
+        </JobOfferBlock>
 
-      <JobOfferContacts contacts={jobOffer.contacts} />
-    </PageLayout >
+        <JobOfferBlock >
+          <JobOfferBlockHeader2 title="Aides à l'installation" />
+          <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
+            <Box flex="0 1 calc(30% - 10px)">
+              {jobOffer.financialAids.types.map((type, index) => <IconLabel iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={type} />)}
+            </Box>
+            <Box flex="0 1 calc(30% - 10px)">
+              <IconLabel iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
+            </Box>
+            <Box flex="0 1 calc(30% - 10px)">
+              {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
+            </Box>
+          </Box>
+          <JobOfferSection>
+            <JobOfferSectionContent content={jobOffer.financialAids.description} />
+          </JobOfferSection>
+        </JobOfferBlock>
+
+        <JobOfferContacts contacts={jobOffer.contacts} />
+      </PageLayout >
+    </Fragment>
   );
 };
 
