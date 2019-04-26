@@ -26,9 +26,11 @@
   - envsubst < k8s/tremplin-frontend/deployment-tremplin-frontend.yml > k8s/tremplin-frontend/deployment-frontend.yml
   - envsubst < k8s/tremplin-frontend/service-tremplin-frontend.yml > k8s/tremplin-frontend/service-frontend.yml
   - envsubst < k8s/tremplin-frontend/ingress-tremplin-frontend.yml > k8s/tremplin-frontend/ingress-frontend.yml
+  - envsubst < k8s/tremplin-certificate/certificate-tremplin.yml > k8s/tremplin-certificate/certificate.yml
   script:
   - kubectl apply -f k8s/tremplin-frontend/deployment-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/service-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/ingress-frontend.yml
+  - kubectl apply -f k8s/tremplin-certificate/certificate.yml
   - echo "Tremplin frontend available at - https://tremplin.incubateur.social.gouv.fr"
   allow_failure: false
