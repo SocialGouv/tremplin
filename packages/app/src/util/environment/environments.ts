@@ -6,9 +6,6 @@ export interface Environment {
     enabled: boolean;
     siteURL?: string;
     siteId?: number;
-  },
-  home: {
-    showOffers: boolean;
   }
 }
 
@@ -20,9 +17,6 @@ const environments: Environment[] = [
     piwik: {
       enabled: false
     },
-    home: {
-      showOffers: true
-    }
   },
   {
     label: "production",
@@ -32,9 +26,6 @@ const environments: Environment[] = [
       enabled: true,
       siteId: 6,
       siteURL: "stats.num.social.gouv.fr"
-    },
-    home: {
-      showOffers: false
     }
   }
 ]

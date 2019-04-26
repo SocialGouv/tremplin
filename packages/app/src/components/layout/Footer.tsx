@@ -14,7 +14,7 @@ export class Footer extends Component<{}> {
 
   public render() {
     return (
-      <Box bg="rgba(184, 196, 204, 0.2)" height="250px">
+      <Box bg="grey.9" height="250px">
         <Container>
           <Box display="flex" paddingTop={3} alignContent={["center", "flex-start", "flex-start"]} alignItems={["flex-start", "center", "center"]} flexDirection={["column", "row", "row"]}>
             <Box flex="0 1 auto" pb={2}>

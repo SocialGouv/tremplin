@@ -1,4 +1,4 @@
-export * from './JobOfferListItem';
+export * from './JobOfferCard';
 export * from './JobOfferBlock';
 export * from './JobOfferHeader';
 export * from './JobOfferSection';
