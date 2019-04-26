@@ -35,7 +35,7 @@ prepare-deploy-id:
   script:
   - sh k8s/scripts/get-github-deploy-id.sh
   environment:
-    name: dev
+    name: dev.factory
   except:
   - master
   artifacts:
@@ -109,7 +109,7 @@ deploy-tremplin-api-dev:
     K8S_TOKEN: $K8S_TOKEN_DEV
     PORT: ${API_PORT}
   environment:
-    name: dev
+    name: dev.factory
   except:
   - master
 
@@ -125,7 +125,7 @@ deploy-tremplin-frontend-dev:
     K8S_TOKEN: $K8S_TOKEN_DEV
     PORT: ${FRONTEND_PORT}
   environment:
-    name: dev
+    name: dev.factory
   except:
   - master
 
@@ -185,7 +185,7 @@ send-url:
   script:
   - sh k8s/scripts/send-url-to-github.sh $CI_COMMIT_REF_NAME
   environment:
-    name: dev
+    name: dev.factory
   except:
   - master
 
