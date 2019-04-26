@@ -35,6 +35,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta property="og:type" content="siteweb" />
           <meta property="og:description" content="Rapprocher les professionnels de santé de leur futur territoire d’exercice" />
           <meta property="og:locale" content="fr_FR" />
           <meta property="og:site_name" content="Tremplin" />
