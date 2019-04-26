@@ -1,0 +1,20 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tremplin-crt
+spec:
+  secretName: tremplin-crt-secret
+  dnsNames:
+  - tremplin.${ENVIRONMENT}.social.gouv.fr
+  - tremplin-api.${ENVIRONMENT}.social.gouv.fr
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - tremplin.${ENVIRONMENT}.social.gouv.fr
+      - tremplin-api.${ENVIRONMENT}.social.gouv.fr
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

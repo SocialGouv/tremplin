@@ -35,6 +35,6 @@ spec:
           periodSeconds: 5
         env:
         - name: API_URL
-          value: http://${HASH_BRANCH_INGRESS}tremplin-api.${ENVIRONMENT}.factory.social.gouv.fr/api
+          value: ${HASH_BRANCH_INGRESS}tremplin-api.${ENVIRONMENT}.social.gouv.fr/api
         - name: PORT
           value: "${PORT}"

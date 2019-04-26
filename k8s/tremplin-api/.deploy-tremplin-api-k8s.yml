@@ -30,5 +30,5 @@
   - kubectl apply -f k8s/tremplin-api/deployment-api.yml
   - kubectl apply -f k8s/tremplin-api/service-api.yml
   - kubectl apply -f k8s/tremplin-api/ingress-api.yml
-  - echo "Tremplin api available at - http://tremplin-api.ops.factory.social.gouv.fr"
+  - echo "Tremplin api available at - https://tremplin-api.incubateur.social.gouv.fr"
   allow_failure: false
