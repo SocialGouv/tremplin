@@ -30,5 +30,5 @@
   - kubectl apply -f k8s/tremplin-frontend/deployment-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/service-frontend.yml
   - kubectl apply -f k8s/tremplin-frontend/ingress-frontend.yml
-  - echo "Tremplin frontend available at - http://tremplin.ops.factory.social.gouv.fr"
+  - echo "Tremplin frontend available at - https://tremplin.incubateur.social.gouv.fr"
   allow_failure: false
