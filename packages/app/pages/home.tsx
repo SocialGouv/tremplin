@@ -6,6 +6,9 @@ import PageLayout from "@components/layout/PageLayout";
 import { JobOfferCard } from "@features/jobOffers";
 import { useEffect, useState } from "react";
 
+const Title = (props: { children: any }) => <Text as="h1" color="white" fontSize={9} lineHeight={4} style={{ textShadow: '#B3B3B3 0 0 10px' }}>{props.children}</Text>
+
+
 const H2 = (props: { children: any }) => <Text as="h2" fontSize={5} lineHeight={4}>{props.children}</Text>
 const H3 = (props: { children: any }) => <Text as="h3" color="blue.0" pb={2} fontSize={4}>{props.children}</Text>
 const H4 = (props: { children: any }) => <Text as="h4" lineHeight={3} color="black" pb={2} fontSize={2}>{props.children}</Text>
@@ -25,10 +28,10 @@ export default () => {
   return (
     <PageLayout>
       <Box display="flex" flexDirection="column" alignItems="center" textAlign="center" justifyContent="center" height="300px" backgroundSize='cover' backgroundImage="url('static/assets/img/tremplin.jpg')" backgroundPosition="center" backgroundRepeat="no-repeat" >
-        <Text as="h1" color="white" fontSize={9} lineHeight={4}>
+        <Title >
           <div>Rapprocher les professionnels de santé</div>
           <div>de leur futur territoire d’exercice</div>
-        </Text>
+        </Title>
       </Box>
       <Container>
         <Box display="flex" flexDirection="column" pt={4} pb={5}>
@@ -41,15 +44,15 @@ export default () => {
           </Box>
           <Box display="flex" flexDirection={["column", "row", "row"]} alignItems="center" justifyContent="center">
             <ServiceContainer>
-              <Icon iconName="file-alt" iconPrefix="fas" size="6x"></Icon>
-              <Box pt={3} >
+              <Icon iconName="file-alt" iconPrefix="fas" size="5x"></Icon>
+              <Box pt={4} >
                 <H3>Aide à la présentation de votre offre</H3>
                 <H4>Nous travaillons avec des médecins pour définir les critères et informations qui comptent réellement pour eux.</H4>
               </Box>
             </ServiceContainer>
             <ServiceContainer>
-              <Icon iconName="share-alt" iconPrefix="fas" size="6x"></Icon>
-              <Box pt={3}>
+              <Icon iconName="share-alt" iconPrefix="fas" size="5x"></Icon>
+              <Box pt={4}>
                 <H3>Diffusion de votre offre</H3>
                 <H4>Nous nous occupons de la diffusion de votre offre sur différentes plateformes nationales et régionales, privées et publiques.</H4>
               </Box>
@@ -60,10 +63,10 @@ export default () => {
       <Box pt={4} pb={4} bg="grey.9" >
         <Container>
           <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="center" alignItems="center">
-            <Button variant="primary" onClick={contactByEmail}>Contactez-nous</Button>
             <Box display={["none", "block", "block"]}>
-              <Text color="grey.0" pl={3} fontSize={3}>pour un accompagnement gratuit et sur mesure</Text>
+              <Text color="grey.0" pr={3} fontSize={3}>Pour un accompagnement gratuit et sur mesure</Text>
             </Box>
+            <Button variant="primary" onClick={contactByEmail}>Contactez-nous</Button>
           </Box>
         </Container>
       </Box>
