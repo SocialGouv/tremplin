@@ -52,7 +52,7 @@ prepare-deploy-id-prod:
   script:
   - sh k8s/scripts/get-github-deploy-id.sh
   environment:
-    name: ops
+    name: incubateur
   only:
   - master
   artifacts:
@@ -146,7 +146,7 @@ deploy-tremplin-api-prod:
     HASH_BRANCH_INGRESS: ''
     PORT: ${API_PORT}
   environment:
-    name: ops
+    name: incubateur
   only:
   - master
 
@@ -163,7 +163,7 @@ deploy-tremplin-frontend-prod:
     HASH_BRANCH_INGRESS: ''
     PORT: ${FRONTEND_PORT}
   environment:
-    name: ops
+    name: incubateur
   only:
   - master
 
@@ -202,7 +202,7 @@ send-url-prod:
   script:
   - sh k8s/scripts/send-url-to-github.sh $CI_COMMIT_REF_NAME
   environment:
-    name: ops
+    name: incubateur
   only:
   - master
 
