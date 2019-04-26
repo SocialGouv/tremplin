@@ -33,6 +33,7 @@ const JobOfferPage = (props: JobOfferProps) => {
     <Fragment>
       <Head>
         <title>{jobOffer.title}</title>
+        <meta name="og:title" property="og:title" content={jobOffer.title} />
       </Head>
       <PageLayout>
         <JobOfferHeader jobOffer={jobOffer} />

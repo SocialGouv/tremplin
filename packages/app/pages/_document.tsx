@@ -35,8 +35,9 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-          <meta name="description" content="" />
-          <meta name="author" content="" />
+          <meta property="og:description" content="Rapprocher les professionnels de santé de leur futur territoire d’exercice" />
+          <meta property="og:locale" content="fr_FR" />
+          <meta property="og:site_name" content="Tremplin" />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />

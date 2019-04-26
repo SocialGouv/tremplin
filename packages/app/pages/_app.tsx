@@ -49,6 +49,7 @@ export default class MyApp extends App {
           <React.Fragment>
             <Head>
               <title>Tremplin</title>
+              <meta name="og:title" property="og:title" content="Tremplin" />
             </Head>
             <GlobalStyle></GlobalStyle>
             <Component {...pageProps} />
