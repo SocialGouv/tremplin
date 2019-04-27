@@ -110,8 +110,9 @@ export const theme: ThemeInterface = {
       border: `solid 1px ${colorWhite}`,
       color: colorWhite,
       fontSize: 15,
+      // tslint:disable-next-line: object-literal-sort-keys
       "&:hover": {
-        opacity : 0.8,
+        opacity: 0.8,
       }
     },
     // tslint:disable-next-line: object-literal-sort-keys
@@ -120,8 +121,9 @@ export const theme: ThemeInterface = {
       border: `solid 1px ${colorRed}`,
       color: colorRed,
       fontSize: 15,
+      // tslint:disable-next-line: object-literal-sort-keys
       "&:hover": {
-        opacity : 0.8,
+        opacity: 0.8,
       }
     }
   }

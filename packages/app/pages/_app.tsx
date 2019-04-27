@@ -1,26 +1,9 @@
 import { initIconLibrary } from "@components/elements/Icon";
-import { theme } from "@styles";
+import { createGlobalStyle, theme, ThemeProvider } from "@styles";
 import { logger } from "@util";
 import App, { Container, NextAppContext } from "next/app";
 import Head from "next/head";
 import React from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    font-family: Roboto;
-    margin: 0;
-  }
-
-  a {
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-`
 
 // init PiwikReact
 logger.init();
@@ -59,3 +42,19 @@ export default class MyApp extends App {
     );
   }
 }
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: Roboto;
+    margin: 0;
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+`

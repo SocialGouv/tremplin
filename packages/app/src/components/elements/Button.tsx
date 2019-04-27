@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@styles";
 import { buttonStyle, ButtonStyleProps, display, DisplayProps, width, WidthProps } from "styled-system";
 
 export interface ButtonProps extends ButtonStyleProps, DisplayProps, WidthProps {

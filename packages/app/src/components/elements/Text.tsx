@@ -1,5 +1,4 @@
-import { TypographyProps, typographyStyle } from "@styles";
-import styled from "styled-components";
+import { styled, TypographyProps, typographyStyle } from "@styles";
 
 export const Text = styled.span<TypographyProps>`
   ${typographyStyle}

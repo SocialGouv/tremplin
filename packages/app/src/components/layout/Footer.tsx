@@ -1,7 +1,7 @@
 import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
+import { styled } from "@styles";
 import { Component } from "react";
-import styled from "styled-components";
 import { Container } from "./Container";
 import { Marianne } from "./marianne";
 

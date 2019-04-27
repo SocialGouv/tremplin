@@ -6,29 +6,11 @@ const {
   css,
   createGlobalStyle,
   keyframes,
-  ThemeProvider
+  ThemeProvider,
+  ServerStyleSheet
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>;
 
-export { css, createGlobalStyle, keyframes, ThemeProvider };
+export { css, createGlobalStyle, keyframes, ThemeProvider, ServerStyleSheet };
 
 export default styled;
 
-const sizes: any = {
-  desktop: 992,
-  phone: 576,
-  tablet: 768,
-}
-
-export const media: {
-  desktop: styledComponents.ThemedCssFunction<any>,
-  phone: styledComponents.ThemedCssFunction<any>,
-  tablet: styledComponents.ThemedCssFunction<any>
-} = Object.keys(sizes).reduce((acc: any, label: string) => {
-  acc[label] = (first: TemplateStringsArray | styledComponents.CSSObject,
-    ...interpolations: styledComponents.SimpleInterpolation[]) => css`
-    @media (max-width: ${sizes[label] / 16}em) {
-      ${css(first, ...interpolations)}
-    }
-  `
-  return acc
-}, {});

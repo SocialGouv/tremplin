@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 const Title = (props: { children: any }) => <Text as="h1" color="white" fontSize={9} lineHeight={4} style={{ textShadow: '#B3B3B3 0 0 10px' }}>{props.children}</Text>
 
-
 const H2 = (props: { children: any }) => <Text as="h2" fontSize={5} lineHeight={4}>{props.children}</Text>
 const H3 = (props: { children: any }) => <Text as="h3" color="blue.0" pb={2} fontSize={4}>{props.children}</Text>
 const H4 = (props: { children: any }) => <Text as="h4" lineHeight={3} color="black" pb={2} fontSize={2}>{props.children}</Text>

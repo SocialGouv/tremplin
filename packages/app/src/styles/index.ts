@@ -1,4 +1,4 @@
-export * from './theme';
-export { default as styled, media, css } from './styledComponents';
+export { createGlobalStyle, css, default as styled, ServerStyleSheet, ThemeProvider } from './styledComponents';
 export * from './styledSystem';
+export * from './theme';
 
