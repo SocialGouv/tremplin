@@ -8,11 +8,12 @@ variables:
   IMAGE_INFRA_BASE_NAME: "infra/images-docker"
   DOCKER_VERSION: "18.06"
   NODE_VERSION: "10.15.3"
+  NGINX_VERSION: "1.12-alpine"
   IMAGE_TAG: $CI_COMMIT_SHA
   ENVIRONMENT: $CI_ENVIRONMENT_NAME
   TREMPLIN_REGISTRY: $CI_REGISTRY_IMAGE
   API_PORT: 1337
-  FRONTEND_PORT: 3000
+  FRONTEND_PORT: 80
 
 stages:
 - "Prepare"
@@ -78,20 +79,45 @@ build-and-push-tremplin-api-image:
     -t "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA"
 
-build-and-push-tremplin-frontend-image:
+build-and-push-tremplin-frontend-image-dev:
   stage: "Build and Push Docker Image"
   image: docker:$DOCKER_VERSION
   services:
   - docker:dind
   before_script:
+  - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
   - cd packages/app
   - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
   script:
   - >-
     docker build
     --build-arg NODE_VERSION=$NODE_VERSION
+    --build-arg NGINX_VERSION=$NGINX_VERSION
+    --build-arg API=http://${HASH_BRANCH_NAME}-tremplin-api.dev.factory.social.gouv.fr/api
     -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
   - docker push "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA"
+  except:
+  - master
+
+build-and-push-tremplin-frontend-image-prod:
+  stage: "Build and Push Docker Image"
+  image: docker:$DOCKER_VERSION
+  services:
+  - docker:dind
+  before_script:
+  - export API_URL=https://tremplin-api.incubateur.social.gouv.fr
+  - cd packages/app
+  - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+  script:
+  - >-
+    docker build
+    --build-arg NODE_VERSION=$NODE_VERSION
+    --build-arg NGINX_VERSION=$NGINX_VERSION
+    --build-arg API=$API_URL
+    -t "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA" .
+  - docker push "$CI_REGISTRY_IMAGE/frontend:$CI_COMMIT_SHA"
+  only:
+  - master
 
 ##########################################
 ### DEPLOY TREMPLIN TO K8S DEV CLUSTER ###
