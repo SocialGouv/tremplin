@@ -7,8 +7,8 @@ import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferCont
 import { styled } from '@styles';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
+import { extract, parse } from 'query-string';
 import { Fragment, useEffect, useState } from 'react';
-import { URLSearchParams } from 'url';
 
 interface JobOfferProps {
   query: any;
@@ -151,16 +151,10 @@ const LifestyleLink = (props: { link: string, description: string }) => {
 
 
 export default withRouter(({ router, ...props }) => {
-  // split at first `?`
 
-  const query: any = {};
+  let query: any = {};
   if (router && router.asPath) {
-    const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
-
-    for (const [key, value] of searchParams) {
-      query[key] = value;
-    }
-
+    query = parse(extract(router.asPath));
   }
 
   return (<JobOfferPage {...props} query={query} />);
