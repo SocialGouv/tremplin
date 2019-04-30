@@ -5,13 +5,13 @@ import { Text } from '@components/elements/Text';
 import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
 import { styled } from '@styles';
-import { asString } from '@util';
 import Head from 'next/head';
-import { SingletonRouter, withRouter } from 'next/router';
+import { withRouter } from 'next/router';
 import { Fragment, useEffect, useState } from 'react';
+import { URLSearchParams } from 'url';
 
 interface JobOfferProps {
-  router: SingletonRouter;
+  query: any;
 }
 
 const JobOfferPage = (props: JobOfferProps) => {
@@ -19,7 +19,7 @@ const JobOfferPage = (props: JobOfferProps) => {
   const [jobOffer, setJobOffer] = useState<JobOffer>(fakeJobOffer);
 
   useEffect(() => {
-    const reference = asString(props.router, 'reference');
+    const reference = props.query.reference;
     if (reference == null) {
       return;
     }
@@ -150,5 +150,18 @@ const LifestyleLink = (props: { link: string, description: string }) => {
 }
 
 
+export default withRouter(({ router, ...props }) => {
+  // split at first `?`
 
-export default withRouter<JobOfferProps>(JobOfferPage);
+  const query: any = {};
+  if (router && router.asPath) {
+    const searchParams = new URLSearchParams(router.asPath.split(/\?/)[1]);
+
+    for (const [key, value] of searchParams) {
+      query[key] = value;
+    }
+
+  }
+
+  return (<JobOfferPage {...props} query={query} />);
+});
