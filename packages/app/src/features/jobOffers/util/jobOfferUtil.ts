@@ -6,7 +6,7 @@ export const getHeaderImagePath = (jobOffer: JobOffer) => {
     if (header) {
         return join("static", "assets", "photos", jobOffer.reference, header.name);
     }
-    return 'static/assets/img/tremplin.jpg';
+    return '/static/assets/img/tremplin.jpg';
 }
 
 export const getFirstImagePath = (jobOffer: JobOffer) => {
