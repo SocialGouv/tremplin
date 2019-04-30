@@ -65,7 +65,7 @@ const JobOfferPage = (props: JobOfferProps) => {
           <JobOfferSection>
             <GalleryPhoto>
               <Box display="flex" flexDirection="row" alignItems="flex-start">
-                {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
+                {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`/static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
               </Box>
             </GalleryPhoto>
           </JobOfferSection>
