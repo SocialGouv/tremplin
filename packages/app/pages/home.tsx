@@ -6,7 +6,7 @@ import PageLayout from "@components/layout/PageLayout";
 import { JobOfferCard } from "@features/jobOffers";
 import { useEffect, useState } from "react";
 
-const Title = (props: { children: any }) => <Text as="h1" color="white" fontSize={9} lineHeight={4} style={{ textShadow: '#B3B3B3 0 0 10px' }}>{props.children}</Text>
+const Title = (props: { children: any }) => <Text as="h1" pl={3} pr={3} bg="white" fontSize={9} lineHeight={4} >{props.children}</Text>
 
 const H2 = (props: { children: any }) => <Text as="h2" fontSize={5} lineHeight={4}>{props.children}</Text>
 const H3 = (props: { children: any }) => <Text as="h3" color="blue.0" pb={2} fontSize={4}>{props.children}</Text>
@@ -32,31 +32,33 @@ export default () => {
           <div>de leur futur territoire d’exercice</div>
         </Title>
       </Box>
-      <Container>
-        <Box display="flex" flexDirection="column" pt={4} pb={5}>
-          <Box textAlign="center" pt={4} pb={4}>
+      <Box bg="grey.9" >
+        <Container>
+          <Box textAlign="center" pt={4} pb={4} >
             <H2>
               <div>Vous êtes porteur de projet (collectivité, médecin, maison de santé...) ?</div>
               <div>Tremplin vous accompagne dans le recrutement</div>
               <div>d’un médecin sur votre territoire.</div>
             </H2>
           </Box>
-          <Box display="flex" flexDirection={["column", "row", "row"]} alignItems="center" justifyContent="center">
-            <ServiceContainer>
-              <Icon iconName="file-alt" iconPrefix="fas" size="5x"></Icon>
-              <Box pt={4} >
-                <H3>Aide à la présentation de votre offre</H3>
-                <H4>Nous travaillons avec des médecins pour définir les critères et informations qui comptent réellement pour eux.</H4>
-              </Box>
-            </ServiceContainer>
-            <ServiceContainer>
-              <Icon iconName="share-alt" iconPrefix="fas" size="5x"></Icon>
-              <Box pt={4}>
-                <H3>Diffusion de votre offre</H3>
-                <H4>Nous nous occupons de la diffusion de votre offre sur différentes plateformes nationales et régionales, privées et publiques.</H4>
-              </Box>
-            </ServiceContainer>
-          </Box>
+        </Container>
+      </Box>
+      <Container>
+        <Box display="flex" flexDirection={["column", "row", "row"]} alignItems="center" justifyContent="center">
+          <ServiceContainer>
+            <Icon iconName="file-alt" iconPrefix="fas" size="5x"></Icon>
+            <Box pt={4} >
+              <H3>Aide à la présentation de votre offre</H3>
+              <H4>Nous travaillons avec des médecins pour définir les critères et informations qui comptent réellement pour eux.</H4>
+            </Box>
+          </ServiceContainer>
+          <ServiceContainer>
+            <Icon iconName="share-alt" iconPrefix="fas" size="5x"></Icon>
+            <Box pt={4}>
+              <H3>Diffusion de votre offre</H3>
+              <H4>Nous nous occupons de la diffusion de votre offre sur différentes plateformes nationales et régionales, privées et publiques.</H4>
+            </Box>
+          </ServiceContainer>
         </Box>
       </Container>
       <Box pt={4} pb={4} bg="grey.9" >
