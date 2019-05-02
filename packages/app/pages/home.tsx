@@ -26,7 +26,7 @@ export default () => {
 
   return (
     <PageLayout>
-      <Box display="flex" flexDirection="column" alignItems="center" textAlign="center" justifyContent="center" height="300px" backgroundSize='cover' backgroundImage="url('static/assets/img/tremplin.jpg')" backgroundPosition="center" backgroundRepeat="no-repeat" >
+      <Box display="flex" flexDirection="column" alignItems="center" textAlign="center" justifyContent="center" height="300px" backgroundSize='cover' backgroundImage="url('/static/assets/img/tremplin.jpg')" backgroundPosition="center" backgroundRepeat="no-repeat" >
         <Title >
           <div>Rapprocher les professionnels de santé</div>
           <div>de leur futur territoire d’exercice</div>
