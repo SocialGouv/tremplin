@@ -5,13 +5,13 @@ import { Text } from '@components/elements/Text';
 import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
 import { styled } from '@styles';
-import { asString } from '@util';
 import Head from 'next/head';
-import { SingletonRouter, withRouter } from 'next/router';
+import { withRouter } from 'next/router';
+import { extract, parse } from 'query-string';
 import { Fragment, useEffect, useState } from 'react';
 
 interface JobOfferProps {
-  router: SingletonRouter;
+  query: any;
 }
 
 const JobOfferPage = (props: JobOfferProps) => {
@@ -19,7 +19,7 @@ const JobOfferPage = (props: JobOfferProps) => {
   const [jobOffer, setJobOffer] = useState<JobOffer>(fakeJobOffer);
 
   useEffect(() => {
-    const reference = asString(props.router, 'reference');
+    const reference = props.query.reference;
     if (reference == null) {
       return;
     }
@@ -150,5 +150,12 @@ const LifestyleLink = (props: { link: string, description: string }) => {
 }
 
 
+export default withRouter(({ router, ...props }) => {
 
-export default withRouter<JobOfferProps>(JobOfferPage);
+  let query: any = {};
+  if (router && router.asPath) {
+    query = parse(extract(router.asPath));
+  }
+
+  return (<JobOfferPage {...props} query={query} />);
+});
