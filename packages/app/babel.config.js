@@ -24,6 +24,13 @@ module.exports = {
   ],
   "presets": [
     "next/babel",
-    "@zeit/next-typescript/babel"
+    "@zeit/next-typescript/babel",
+    {
+      "preset-env": {
+        targets: {
+          browsers: ["last 5 version", "IE>=10"]
+        }
+      }
+    }
   ],
 };
