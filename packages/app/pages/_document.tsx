@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="fr">
         <Head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
           <meta property="og:type" content="siteweb" />
