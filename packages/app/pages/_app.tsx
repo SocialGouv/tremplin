@@ -32,6 +32,7 @@ export default class MyApp extends App {
           <React.Fragment>
             <Head>
               <title>Tremplin</title>
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
               <meta name="og:title" property="og:title" content="Tremplin" />
             </Head>
             <GlobalStyle></GlobalStyle>
