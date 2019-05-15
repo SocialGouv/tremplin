@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
           <meta property="og:description" content="Rapprocher les professionnels de santé de leur futur territoire d’exercice" />
           <meta property="og:locale" content="fr_FR" />
           <meta property="og:site_name" content="Tremplin" />
-          <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch,Array.prototype.find,Array.prototype.findIndex,Array.prototype.includes,Object.values" />
+          <script src="https://polyfill.num.social.gouv.fr/v3/polyfill.js" />
           <link rel="shortcut icon" href="/static/favicon.ico" />
           <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
