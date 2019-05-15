@@ -23,14 +23,16 @@ module.exports = {
     }]
   ],
   "presets": [
-    "next/babel",
-    "@zeit/next-typescript/babel",
-    {
-      "preset-env": {
-        targets: {
-          browsers: ["last 5 version", "IE>=10"]
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "targets": {
+            "browsers": ["last 5 Chrome version", "ie >= 11"]
+          }
         }
       }
-    }
+    ],
+    "@zeit/next-typescript/babel"
   ],
 };
