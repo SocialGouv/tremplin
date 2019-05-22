@@ -51,7 +51,7 @@ const JobOfferPage = (props: JobOfferProps) => {
           </Box>
         </JobOfferBlock>
         <JobOfferBlock>
-          <JobOfferBlockHeader2 title="Conditions d'exercice" />
+          <JobOfferBlockHeader2 title="Lieux d'exercice" />
           <Box display="flex" flexDirection={["column", "row", "row"]}>
             {jobOffer.secretariatType.map((sec, index) => <SectionHint key={index} hint={sec} />)}
           </Box>
@@ -72,7 +72,7 @@ const JobOfferPage = (props: JobOfferProps) => {
         </JobOfferBlock>
 
         <JobOfferBlock>
-          <JobOfferBlockHeader2 title="Structure d'accueil" />
+          <JobOfferBlockHeader2 title="Environnement professionel" />
           <Box display="flex">
             <SectionHint hint={`Urgences les plus proches à ${jobOffer.emergencyDistance} km`} />
           </Box>
@@ -85,12 +85,12 @@ const JobOfferPage = (props: JobOfferProps) => {
           <JobOfferBlockHeader2 title="Cadre de vie" />
           <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
             <Box flex="0 1 calc(70% - 10px)">
-              <JobOfferSection title="Vie de famille" >
+              <JobOfferSection >
                 <JobOfferSectionContent content={jobOffer.lifestyle} />
               </JobOfferSection>
             </Box>
             <Box flex="0 1 calc(30% - 10px)" pt={[3, 0, 0]}>
-              <JobOfferSection title="Quelques liens">
+              <JobOfferSection >
                 {jobOffer.lifestyleLinks.map((link, index) => <LifestyleLink key={index} link={link.link} description={link.description}></LifestyleLink>)}
               </JobOfferSection>
             </Box>
