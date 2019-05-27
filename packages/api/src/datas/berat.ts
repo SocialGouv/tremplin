@@ -76,7 +76,7 @@ export const berat = {
     ],
   
     financialAids : {
-      types: ['Zone d\'Action Complémentaire (ZAC)'],
+      types: ['ZAC'],
       cesp: true,
       aids: ['PTMG', 'PTMA', 'PTMR'],
       description: 'Les aides possibles sont affichées à titre indicatif en tenant compte du zonage de la commune. Pour de plus amples informations, contactez le 0811 910 009 ou rendez vous à l\'adresse <a href="http://www.occitanie.paps.sante.fr">http://www.occitanie.paps.sante.fr</a>'

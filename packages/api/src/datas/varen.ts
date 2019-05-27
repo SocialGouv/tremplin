@@ -115,9 +115,9 @@ export const varen = {
   lifestyleLinks: [],
 
   financialAids: {
-    types: ['Zone d\'Action Complémentaire (ZAC)', 'Zone de revitalisation rurale (ZRR)'],
+    types: ['ZAC', 'ZRR'],
     cesp: true,
-    aids: ['PTMG', 'PTMA', 'PTMR', 'Exonération impôts'],
+    aids: ['PTMG', 'PTMA', 'PTMR', 'exoneration-fiscale-pdsa'],
     description: 'Les aides possibles sont affichées à titre indicatif en tenant compte du zonage de la commune. Pour de plus amples informations, contactez le 0811 910 009 ou rendez vous à l\'adresse <a href="http://www.occitanie.paps.sante.fr">http://www.occitanie.paps.sante.fr</a>'
   },
 
