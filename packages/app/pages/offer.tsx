@@ -4,13 +4,12 @@ import { AppIconName, AppIconPrefix, AppIconSize } from '@components/elements/Ic
 import { Text } from '@components/elements/Text';
 import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
+import { GalleryPhoto } from '@features/jobOffers/JobOfferPhotos';
 import { getFiancialAidLink, getFinancialAidLabel } from '@features/jobOffers/util/jobOfferUtil';
-import { styled } from '@styles';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { extract, parse } from 'query-string';
 import { Fragment, useEffect, useState } from 'react';
-import { GalleryPhoto } from '@features/jobOffers/JobOfferPhotos';
 
 interface JobOfferProps {
   query: any;
