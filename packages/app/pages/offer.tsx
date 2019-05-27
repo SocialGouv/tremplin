@@ -10,6 +10,7 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { extract, parse } from 'query-string';
 import { Fragment, useEffect, useState } from 'react';
+import { GalleryPhoto } from '@features/jobOffers/JobOfferPhotos';
 
 interface JobOfferProps {
   query: any;
@@ -64,11 +65,7 @@ const JobOfferPage = (props: JobOfferProps) => {
         {jobOffer.photos.length > 0 && <JobOfferBlock color='grey'>
           <JobOfferBlockHeader2 title="Quelques photos" />
           <JobOfferSection>
-            <GalleryPhoto>
-              <Box display="flex" flexDirection="row" alignItems="flex-start">
-                {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`/static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
-              </Box>
-            </GalleryPhoto>
+            <GalleryPhoto jobOffer={jobOffer} />
           </JobOfferSection>
         </JobOfferBlock>
         }
@@ -132,10 +129,7 @@ const JobOfferPage = (props: JobOfferProps) => {
 
 const SectionHint = (props: { hint: string }) => <Text color="grey.2" fontSize={[3, 4, 4]} pb={2} pr={3} >• {props.hint}</Text>;
 
-const GalleryPhoto = styled(Box)({
-  overflowX: 'auto',
-  overflowY: 'hidden'
-})
+
 
 const IconLabel = (props: { label: string, helpLink?: string, iconPrefix: AppIconPrefix, iconSize: AppIconSize, iconName: AppIconName, iconColor: string }) => {
   return (
