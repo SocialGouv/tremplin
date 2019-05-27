@@ -60,7 +60,7 @@ const JobOfferPage = (props: JobOfferProps) => {
           </JobOfferSection>
         </JobOfferBlock>
 
-        <JobOfferBlock color='grey'>
+        {jobOffer.photos.length > 0 && <JobOfferBlock color='grey'>
           <JobOfferBlockHeader2 title="Quelques photos" />
           <JobOfferSection>
             <GalleryPhoto>
@@ -70,6 +70,7 @@ const JobOfferPage = (props: JobOfferProps) => {
             </GalleryPhoto>
           </JobOfferSection>
         </JobOfferBlock>
+        }
 
         <JobOfferBlock>
           <JobOfferBlockHeader2 title="Environnement professionel" />
@@ -78,6 +79,9 @@ const JobOfferPage = (props: JobOfferProps) => {
           </Box>
           <JobOfferSection>
             <JobOfferSectionContent content={jobOffer.medicalStructure} />
+          </JobOfferSection>
+          <JobOfferSection>
+            <JobOfferSectionContent content={`Vous pouvez trouver les rapports et portraits de territoires sur <a target="_BLANK" href=${jobOffer.cartosante}>CartoSanté</a>`} />
           </JobOfferSection>
         </JobOfferBlock>
 

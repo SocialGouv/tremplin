@@ -49,10 +49,8 @@ export const berat = {
     Le cabinet disponible est un local de 27 m². Le bâtiment est récent (2014), aux normes PMR et BBC, et se compose d\'une entrée (conçu pour intégrer un secrétariat), de plusieurs espaces d\'attente et de sanitaires communs.',
     medicalStructure: 'La maison de santé bénéficie d\'un emplacement de premier choix, en centre-ville, à proximité des commerces (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse), des services publics (mairie, écoles, poste), d\'un grand parking public et d\'une résidence intergénérationnelle.\
     </br>\
-    Les patients ont accès à un laboratoire d\'analyses médicales à 12km (Carbonne), un centre de radio-échographie à 17km (Rieux Volvestre), aux plateaux techniques de Muret (CH et clinique) à 20km, de Toulouse (CHU) et Saint-Gaudens à 40km.\
-    </br>\
-    </br>\
-    Vous pouvez trouver les rapports et portraits de territoires sur <a target="_BLANK" href=\'https://cartosante.atlasante.fr/#c=report&chapter=list_geo&report=r01&selgeo1=tv.31454&selgeo2=fra.99\'>CartoSanté</a>',
+    Les patients ont accès à un laboratoire d\'analyses médicales à 12km (Carbonne), un centre de radio-échographie à 17km (Rieux Volvestre), aux plateaux techniques de Muret (CH et clinique) à 20km, de Toulouse (CHU) et Saint-Gaudens à 40km.',
+    cartosante: 'https://cartosante.atlasante.fr/#c=report&chapter=list_geo&report=r01&selgeo1=tv.09160&selgeo2=fra.99',
     medicalStructureWebSite: '',
   
     lifestyle: 'La commune de Bérat propose un cadre de vie agréable avec des services publics ( crèche, assistantes maternelle, école primaire, poste, médiathèque, mairie), des commerces de proximité (pharmacie, boulangeries, boucherie, pizzéria, bureau de presse,banque, marché, supérette), des grandes surfaces à proximité et un fort tissu associatif (théatre, danse, photo, sport, écriture, ...)\

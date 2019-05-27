@@ -50,6 +50,7 @@ export interface JobOffer {
 
   workCondition: '';
   medicalStructure: '';
+  cartosante: '';
   medicalStructureWebSite: '';
 
   lifestyle: '';
@@ -95,6 +96,7 @@ export const fakeJobOffer: JobOffer = {
 
   workCondition: '',
   medicalStructure: '',
+  cartosante: '',
   medicalStructureWebSite: '',
 
   lifestyle: '',
@@ -103,8 +105,8 @@ export const fakeJobOffer: JobOffer = {
   financialAids : {
     aids: ['PTMG, PTMA', 'Exonération fiscale'],
     cesp: true,
+    description: '',
     types: ['ZAC', 'ZRR'],
-    description: ''
   },
 
   contacts: [

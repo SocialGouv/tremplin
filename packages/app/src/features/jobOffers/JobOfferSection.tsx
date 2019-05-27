@@ -2,6 +2,7 @@ import { Box } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { styled } from "@styles";
 import { Component, Fragment, useState } from "react";
+import { rawTextToHtml } from "./util/jobOfferUtil";
 
 export class JobOfferSection extends Component<{ title?: string }> {
 
@@ -46,7 +47,7 @@ export const JobOfferSectionContent = (props: { content: string }) => {
     <Fragment>
       <ContentWrapper maxHeight={[maxHeight, maxHeightValue, maxHeightValue]}>
         <Text fontSize={2} color="black.1" lineHeight="24px">
-          <div dangerouslySetInnerHTML={{ __html: `${props.content}` }} />
+          <div dangerouslySetInnerHTML={{ __html: `${rawTextToHtml(props.content)}` }} />
         </Text>
       </ContentWrapper>
       <Box display={["flex", "none", "none"]} justifyContent="center" pt={3}>
