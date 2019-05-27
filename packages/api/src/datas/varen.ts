@@ -112,7 +112,10 @@ export const varen = {
 
   lifestyle: lifestyle,
 
-  lifestyleLinks: [],
+  lifestyleLinks: [{
+    description: 'Mairie de Varen',
+    link: 'http://www.varen.fr'
+  }],
 
   financialAids: {
     types: ['ZAC', 'ZRR'],

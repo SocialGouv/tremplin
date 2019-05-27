@@ -45,7 +45,34 @@ export const lavelanet = {
   advantage2: "Proximité immédiate d'un centre hospitalier.",
   advantage3: "Un environnement agréable, au pied des montagnes, à 1h15 de Toulouse et 1h 30 de la Méditerranée.",
 
-  photos: [],
+  photos: [
+    {
+      header: false,
+      name: 'LAVELANET201905_01.jpg',
+      description: 'Environnement de Lavelanet'
+    },
+    {
+      header: false,
+      name: 'LAVELANET201905_02.jpg',
+      description: 'Environnement de Lavelanet'
+    },{
+      header: false,
+      name: 'LAVELANET201905_03.jpg',
+      description: 'Environnement de Lavelanet'
+    },{
+      header: false,
+      name: 'LAVELANET201905_04.jpg',
+      description: 'Environnement de Lavelanet'
+    },{
+      header: false,
+      name: 'LAVELANET201905_05.jpg',
+      description: 'Environnement de Lavelanet'
+    },{
+      header: false,
+      name: 'LAVELANET201905_06.jpg',
+      description: 'Environnement de Lavelanet'
+    },
+  ],
 
   address: {
     address: 'Rue de la Soulano, 09300 Lavelanet',
