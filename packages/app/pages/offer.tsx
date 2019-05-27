@@ -4,7 +4,8 @@ import { AppIconName, AppIconPrefix, AppIconSize } from '@components/elements/Ic
 import { Text } from '@components/elements/Text';
 import { PageLayout } from '@components/layout';
 import { JobOfferBlock, JobOfferBlockHeader1, JobOfferBlockHeader2, JobOfferContacts, JobOfferHeader, JobOfferMap, JobOfferSection, JobOfferSectionContent } from '@features/jobOffers';
-import { styled } from '@styles';
+import { GalleryPhoto } from '@features/jobOffers/JobOfferPhotos';
+import { getFiancialAidLink, getFinancialAidLabel } from '@features/jobOffers/util/jobOfferUtil';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { extract, parse } from 'query-string';
@@ -60,16 +61,13 @@ const JobOfferPage = (props: JobOfferProps) => {
           </JobOfferSection>
         </JobOfferBlock>
 
-        <JobOfferBlock color='grey'>
+        {jobOffer.photos.length > 0 && <JobOfferBlock color='grey'>
           <JobOfferBlockHeader2 title="Quelques photos" />
           <JobOfferSection>
-            <GalleryPhoto>
-              <Box display="flex" flexDirection="row" alignItems="flex-start">
-                {jobOffer.photos.map((photo, index) => <Box pr={3} key={index}><img alt={photo.description} height="235px" src={`/static/assets/photos/${jobOffer.reference}/${photo.name}`}></img></Box>)}
-              </Box>
-            </GalleryPhoto>
+            <GalleryPhoto jobOffer={jobOffer} />
           </JobOfferSection>
         </JobOfferBlock>
+        }
 
         <JobOfferBlock>
           <JobOfferBlockHeader2 title="Environnement professionel" />
@@ -78,6 +76,9 @@ const JobOfferPage = (props: JobOfferProps) => {
           </Box>
           <JobOfferSection>
             <JobOfferSectionContent content={jobOffer.medicalStructure} />
+          </JobOfferSection>
+          <JobOfferSection>
+            <JobOfferSectionContent content={`Vous pouvez trouver les rapports et portraits de territoires sur <a target="_BLANK" href=${jobOffer.cartosante}>CartoSanté</a>`} />
           </JobOfferSection>
         </JobOfferBlock>
 
@@ -99,15 +100,18 @@ const JobOfferPage = (props: JobOfferProps) => {
 
         <JobOfferBlock >
           <JobOfferBlockHeader2 title="Aides à l'installation" />
+          <JobOfferSection>
+            <JobOfferSectionContent content="En venant exercer sur ce territoire, vous pouvez bénéficier de certaines aides à l'installation"></JobOfferSectionContent>
+          </JobOfferSection>
           <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
             <Box flex="0 1 calc(30% - 10px)">
-              {jobOffer.financialAids.types.map((type, index) => <IconLabel iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={type} />)}
+              {jobOffer.financialAids.types.map((type, index) => <IconLabel helpLink={getFiancialAidLink(type)} iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={getFinancialAidLabel(type)} />)}
             </Box>
             <Box flex="0 1 calc(30% - 10px)">
               <IconLabel iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label="Installation possible pour les signataires d'un CESP" />
             </Box>
             <Box flex="0 1 calc(30% - 10px)">
-              {jobOffer.financialAids.aids.map((aid, index) => <IconLabel key={index} iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label={aid} />)}
+              {jobOffer.financialAids.aids.map((aid, index) => <IconLabel helpLink={getFiancialAidLink(aid)} key={index} iconPrefix='far' iconSize="2x" iconColor="#22891f" iconName="check-circle" label={getFinancialAidLabel(aid)} />)}
             </Box>
           </Box>
           <JobOfferSection>
@@ -124,16 +128,16 @@ const JobOfferPage = (props: JobOfferProps) => {
 
 const SectionHint = (props: { hint: string }) => <Text color="grey.2" fontSize={[3, 4, 4]} pb={2} pr={3} >• {props.hint}</Text>;
 
-const GalleryPhoto = styled(Box)({
-  overflowX: 'auto',
-  overflowY: 'hidden'
-})
 
-const IconLabel = (props: { label: string, iconPrefix: AppIconPrefix, iconSize: AppIconSize, iconName: AppIconName, iconColor: string }) => {
+
+const IconLabel = (props: { label: string, helpLink?: string, iconPrefix: AppIconPrefix, iconSize: AppIconSize, iconName: AppIconName, iconColor: string }) => {
   return (
     <Box display="flex" alignItems="center" fontSize={3} pt={3} pb={3}>
       <Icon size={props.iconSize} color={props.iconColor} iconPrefix={props.iconPrefix} iconName={props.iconName}></Icon>
-      <Text pl={3} >{props.label}</Text>
+      <Text pl={3} >
+        {!props.helpLink && <>{props.label}</>}
+        {props.helpLink && <a href={props.helpLink}>{props.label}</a>}
+      </Text>
     </Box>
   )
 }

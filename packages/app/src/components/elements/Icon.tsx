@@ -1,12 +1,12 @@
 import { IconPack, library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faCircle, faEnvelope, faIgloo, faLink, faLocationArrow, faMapMarkerAlt, faPhone, faStar, faUser, faFileAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircle, faEnvelope, faFileAlt, faIgloo, faLink, faLocationArrow, faMapMarkerAlt, faPhone, faQuestionCircle, faShareAlt, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Component } from 'react';
 
-export type AppIconName = 'share-alt'| 'file-alt' | 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'envelope'| 'link' | 'check-circle' | 'circle' ;
+export type AppIconName = 'question-circle' | 'share-alt' | 'file-alt' | 'check-circle' | 'map-marker-alt' | 'star' | 'user' | 'phone' | 'envelope' | 'link' | 'check-circle' | 'circle';
 export type AppIconPrefix = 'far' | 'fas';
-export type AppIconSize = '2x' | '3x' |'4x' |'5x' |'6x' |'7x' |'8x' |'9x' |  'lg';
+export type AppIconSize = '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | 'lg' | 'xs';
 
 
 interface IconProps {
@@ -35,6 +35,7 @@ export const initIconLibrary = () => {
   library.add(faCircle);
   library.add(faFileAlt);
   library.add(faShareAlt);
+  library.add(faQuestionCircle);
 }
 
 export class Icon extends Component<IconProps> {

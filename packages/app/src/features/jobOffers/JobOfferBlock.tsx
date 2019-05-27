@@ -2,6 +2,8 @@ import { JobOffer } from "@api";
 import { Box, Icon } from "@components/elements";
 import { Text } from "@components/elements/Text";
 import { Container } from "@components/layout/Container";
+import { format } from 'date-fns';
+import fr from 'date-fns/locale/fr';
 
 type ColorType = 'grey' | 'brown';
 
@@ -37,7 +39,7 @@ export const JobOfferBlockHeader1 = (props: { jobOffer: JobOffer }) => {
       <H1>{props.jobOffer.title}</H1>
       <Box fontSize={2} display="flex" alignItems="center">
         <Icon size="2x" color="rgba(0, 105, 204, 0.87)" iconPrefix='fas' iconName='user'></Icon>
-        <Text pl={3} color="grey.0" >{props.jobOffer.contractType} en {props.jobOffer.structureType} | Offre publiée le 2 avril 2019 à 18h</Text>
+        <Text pl={3} color="grey.0" >{props.jobOffer.contractType} en {props.jobOffer.structureType} | Offre publiée le {format(props.jobOffer.publishedAt, "DD MMMM YYYY à HH:mm", { locale: fr })}</Text>
       </Box>
     </Box>
   )
