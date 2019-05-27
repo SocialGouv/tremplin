@@ -103,6 +103,9 @@ const JobOfferPage = (props: JobOfferProps) => {
 
         <JobOfferBlock >
           <JobOfferBlockHeader2 title="Aides à l'installation" />
+          <JobOfferSection>
+            <JobOfferSectionContent content="En venant exercer sur ce territoire, vous pouvez bénéficier de certaines aides à l'installation"></JobOfferSectionContent>
+          </JobOfferSection>
           <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
             <Box flex="0 1 calc(30% - 10px)">
               {jobOffer.financialAids.types.map((type, index) => <IconLabel iconPrefix='fas' key={index} iconSize="2x" iconColor="#22891f" iconName="map-marker-alt" label={type} />)}
