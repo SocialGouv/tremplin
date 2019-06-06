@@ -76,7 +76,7 @@ export default () => {
           <Box textAlign="center" pb={4}>
             <H2>Nos dernières offres d'installation</H2>
           </Box>
-          <Box display="flex" flexDirection={["column", "row", "row"]} alignItems="center" justifyContent="center">
+          <Box display="flex" flexWrap="wrap" flexDirection={["column", "column", "row"]} alignItems="center" justifyContent="center">
             {jobOffers.map(jobOffer => <JobOfferCard key={jobOffer.reference} jobOffer={jobOffer}></JobOfferCard>)}
           </Box>
         </Box>
