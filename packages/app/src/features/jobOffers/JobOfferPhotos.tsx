@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Wrapper = styled(Box)({
     overflowX: 'auto',
-    overflowY: 'auto',
+    overflowY: 'hidden',
 })
 
 export const GalleryPhoto = (props: { jobOffer: JobOffer }) => (

@@ -4,7 +4,6 @@ export type ContractType = 'Libéral' | 'Salarié';
 export type SecretariatType = 'Secrétariat sur place' | 'Plateforme téléphonique' | 'Rendez-vous en ligne' | 'Pas de secretariat';
 export type Address = Readonly<{
   address: string;
-  street: string;
   zipCode: string;
   city: string;
   geoCode: GeoCode;
@@ -86,7 +85,6 @@ export const fakeJobOffer: JobOffer = {
       lat: 45,
       lng: 1
     },
-    street: '',
     zipCode: ''
   },
   emergencyDistance: 50,

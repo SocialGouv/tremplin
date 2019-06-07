@@ -21,7 +21,6 @@ export const berat = {
   
     address: {
       address: '85 Route de Rieumes, 31370 Bérat',
-      street: '85 Route de Rieumes',
       zipCode: '31370',
       city: 'Berat',
       geoCode: {

@@ -92,7 +92,6 @@ export const varen = {
 
   address: {
     address: 'Le Bourg, 82330 Varen',
-    street: '',
     zipCode: '82330',
     city: 'Varen',
     geoCode: {

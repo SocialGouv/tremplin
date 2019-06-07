@@ -136,7 +136,7 @@ const IconLabel = (props: { label: string, helpLink?: string, iconPrefix: AppIco
       <Icon size={props.iconSize} color={props.iconColor} iconPrefix={props.iconPrefix} iconName={props.iconName}></Icon>
       <Text pl={3} >
         {!props.helpLink && <>{props.label}</>}
-        {props.helpLink && <a href={props.helpLink}>{props.label}</a>}
+        {props.helpLink && <a href={props.helpLink} target="_BLANK">{props.label}</a>}
       </Text>
     </Box>
   )

@@ -76,7 +76,6 @@ export const lavelanet = {
 
   address: {
     address: 'Rue de la Soulano, 09300 Lavelanet',
-    street: '',
     zipCode: '09300',
     city: 'Lavelanet',
     geoCode: {

@@ -59,7 +59,6 @@ export const maubourguet = {
 
   address: {
     address: 'Route de Lafitole, 65700 Maubourguet',
-    street: '',
     zipCode: '65700',
     city: 'Maubourguet',
     geoCode: {
