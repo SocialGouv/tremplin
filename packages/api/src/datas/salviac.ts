@@ -42,7 +42,6 @@ export const salviac = {
 
   address: {
     address: 'Lieu dit les Crozes, 46340 Salviac',
-    street: '',
     zipCode: '46340',
     city: 'Salviac',
     geoCode: {
@@ -78,7 +77,6 @@ export const salviac = {
   advantage2: "Le CIS s’inscrit dans un projet plus vaste de « Pôle de santé » qui regroupe une quarantaine de professionnels de santé.",
   advantage3: "Un environnement agréable alliant nature, culture et gastronomie.",
 
-  photos: [],
 
   financialAids: {
     types: ['ZAC', 'ZRR'],
@@ -94,5 +92,22 @@ export const salviac = {
       position: 'Responsable du CIS',
       email: 'christophe.clement@cc-cazalssalviac.fr'
     }
+  ],
+  photos: [
+    {
+      header: true,
+      name: 'SALVIAC201905_01.jpg',
+      description: 'Centre de santé'
+    },
+    {
+      header: false,
+      name: 'SALVIAC201905_02.jpg',
+      description: 'Centre de santé'
+    },
+    {
+      header: false,
+      name: 'SALVIAC201905_03.jpg',
+      description: 'Centre de santé'
+    },
   ]
 }
