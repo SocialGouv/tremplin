@@ -84,17 +84,18 @@ const JobOfferPage = (props: JobOfferProps) => {
 
         <JobOfferBlock color='brown'>
           <JobOfferBlockHeader2 title="Cadre de vie" />
-          <Box display="flex" flexDirection={["column", "row", "row"]} justifyContent="space-between">
+          <Box display="flex" flexDirection={"column"} justifyContent="space-between">
             <Box flex="0 1 calc(70% - 10px)">
               <JobOfferSection >
                 <JobOfferSectionContent content={jobOffer.lifestyle} />
               </JobOfferSection>
             </Box>
-            <Box flex="0 1 calc(30% - 10px)" pt={[3, 0, 0]}>
-              <JobOfferSection >
+            {jobOffer.lifestyleLinks && <Box flex="0 1 calc(30% - 10px)" pt={3}>
+              <JobOfferSection title="Quelques liens">
                 {jobOffer.lifestyleLinks.map((link, index) => <LifestyleLink key={index} link={link.link} description={link.description}></LifestyleLink>)}
               </JobOfferSection>
             </Box>
+            }
           </Box>
         </JobOfferBlock>
 
@@ -146,7 +147,7 @@ const LifestyleLink = (props: { link: string, description: string }) => {
   return (
     <Box display="flex" color="#0081d5" alignItems="center" fontSize={2} pt={1} pb={1}>
       <a href={props.link} target='_BLANK'>
-        <Box display="flex" alignItems="center">
+        <Box display="flex" alignItems="center" pt={1} pb={1}>
           <Icon iconPrefix='fas' iconName='link'></Icon>
           <Text pl={2} >{props.description}</Text>
         </Box>

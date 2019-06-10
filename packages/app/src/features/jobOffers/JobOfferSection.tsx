@@ -9,7 +9,7 @@ export class JobOfferSection extends Component<{ title?: string }> {
   public render() {
     return (
       <Box pt={1} pb={1} >
-        {this.props.title && <Text as="div" fontSize={4} color="blue.1" pb={2}>{this.props.title}</Text>}
+        {this.props.title && <Text as="div" pt={2} fontSize={3} color="blue.1" pb={2}>{this.props.title}</Text>}
         {this.props.children}
       </Box>
     )
