@@ -25,7 +25,7 @@ const environments: Environment[] = [
     piwik: {
       enabled: true,
       siteId: 6,
-      siteURL: "stats.num.social.gouv.fr"
+      siteURL: "matomo.tools.factory.social.gouv.fr"
     }
   }
 ]
