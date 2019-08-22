@@ -71,7 +71,7 @@ build-and-push-tremplin-api-image:
   - docker:dind
   before_script:
   - cd packages/api
-  - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+  - echo "$CI_JOB_TOKEN" | docker login $CI_REGISTRY -u gitlab-ci-token --password-stdin
   script:
   - >-
     docker build
@@ -87,7 +87,7 @@ build-and-push-tremplin-frontend-image-dev:
   before_script:
   - HASH_BRANCH_NAME=$(printf "$CI_COMMIT_REF_NAME" | sha1sum | cut -c1-5)
   - cd packages/app
-  - docker login  $CI_REGISTRY -u gitlab-ci-token -p $CI_JOB_TOKEN
+  - echo "$CI_JOB_TOKEN" | docker login $CI_REGISTRY -u gitlab-ci-token --password-stdin
   script:
   - >-
     docker build
